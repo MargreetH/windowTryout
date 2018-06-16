@@ -53,9 +53,18 @@ function fillWindow(w, bgcolor)
 end
 
 function exitButtonClick()
-m.clear()
-sleep(0.5)
+  m.clear()
 os.exit()
+end
+
+function switchButtonClick()
+  infoField.clear()
+  infoField.write("Pressed switch button")
+end
+
+function viewHistoryButtonClick()
+  infoField.clear()
+  infoField.write("Pressed switch button")
 end
 
 
@@ -64,7 +73,8 @@ fillWindow(textField, 64)
 switchButton.setBackgroundColor(2)
 viewHistoryButton.setBackgroundColor(4)
 exitButton.setBackgroundColor(8)
-fillWindow(infoField, 1024)
+infoField.setBackgroundColor(1024)
+
 
 
 
@@ -81,13 +91,17 @@ function touchEvent(xPos, yPos)
 
   local enummy = 0
   local bool = false
+  bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
+  if bool then enummy = 1 bool = false end
+  bool = functions.checkInRangeWindow(viewHistoryButton, xPos, yPos)
+  if bool then enummy = 2 bool = false end
   bool = functions.checkInRangeWindow(exitButton, xPos, yPos)
-  if bool then enummy = 3 end
+  if bool then enummy = 3 bool = false end
 
   if enummy == 1 then
-    --
+    switchButtonClick()
   elseif enummy == 2 then
-    --
+    viewHistoryButtonClick()
   elseif enummy == 3 then
     exitButtonClick()
   end
