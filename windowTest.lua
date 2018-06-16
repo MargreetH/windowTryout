@@ -77,7 +77,6 @@ viewHistoryButton.setBackgroundColor(4)
 exitButton.setBackgroundColor(8)
 infoField.setBackgroundColor(1024)
 
-
 functions.fillButton(switchButton, "SWITCH")
 functions.fillButton(viewHistoryButton, "VIEW HISTORY")
 functions.fillButton(exitButton, "EXIT")
@@ -88,7 +87,6 @@ textField.clear()
 
 
 function touchEvent(xPos, yPos)
-
   local enummy = 0
   local bool = false
   bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
@@ -116,16 +114,10 @@ function processEvents(event)
 
 end
 
-
-
-
-
 local function wait (time)
   local timer = os.startTimer(time)
-
   while true do
     local event = {os.pullEvent()}
-
     if (event[1] == "timer" and event[2] == timer) then
       break
     else
@@ -137,8 +129,6 @@ end
 textField.setTextColor(32768)
 textField.setCursorPos(1, 1)
 
-
-
 while true do
 
   if counter2 == 20 then
@@ -149,10 +139,7 @@ while true do
   wait(timeTick)
   textField.write(tostring(counter2))
   functions.newLine(textField)
-
   topPart.clear()
-
-
 
   counter2 = counter2 + 1
 end
