@@ -127,3 +127,13 @@ function fillButton(w, text)
   newLine(w)
   w.write(".......................................")
 end
+
+function fillWindow(w, bgcolor)
+  local longString = "sahadhgsahsdjasdasdahsdjkashdjkashdkjsahdjkahsjkdhaskjdhaksjdhajksdsasdkaksdkhdsajkdfsdfadsdasd"
+  w.setBackgroundColor(bgcolor) --Red
+  w.setTextColor(32768) --Black
+  for i = 1, 80, 1 do
+    w.write(longString)
+    functions.newLine(w)
+  end
+end

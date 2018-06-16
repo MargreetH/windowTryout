@@ -5,29 +5,30 @@ os.loadAPI("/git/scripts/functions")
 local timeTick = 1
 
 --Some constants
-local longString = "sahadhgsahsdjasdasdahsdjkashdjkashdkjsahdjkahsjkdhaskjdhaksjdhajksdsasdkaksdkhdsajkdfsdfadsdasd"
 
-screenSize = m.getSize()
---Create windows
+
+--Create all  windows
 topPart = window.create(m, 1,1, 50, 4)
 topPart.setCursorPos(1, 1)
-
 infoField = window.create(m, 1,5, 50, 3)
 infoField.setCursorPos(1, 1)
-
 textField = window.create(m, 1,9, 50, 20)
-
 createdWindows = functions.returnWindows(m, 1, 30, 50, 3, 3, true)
-
 local switchButton = createdWindows[1]
 local viewHistoryButton = createdWindows[2]
 local exitButton = createdWindows[3]
-
-topPart.setBackgroundColor(16384)
-topPart.setTextColor(1)
 textField.setBackgroundColor(32)
 
-
+--Set colors of buttons and such
+switchButton.setBackgroundColor(2)
+viewHistoryButton.setBackgroundColor(4)
+exitButton.setBackgroundColor(8)
+infoField.setBackgroundColor(1024)
+textField.setTextColor(32768)
+textField.setCursorPos(1, 1)
+functions.fillButton(switchButton, "SWITCH")
+functions.fillButton(viewHistoryButton, "VIEW HISTORY")
+functions.fillButton(exitButton, "EXIT")
 
 function createTopPart(w)
   w.setBackgroundColor(16384) --Red
@@ -43,15 +44,8 @@ function createTopPart(w)
   w.write("Written by Merlione404")
 end
 
-function fillWindow(w, bgcolor)
-  w.setBackgroundColor(bgcolor) --Red
-  w.setTextColor(32768) --Black
-  for i = 1, 80, 1 do
-    w.write(longString)
-    functions.newLine(w)
-  end
-end
 
+-- BUTTON CLICK HANDLERS
 function exitButtonClick()
   m.clear()
  os.exit(0)
@@ -68,22 +62,8 @@ function viewHistoryButtonClick()
   infoField.clear()
   infoField.write("Pressed vh button")
 end
+--END BUTTON CLICK HANDLERS
 
-
-createTopPart(topPart)
-fillWindow(textField, 64)
-switchButton.setBackgroundColor(2)
-viewHistoryButton.setBackgroundColor(4)
-exitButton.setBackgroundColor(8)
-infoField.setBackgroundColor(1024)
-
-functions.fillButton(switchButton, "SWITCH")
-functions.fillButton(viewHistoryButton, "VIEW HISTORY")
-functions.fillButton(exitButton, "EXIT")
-
-counter2 = 0
-
-textField.clear()
 
 
 function touchEvent(xPos, yPos)
@@ -126,9 +106,12 @@ local function wait (time)
   end
 end
 
-textField.setTextColor(32768)
-textField.setCursorPos(1, 1)
+--Fill static windows
+createTopPart(topPart)
 
+----- #################### MAIN LOOP #######################################
+
+counter2 = 0
 while true do
 
   if counter2 == 20 then
