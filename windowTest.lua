@@ -64,6 +64,10 @@ fillWindow(viewHistoryButton, 4)
 fillWindow(exitButton, 8)
 fillWindow(infoField, 1024)
 
+switchButton.clear()
+viewHistoryButton.clear()
+exitButton.clear()
+
 functions.fillButton(switchButton, "SWITCH")
 functions.fillButton(viewHistoryButton, "VIEW HISTORY")
 functions.fillButton(exitButton, "EXIT")
