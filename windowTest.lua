@@ -2,7 +2,7 @@ local m
 m = peripheral.wrap("left")
 m.clear()
 os.loadAPI("/git/scripts/functions")
-local timeTick = 3
+local timeTick = 1
 
 --Some constants
 local longString = "sahadhgsahsdjasdasdahsdjkashdjkashdkjsahdjkahsjkdhaskjdhaksjdhajksdsasdkaksdkhdsajkdfsdfadsdasd"
@@ -89,11 +89,6 @@ end
 
 function processEvents(event)
 
-  for i = 1, #event, 1 do
-    textField.write(tostring(event[i]))
-    functions.newLine(textField)
-  end
-
   if event[1] == "monitor_touch" then
     touchEvent(event[3], event[4])
   end
@@ -132,7 +127,6 @@ while true do
 
   wait(timeTick)
   textField.write(tostring(counter2))
-  textField.write("hoi")
   functions.newLine(textField)
 
   topPart.clear()
