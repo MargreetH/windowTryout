@@ -66,7 +66,7 @@ end
 function viewHistoryButtonClick()
   infoField.setCursorPos(1,1)
   infoField.clear()
-  infoField.write("Pressed switch button")
+  infoField.write("Pressed vh button")
 end
 
 
