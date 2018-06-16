@@ -53,6 +53,7 @@ function fillWindow(w, bgcolor)
 end
 
 function exitButtonClick()
+m.clear()
 os.exit()
 end
 
