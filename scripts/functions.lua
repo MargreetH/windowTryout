@@ -117,5 +117,13 @@ function checkInRangeWindow(w, xPos, yPos)
   if xPos > xlimit then return false end
   if yPos > ylimit then return false end
   return true
+end
 
+
+function fillButton(w, text)
+  w.write(".......................................")
+  newLine(w)
+  w.write(".... "..text.." ..........................")
+  newLine(w)
+  w.write(".......................................")
 end
