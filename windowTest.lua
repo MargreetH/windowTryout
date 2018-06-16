@@ -1,7 +1,7 @@
 local m
 m = peripheral.wrap("left")
 m.clear()
-os.loadAPI("scripts/functions")
+os.loadAPI("/git/scripts/functions")
 local timeTick = 3
 
 --Some constants
