@@ -122,7 +122,6 @@ while true do
   wait(timeTick)
   textField.write(tostring(counter2))
   functions.newLine(textField)
-  topPart.clear()
 
   counter2 = counter2 + 1
 end
