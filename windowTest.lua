@@ -71,12 +71,18 @@ textField.clear()
 
 
 function touchEvent(xPos, yPos)
-  if functions.checkInRangeWindow(switchButton, xPos, yPos) then
+
+  local enummy = 0
+  local bool = false
+  bool = functions.checkInRangeWindow(exitButton, xPos, yPos)
+  if bool then enummy = 3 end
+
+  if enummy == 1 then
     --
-  elseif functions.checkInRangeWindow(viewHistoryButton, xPos, yPos) then
+  elseif enummy == 2 then
     --
-  elseif functions.checkInRangeWindow(exitButton, xPos, yPos) then
-    --
+  elseif enummy == 3 then
+    exitButtonClick()
   end
 end
 
