@@ -71,11 +71,11 @@ textField.clear()
 
 
 function touchEvent(xPos, yPos)
-  if checkInRangeWindow(switchButton, xPos, yPos) then
+  if functions.checkInRangeWindow(switchButton, xPos, yPos) then
     --
-  elseif checkInRangeWindow(viewHistoryButton, xPos, yPos) then
+  elseif functions.checkInRangeWindow(viewHistoryButton, xPos, yPos) then
     --
-  elseif checkInRangeWindow(exitButton, xPos, yPos) then
+  elseif functions.checkInRangeWindow(exitButton, xPos, yPos) then
     --
   end
 end
