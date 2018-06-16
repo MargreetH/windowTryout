@@ -130,7 +130,7 @@ while true do
   functions.newLine(textField)
 
   topPart.clear()
-  topPart.write(tostring(xPos))
+
 
 
   counter2 = counter2 + 1
