@@ -18,17 +18,20 @@ local switchButton = createdWindows[1]
 local viewHistoryButton = createdWindows[2]
 local exitButton = createdWindows[3]
 textField.setBackgroundColor(32)
+textField.clear()
 
 --Set colors of buttons and such
 switchButton.setBackgroundColor(2)
 viewHistoryButton.setBackgroundColor(4)
 exitButton.setBackgroundColor(8)
 infoField.setBackgroundColor(1024)
+infoField.clear()
 textField.setTextColor(32768)
 textField.setCursorPos(1, 1)
 functions.fillButton(switchButton, "SWITCH")
 functions.fillButton(viewHistoryButton, "VIEW HISTORY")
 functions.fillButton(exitButton, "EXIT")
+
 
 function createTopPart(w)
   w.setBackgroundColor(16384) --Red
