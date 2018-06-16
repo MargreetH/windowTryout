@@ -78,8 +78,6 @@ exitButton.setBackgroundColor(8)
 infoField.setBackgroundColor(1024)
 
 
-
-
 functions.fillButton(switchButton, "SWITCH")
 functions.fillButton(viewHistoryButton, "VIEW HISTORY")
 functions.fillButton(exitButton, "EXIT")

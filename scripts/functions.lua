@@ -110,6 +110,8 @@ function checkInRangeWindow(w, xPos, yPos)
   local wxPos, wyPos = w.getPosition()
   local width, height = w.getSize()
   xlimit = wxPos + width
+  print(xlimit)
+  print(ylimit)
   ylimit = wyPos + height
 
   if xPos < wxPos then return false end
