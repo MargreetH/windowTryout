@@ -54,6 +54,7 @@ end
 
 function exitButtonClick()
 m.clear()
+sleep(0.5)
 os.exit()
 end
 
