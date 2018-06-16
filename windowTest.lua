@@ -59,14 +59,12 @@ end
 
 createTopPart(topPart)
 fillWindow(textField, 64)
-fillWindow(switchButton, 2)
-fillWindow(viewHistoryButton, 4)
-fillWindow(exitButton, 8)
+switchButton.setBackgroundColor(2)
+viewHistoryButton.setBackgroundColor(4)
+exitButton.setBackgroundColor(8)
 fillWindow(infoField, 1024)
 
-switchButton.clear()
-viewHistoryButton.clear()
-exitButton.clear()
+
 
 functions.fillButton(switchButton, "SWITCH")
 functions.fillButton(viewHistoryButton, "VIEW HISTORY")
