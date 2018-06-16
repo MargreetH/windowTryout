@@ -58,14 +58,14 @@ function exitButtonClick()
 end
 
 function switchButtonClick()
+  infoField.setCursorPos(1,1)
   infoField.clear()
-  infofield.setCursorPos(1,1)
   infoField.write("Pressed switch button")
 end
 
 function viewHistoryButtonClick()
+  infoField.setCursorPos(1,1)
   infoField.clear()
-    infofield.setCursorPos(1,1)
   infoField.write("Pressed switch button")
 end
 
