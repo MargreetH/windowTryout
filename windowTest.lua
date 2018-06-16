@@ -54,16 +54,18 @@ end
 
 function exitButtonClick()
   m.clear()
-os.exit()
+ os.exit(0)
 end
 
 function switchButtonClick()
   infoField.clear()
+  infofield.setCursorPos(1,1)
   infoField.write("Pressed switch button")
 end
 
 function viewHistoryButtonClick()
   infoField.clear()
+    infofield.setCursorPos(1,1)
   infoField.write("Pressed switch button")
 end
 
