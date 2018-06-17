@@ -16,13 +16,15 @@ function fillChest(interface, side)
   local counter1
   counter1 = 1
   local returnedTable
+  local succeeded
 
   while canExportToSide do
     returnedTable = interface.exportItem(fingerprint, side, 64, counter1)
     canExportToSide = interface.canExport(side)
     counter1 = counter1 + 1
     if counter1 > 5 then canExportToSide = false end
-    functions.printTableToTerminal(returnedTable)
+    succeeded = returnedTable["size"]
+    print(succeeded)
     sleep(3)
   end
 
