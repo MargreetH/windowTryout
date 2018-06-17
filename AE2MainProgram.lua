@@ -35,11 +35,11 @@ end
 local fingerprint
 fingerprint = {id= "ThermalFoundation:material", dmg = 0}
 
-functions.printTableToTerminal(fingerprint)
 local returnedHashes
 returnedHashes = MEfunctions.returnNBThashes(fingerprint["id"], allItemsNetwork)
 
 for i = 1, #returnedHashes, 1 do
   fingerprint["nbt_hash"] = returnedHashes[i]
   MEfunctions.fillChest(pulverizerInterface, "north", 27, fingerprint, 64)
+  print(returnedHashes[i])
 end
