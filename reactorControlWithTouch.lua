@@ -28,7 +28,7 @@ while line ~= nil do
   counter1 = counter1 + 1
 end
 h.close()
-numberOfReactors = #reactors
+local numberOfReactors = #reactors
 
 -- ### WINDOWS
 --Create all  windows
@@ -83,7 +83,7 @@ function drawInfoPart(w)
     isActive = reactors[i].getActive()
       if isActive then
         w.setTextColor(8192) --Green
-        w.write("ACTIVE ")
+        w.write("ACTIVE")
       else
         w.setTextColor(16384) --red
         w.write("OFFLINE")
