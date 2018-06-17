@@ -37,6 +37,7 @@ fingerprint = {id= "ThermalFoundation:material", dmg = 0}
 
 local returnedHashes
 returnedHashes = MEfunctions.returnNBThashes(fingerprint["id"], allItemsNetwork)
+print(#returnedHashes)
 
 for i = 1, #returnedHashes, 1 do
   fingerprint["nbt_hash"] = returnedHashes[i]
