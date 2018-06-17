@@ -32,11 +32,11 @@ local furnaceWindow = window.create(bottomPart, 1, 1, 61, 36)
 local processingWindow = window.create(bottomPart, 1, 1, 61, 36)
 
 --STartwindow components
-local infoFieldStartWindow = window.create(startWindow,1, 1, 61, 5)
-local dividedWindows = functions.returnWindows(startWindow, 1, 6, 61, 31, 3, false)
-local windowSwitchPulverizer = dividedWindows[1]
-local windowSwitchFurnace = dividedWindows[2]
-local windowSwitchCrafting = dividedWindows[3]
+local dividedWindows = functions.returnWindows(startWindow, 1, 1, 61, 36, 4, false)
+local infoFieldStartWindow = dividedWindows[1]
+local windowSwitchPulverizer = dividedWindows[2]
+local windowSwitchFurnace = dividedWindows[3]
+local windowSwitchCrafting = dividedWindows[4]
 print(windowSwitchCrafting.getPosition())
 
 function toggleWindows(win)

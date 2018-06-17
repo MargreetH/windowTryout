@@ -98,7 +98,7 @@ function subDivideRegion(x, y, width, height, parts, divideVertically)
       sum = sum + widthSplit
     end
     returnTable[parts]["width"] = returnTable[parts]["width"] + width - sum
-    return returnTable
+    return returnTable    
   end
 
 -- other case, make rows
