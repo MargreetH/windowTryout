@@ -4,5 +4,7 @@
 function fillChest(interface)
   local stacksTable
   stacksTable = interface.getAllStacks(false)
-  print(stacksTable[1])
+  for i = 1, #stacksTable do
+  print(stacksTable[i])
+end
 end
