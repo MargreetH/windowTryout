@@ -66,9 +66,9 @@ else
 	--get packman and use it.
 
 
-	local otherHTTPs = {"https://raw.githubusercontent.com/MargreetH/windowTryout/master/windowTest.lua", "https://raw.githubusercontent.com/MargreetH/windowTryout/master/scripts/functions.lua", "https://raw.githubusercontent.com/MargreetH/windowTryout/master/reactorControlWithTouch.lua"}
-	local otherpaths = {"/git", "/git/scripts", "/git"}
-	local fileName = {"windowTest", "functions", "reactornew"}
+	local otherHTTPs = {"https://raw.githubusercontent.com/MargreetH/windowTryout/master/windowTest.lua", "https://raw.githubusercontent.com/MargreetH/windowTryout/master/scripts/functions.lua", "https://raw.githubusercontent.com/MargreetH/windowTryout/master/reactorControlWithTouch.lua","https://raw.githubusercontent.com/MargreetH/windowTryout/master/reactorSettings.lua"}
+	local otherpaths = {"/git", "/git/scripts", "/git", "/git"}
+	local fileName = {"windowTest", "functions", "reactor", "reactorSettings"}
 
 	for i=1, #fileName, 1 do
 

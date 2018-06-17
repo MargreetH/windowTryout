@@ -1,4 +1,4 @@
-os.loadAPI("scripts/functions")
+os.loadAPI("/git/scripts/functions")
 local m
 m.clear()
 m = peripheral.wrap("right")
