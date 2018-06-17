@@ -21,10 +21,10 @@ bottomPart = window.create(m, 1, 5, 61, 36)
 bottomPart.setCursorPos(1, 1)
 
 --Creating subwindows
-startWindow = window.create(bottomPart, 1, 5, 61, 36)
-pulverizerWindow = window.create(bottomPart, 1, 5, 61, 36)
-furnaceWindow = window.create(bottomPart, 1, 5, 61, 36)
-processingWindow = window.create(bottomPart, 1, 5, 61, 36)
+local startWindow = window.create(bottomPart, 1, 5, 61, 36)
+local pulverizerWindow = window.create(bottomPart, 1, 5, 61, 36)
+local furnaceWindow = window.create(bottomPart, 1, 5, 61, 36)
+local rocessingWindow = window.create(bottomPart, 1, 5, 61, 36)
 
 function toggleWindows(win)
   pulverizerWindow.setVisible(false)
@@ -44,10 +44,10 @@ pulverizerWindow.setVisible(false)
 furnaceWindow.setVisible(false)
 processingWindow.setVisible(false)
 
-fillWindow(startWindow, 64)
-fillWindow(pulverizerWindow, 16384)
-fillWindow(furnaceWindow, 64)
-fillWindow(returnButton, 8192)
+functions.fillWindow(startWindow, 64)
+functions.fillWindow(pulverizerWindow, 16384)
+functions.fillWindow(furnaceWindow, 64)
+functions.fillWindow(returnButton, 8192)
 
 
 
