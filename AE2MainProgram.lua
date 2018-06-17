@@ -24,7 +24,7 @@ bottomPart.setCursorPos(1, 1)
 local startWindow = window.create(bottomPart, 1, 5, 61, 36)
 local pulverizerWindow = window.create(bottomPart, 1, 5, 61, 36)
 local furnaceWindow = window.create(bottomPart, 1, 5, 61, 36)
-local rocessingWindow = window.create(bottomPart, 1, 5, 61, 36)
+local processingWindow = window.create(bottomPart, 1, 5, 61, 36)
 
 function toggleWindows(win)
   pulverizerWindow.setVisible(false)
