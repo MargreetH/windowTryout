@@ -95,6 +95,23 @@ function drawInfoPart(w)
   w.write("INFO PLACEHOLDER")
 end
 
+function drawTextPart(w)
+  w.clear()
+  w.setCursorPos(1,1)
+  local index = currentlyDisplaying
+  w.setTextColor(32768) -- Black
+  w.write("###########################################")
+  functions.newLine(w)
+  w.write("REACTOR "..index.." Press Switch button to view other reactors.")
+  functions.newLine(w)
+  w.write("###########################################")
+  functions.newLine(w)
+  functions.newLine(w)
+  w.write("Number of control rods: "..reactors[index].getNumberOfControlRods())
+
+  --Interesting part
+
+end
 
 -- BUTTON CLICK HANDLERS
 function exitButtonClick()
@@ -104,9 +121,10 @@ function exitButtonClick()
 end
 
 function switchButtonClick()
-  infoField.setCursorPos(1,1)
-  infoField.clear()
-  infoField.write("Pressed switch button")
+  currentlyDisplaying = currentlyDisplaying + 1
+  if currentlyDisplaying > numberOfReactors then 
+    currentlyDisplaying = 1
+  end
 end
 
 function viewHistoryButtonClick()
@@ -200,6 +218,7 @@ end
 --Fill static windows
 createTopPart(topPart)
 drawInfoPart(infoField)
+drawTextPart(textField)
 
 
 local waitLonger = false
@@ -211,6 +230,7 @@ while true do
     handleReactor(reactors[i], i)
   end
   drawInfoPart(infoField)
+  drawTextPart(textField)
 
   waitLonger = checkAllReactorsOffline()
 
