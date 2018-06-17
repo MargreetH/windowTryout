@@ -40,7 +40,7 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
 
   while notDoneTransporting do
     local returnedTable
-    print("itemToBeTransported= "..itemToBeTransported)
+    print("itemToBeTransported= "..itemsToBeTransported)
     returnedTable = interface.exportItem(fingerprint, side, itemsToBeTransported, counter1)
     if returnedTable ~= nil then
       if returnedTable["size"] ~= nil then
