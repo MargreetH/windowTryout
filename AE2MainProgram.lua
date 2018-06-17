@@ -28,9 +28,10 @@ function regetItems()
 end
 
 fingerprint = {id= "ThermalFoundation:material", dmg = 0}
-local returnedHashes = MEfunctions.getNBTHashes(fingerprint["id"])
+local returnedHashes
+returnedHashes = MEfunctions.getNBTHashes(fingerprint["id"])
 
 for i = 1, #returnedHashes, 1 do
   fingerprint["nbt_hash"] = returnedHashes[i]
-  MEfunctions.fillChest(pulverizerInterface, "north", 10, fingerprint)
+  MEfunctions.fillChest(pulverizerInterface, "north", 27, fingerprint, 64)
 end

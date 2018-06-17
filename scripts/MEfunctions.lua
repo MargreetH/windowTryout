@@ -21,14 +21,10 @@ end
 end
 
 --Fills the whole chest with items
-function fillChest(interface, side, sizeChest, fingerprint)
-  --local stacksTable
-  --stacksTable = interface.getAllStacks(false)
+function fillChest(interface, side, sizeChest, fingerprint, amount)
 
-
-
-  local itemToBeTransported
-
+  local itemsToBeTransported
+  itemToBeTransported = amount
 
   local canExportToSide
   canExportToSide = interface.canExport(side)
@@ -36,16 +32,19 @@ function fillChest(interface, side, sizeChest, fingerprint)
   local counter1
   counter1 = 1
   local returnedTable
-  local succeeded
+  local numberSuccesfullyTransported
+  numberSuccesfullyTransported = 0
+  local transportStack
+  local notDoneTransporting
+  notDoneTransporting = true
 
-  while canExportToSide do
-    returnedTable = interface.exportItem(fingerprint, side, 64, counter1)
-    canExportToSide = interface.canExport(side)
+  while notDoneTransporting do
+    returnedTable = interface.exportItem(fingerprint, side, itemsToBeTransported, counter1)
+    itemsToBeTransported = itemsToBeTransported - returnedTable["size"]
     counter1 = counter1 + 1
-    succeeded = returnedTable["size"]
-    print(succeeded)
-    sleep(3)
-        if counter1 > 1 then canExportToSide = false end
+    
+    if counter1 > sizeChest then counter1 = 1 end
+    if itemsToBeTransported == 0 then notDoneTransporting = false end
   end
 
 
