@@ -192,6 +192,7 @@ end
 
 --Fill static windows
 createTopPart(topPart)
+drawInfoPart(infoField)
 
 
 local waitLonger = false
@@ -202,6 +203,7 @@ while true do
   for i = 1, #reactors, 1 do
     handleReactor(reactors[i], i)
   end
+  drawInfoPart(infoField)
 
   waitLonger = checkAllReactorsOffline()
 
