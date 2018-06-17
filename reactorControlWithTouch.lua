@@ -1,7 +1,8 @@
-os.loadAPI("/git/scripts/functions")
 local m
-m.clear()
 m = peripheral.wrap("right")
+m.clear()
+os.loadAPI("/git/scripts/functions")
+local timeTick = 1
 
 -- Some constants
 energyTreshold = 2000000
