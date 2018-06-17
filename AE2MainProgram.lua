@@ -62,9 +62,10 @@ toggleWindows("start")
 functions.fillWindow(startWindow, 64)
 functions.fillWindow(pulverizerWindow, 16384)
 functions.fillWindow(furnaceWindow, 128)
-functions.fillWindow(windowSwitchFurnace, 64)
+functions.fillWindow(windowSwitchFurnace, 64) -- pink
 functions.fillWindow(windowSwitchPulverizer, 1)
 functions.fillWindow(windowSwitchCrafting, 2)
+functions.fillWindow(infoFieldStartWindow, 16)
 
 
 -- DRawing functions for all windows
