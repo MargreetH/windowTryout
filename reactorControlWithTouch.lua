@@ -272,10 +272,10 @@ while true do
   for i = 1, #reactors, 1 do
     handleReactor(reactors[i], i)
   end
-  drawInfoPart(infoField)
-  drawTextPart(textField)
 
   waitLonger = checkAllReactorsOffline()
+  drawInfoPart(infoField)
+  drawTextPart(textField)
 
   if waitLonger then
     wait(offlineTime)
