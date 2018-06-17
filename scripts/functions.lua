@@ -31,6 +31,12 @@ tempVec = vector(#vec1)
 	return tempVec
 end
 
+function printTableToTerminal(t)
+  for k,v in pairs(t) do
+    print("Key: "..k.." Value: "..v)
+  end
+end
+
 function resetColors(monitors)
   monitors.setTextColor(colors.white)
   monitors.setBackgroundColor(colors.black)

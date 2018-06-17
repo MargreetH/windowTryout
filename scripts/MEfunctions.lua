@@ -1,3 +1,4 @@
+os.loadAPI("/git/scripts/functions")
 --Functions used by the ME program
 
 --Fills the whole chest with items
@@ -24,6 +25,10 @@ function fillChest(interface, side)
     counter1 = counter1 + 1
     print(returnedTable[1])
     print(returnedTable[2])
+
+    if counter1 > 5 then canExportToSide = false end
   end
+
+  functions.printTableToTerminal(returnedTable)
 
 end
