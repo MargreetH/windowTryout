@@ -100,6 +100,7 @@ end
 -- BUTTON CLICK HANDLERS
 function exitButtonClick()
   m.clear()
+  shutDownAllReactors()
  os.exit(0)
 end
 
@@ -187,6 +188,13 @@ function checkAllReactorsOffline()
     end
   end
   return true
+end
+
+function shutDownAllReactors()
+  for i = 1, numberOfReactors, 1 do
+    reactors[i].setActive(false)
+  end
+  print("Shut down all reactors.")
 end
 --END reactor functions
 
