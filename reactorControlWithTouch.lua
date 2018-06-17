@@ -78,22 +78,21 @@ function drawInfoPart(w)
   functions.newLine(w)
 
   for i = 1, numberOfReactors, 1 do
-    w.write("Reactor "..i.." ")
+    w.write("Reactor "..i..)
     local isActive
     isActive = reactors[i].getActive()
       if isActive then
         w.setTextColor(8192) --Green
-        w.write("ACTIVE")
+        w.write(" ACTIVE ")
       else
         w.setTextColor(16384) --red
-        w.write("OFFLINE")
+        w.write(" OFFLINE ")
       end
     w.setTextColor(1)
   end
 
   functions.newLine(w)
   w.write("INFO PLACEHOLDER")
-
 end
 
 
