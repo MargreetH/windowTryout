@@ -118,6 +118,7 @@ print("psadasdasdp")
 createTopPart(topPart)
 createInfoFieldStartWindow()
 createWindowSwitchFurnace()
+createWindowSwitchPulverizer()
 createReturnButton()
 
 --Get the interfaces that are used from the network
