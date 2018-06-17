@@ -33,7 +33,7 @@ end
 --regetItems(pulverizerInterface)
 
 local fingerprint
-fingerprint = {id= "minecraft:gold_ingot", dmg = 0}
+fingerprint = {id= "ThermalFoundation:material", dmg = 0}
 print(fingerprint.id)
 print(fingerprint["id"])
 
