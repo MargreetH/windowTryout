@@ -15,7 +15,7 @@ monitors.setCursorPos(1,1)
 monitors.write("Loading....")
 
 local AE2
-AE2 = peripheral.wrap("tileinterface_4")
+AE2 = peripheral.wrap("tileinterface_6")
 local items
 local numberOfItems
 
