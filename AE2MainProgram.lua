@@ -68,12 +68,29 @@ functions.fillWindow(windowSwitchCrafting, 2)
 functions.fillWindow(infoFieldStartWindow, 16)
 
 
--- DRawing functions for all windows
+-- Drawing functions for all windows
 function createReturnButton()
   returnButton.setBackgroundColor(128)
   returnButton.setTextColor(1)
   functions.fillButton(returnButton, "Return")
 end
+
+function createInfoFieldStartWindow()
+  infoFieldStartWindow.clear()
+  infoFieldStartWindow.setCursorPos(1,1)
+  infoFieldStartWindow.write("Welcome! What do you want to do?")
+  functions.newLine(infoFieldStartWindow)
+  infoFieldStartWindow.write("Choose one of the options from below.")
+end
+
+function createWindowSwitchFurnace()
+  createWindowSwitchFurnace.clear()
+  createWindowSwitchFurnace.setCursorPos(1,1)
+  createWindowSwitchFurnace.write("Send stuff to furnace")
+  functions.newLine(createWindowSwitchFurnace)
+end
+
+
 
 function createTopPart(w)
   w.setBackgroundColor(16384) --Red
@@ -91,6 +108,8 @@ end
 
 print("psadasdasdp")
 createTopPart(topPart)
+createInfoFieldStartWindow()
+createWindowSwitchFurnace()
 createReturnButton()
 
 --Get the interfaces that are used from the network
