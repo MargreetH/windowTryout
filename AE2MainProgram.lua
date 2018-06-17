@@ -37,11 +37,8 @@ fingerprint = {id= "ThermalFoundation:material", dmg = 1}
 print(fingerprint.id)
 
 
-local returnedHashes
-returnedHashes = MEfunctions.returnNBThashes(fingerprint.id, allItemsNetwork)
-print("Number of returned hashes: "..#returnedHashes)
+--local returnedHashes
+--returnedHashes = MEfunctions.returnNBThashes(fingerprint.id, allItemsNetwork)
 
-
-print("ik kom hier")
 MEfunctions.fillChest(pulverizerInterface, "north", 27, fingerprint, 64)
-print(returnedHashes[i])
+--print(returnedHashes[i])
