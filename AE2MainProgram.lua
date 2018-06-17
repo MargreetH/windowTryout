@@ -13,7 +13,7 @@ monitors.clear()
 monitors.setCursorPos(1,1)
 monitors.write("Loading....")
 
-print("plep")
+print("plop")
 
 --Get the interfaces that are used from the network
 local pulverizerInterface
@@ -42,6 +42,7 @@ returnedHashes = MEfunctions.returnNBThashes(fingerprint.id, allItemsNetwork)
 print(#returnedHashes)
 
 for i = 1, #returnedHashes, 1 do
+  print("ik kom hier")
   fingerprint["nbt_hash"] = returnedHashes[i]
   MEfunctions.fillChest(pulverizerInterface, "north", 27, fingerprint, 64)
   print(returnedHashes[i])
