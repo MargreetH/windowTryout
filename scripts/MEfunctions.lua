@@ -1,5 +1,5 @@
 os.loadAPI("/git/scripts/functions")
-
+os.loadAPI("/git/AE2MainProgram")
 --Functions used by the ME program
 
 
@@ -52,7 +52,7 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
 
     if counter1 > sizeChest then counter1 = 1 end
     if itemsToBeTransported == 0 then notDoneTransporting = false end
-    sleep(0.5)
+    AE2AE2MainProgram.wait(3)
   end
 
 

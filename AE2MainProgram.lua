@@ -1,4 +1,7 @@
 
+
+
+
 --Main program for AE2 stuff
 --Some constants
 local chestSizes = {}
@@ -120,6 +123,48 @@ createInfoFieldStartWindow()
 createWindowSwitchFurnace()
 createWindowSwitchPulverizer()
 createReturnButton()
+--BUTTON HANDLE FUNCTIONS
+--TODO
+-- TOUCH FUNCTIONS
+
+function touchEvent(xPos, yPos)
+  local enummy = 0
+  local bool = false
+  --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
+  --if bool then enummy = 1 bool = false end
+  print(xPos..","..yPos)
+  tempBool = checkInRangeWindow(windowSwitchFurnace,xPos,yPos)
+  print(tempBool)
+
+  if enummy == 1 then
+    --function
+  elseif enummy == 2 then
+
+  elseif enummy == 3 then
+
+  end
+end
+
+
+function processEvents(event)
+
+  if event[1] == "monitor_touch" then
+    touchEvent(event[3], event[4])
+  end
+
+end
+
+function wait (time)
+  local timer = os.startTimer(time)
+  while true do
+    local event = {os.pullEvent()}
+    if (event[1] == "timer" and event[2] == timer) then
+      break
+    else
+      processEvents(event) -- a custom function in which you would deal with received events
+    end
+  end
+end
 
 --Get the interfaces that are used from the network
 local pulverizerInterface
@@ -140,5 +185,5 @@ end
 
 regetItems(furnaceInterface)
 
-MEfunctions.fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedgold, 60)
-MEfunctions.fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedsilver, 60)
+MEfunctions.fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedgold, 300)
+MEfunctions.fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedsilver, 300)
