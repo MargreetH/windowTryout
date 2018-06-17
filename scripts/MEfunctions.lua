@@ -42,9 +42,10 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
     returnedTable = interface.exportItem(fingerprint, side, itemsToBeTransported, counter1)
     itemsToBeTransported = itemsToBeTransported - returnedTable["size"]
     counter1 = counter1 + 1
-    
+
     if counter1 > sizeChest then counter1 = 1 end
     if itemsToBeTransported == 0 then notDoneTransporting = false end
+    sleep(2)
   end
 
 
