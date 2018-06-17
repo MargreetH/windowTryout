@@ -34,8 +34,6 @@ end
 
 local fingerprint
 fingerprint = {id= "ThermalFoundation:material", dmg = 1}
-print(fingerprint.id)
-
 
 --local returnedHashes
 --returnedHashes = MEfunctions.returnNBThashes(fingerprint.id, allItemsNetwork)

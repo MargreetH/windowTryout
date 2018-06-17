@@ -32,9 +32,6 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
   local counter1
   counter1 = 1
   local returnedTable
-  local numberSuccesfullyTransported
-  numberSuccesfullyTransported = 0
-  local transportStack
   local notDoneTransporting
   notDoneTransporting = true
 
@@ -42,12 +39,11 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
     local returnedTable
     print("itemToBeTransported= "..itemsToBeTransported)
     returnedTable = interface.exportItem(fingerprint, side, itemsToBeTransported, counter1)
-    if returnedTable ~= nil then
-      if returnedTable["size"] ~= nil then
-        print(type(itemsToBeTransported))
-        print(type(returnedTable.size))
-        itemsToBeTransported = itemsToBeTransported - tonumber(returnedTable["size"])
-      end
+
+    if (returnedTable ~= nil) and (returnedTable["size"] ~= nil) then
+      print(type(itemsToBeTransported))
+      print(type(returnedTable.size))
+      itemsToBeTransported = itemsToBeTransported - tonumber(returnedTable["size"])
     end
 
     counter1 = counter1 + 1
