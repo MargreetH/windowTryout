@@ -122,9 +122,10 @@ end
 
 function switchButtonClick()
   currentlyDisplaying = currentlyDisplaying + 1
-  if currentlyDisplaying > numberOfReactors then 
+  if currentlyDisplaying > numberOfReactors then
     currentlyDisplaying = 1
   end
+  drawTextPart(textField)
 end
 
 function viewHistoryButtonClick()
