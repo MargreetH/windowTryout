@@ -15,16 +15,17 @@ returnButton = window.create(m, 51, 11, 4)
 topPart.setCursorPos(1, 1)
 bottomPart = window.create(m, 1, 5, 61, 36)
 bottomPart.setCursorPos(1, 1)
---Creating subwindows
 
+--Creating subwindows
 startWindow = window.create(bottomPart, 1, 5, 61, 36)
 pulverizerWindow = window.create(bottomPart, 1, 5, 61, 36)
 furnaceWindow = window.create(bottomPart, 1, 5, 61, 36)
 processingWindow = window.create(bottomPart, 1, 5, 61, 36)
 
-pulverizerWindow.setActive(false)
-furnaceWindow.setActive(false)
-processingWindow.setActive(false)
+--toggle windows
+pulverizerWindow.setVisible(false)
+furnaceWindow.setVisible(false)
+processingWindow.setVisible(false)
 
 fillWindow(startWindow, 64)
 fillWindow(pulverizerWindow, 16384)
