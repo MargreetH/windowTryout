@@ -29,6 +29,14 @@ local pulverizerWindow = window.create(bottomPart, 1, 1, 61, 36)
 local furnaceWindow = window.create(bottomPart, 1, 1, 61, 36)
 local processingWindow = window.create(bottomPart, 1, 1, 61, 36)
 
+--STartwindow components
+local infoFieldStartWindow = window.create(startWindow,1, 1, 61, 5)
+local dividedWindows = returnWindows(startWindow, 1, 6, 61, 31, 3, false)
+local windowSwitchPulverizer = dividedWindows[1]
+local windowSwitchFurnace = dividedWindows[2]
+local windowSwitchCrafting = dividedWindows[3]
+print(windowSwitchCrafting.getPosition())
+
 function toggleWindows(win)
   pulverizerWindow.setVisible(false)
   furnaceWindow.setVisible(false)
@@ -47,7 +55,7 @@ function toggleWindows(win)
 end
 
 --Set startwindow as active one
-toggleWindows(startWindow)
+toggleWindows("start")
 
 functions.fillWindow(startWindow, 64)
 functions.fillWindow(pulverizerWindow, 16384)
