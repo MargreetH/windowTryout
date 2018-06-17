@@ -13,6 +13,9 @@ local m
 m = peripheral.wrap("left")
 m.clear()
 
+--variables
+local currentActiveWindow = "start"
+
 --Creating the main Windows
 topPart = window.create(m, 1,1, 50, 4)
 returnButton = window.create(m, 51, 1, 11, 4)
@@ -31,28 +34,35 @@ function toggleWindows(win)
   furnaceWindow.setVisible(false)
   processingWindow.setVisible(false)
   startWindow.setVisible(false)
-
   if win == "pul" then
+    pulverizerWindow.setVisible(true)
   elseif win == "fur" then
-  elseif win == "main" then
-  elseif win == "procesing" then
+    furnaceWindow.setVisible(true)
+  elseif win == "start" then
+    startWindow.setVisible(true)
+  elseif win == "processing" then
+    processingWindow.setVisible(true)
   end
+  currentActiveWindow = win
 end
 
---toggle windows
-pulverizerWindow.setVisible(false)
-furnaceWindow.setVisible(false)
-processingWindow.setVisible(false)
+--Set startwindow as active one
+toggleWindows(startWindow)
 
 functions.fillWindow(startWindow, 64)
 functions.fillWindow(pulverizerWindow, 16384)
 functions.fillWindow(furnaceWindow, 64)
-functions.fillWindow(returnButton, 8192)
-
-
 
 
 -- DRawing functions for all windows
+function createReturnButton()
+  returnButton.setBackgroundColor(128)
+  returnButton.setTextColor(1)
+  functions.fillButton(returnButton, "Return")
+end
+
+
+
 function createTopPart(w)
   w.setBackgroundColor(16384) --Red
   w.setTextColor(32768) --Black
@@ -69,6 +79,7 @@ end
 
 print("psadasdasdp")
 createTopPart(topPart)
+createReturnButton()
 
 --Get the interfaces that are used from the network
 local pulverizerInterface
