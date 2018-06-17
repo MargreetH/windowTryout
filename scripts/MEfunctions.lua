@@ -12,7 +12,8 @@ function returnNBThashes(itemid, itemlist)
       if (itemlist[i].fingerprint.id == itemid) and (itemlist[i].fingerprint.nbt_hash ~= nil) and (itemlist[i].fingerprint.nbt_hash ~= "") then
         	NBThashes[counter] = itemlist[i].fingerprint.nbt_hash
           counter = counter + 1
-          print(itemlist[i].fingerprint.nbt_hash)
+          functions.printTableToTerminal(itemlist[i])
+          functions.printTableToTerminal(itemlist[i].fingerprint)
       end
     end
   print("Amount of matches found:"..counter)
