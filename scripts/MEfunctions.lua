@@ -9,4 +9,8 @@ function fillChest(interface, side)
   canExportToSide = interface.canExport("north")
   print(canExportToSide)
 
+  local invName
+  invName = interface.getInventoryName()
+  print(invName)
+
 end
