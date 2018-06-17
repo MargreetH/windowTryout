@@ -25,6 +25,8 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
 
   local itemsToBeTransported
   itemToBeTransported = amount
+  print("amount= "..amount)
+  print("itemToBeTransported= "..itemToBeTransported)
 
   local canExportToSide
   canExportToSide = interface.canExport(side)
