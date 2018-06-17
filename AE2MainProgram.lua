@@ -1,11 +1,12 @@
 -- ITEM fingerprints
-local fingerprints = {"pulverizedgold" = {id= "ThermalFoundation:material", dmg = 1},
-"pulverizediron" = {id= "ThermalFoundation:material", dmg = 0},
-"pulverizedcopper" = {id= "ThermalFoundation:material", dmg = 32},
-"pulverizedlead" = {id= "ThermalFoundation:material", dmg = 35},
-"pulverizedsilver" = {id= "ThermalFoundation:material", dmg = 34},
-"pulverizedtin" = {id= "ThermalFoundation:material", dmg = 33}
-}
+local fingerprints = {}
+fingerprints.pulverizedgold = {id= "ThermalFoundation:material", dmg = 1}
+fingerprints.pulverizediron = {id= "ThermalFoundation:material", dmg = 0}
+fingerprints.pulverizedcopper = {id= "ThermalFoundation:material", dmg = 32}
+fingerprints.pulverizedlead = {id= "ThermalFoundation:material", dmg = 35}
+fingerprints.pulverizedsilver = {id= "ThermalFoundation:material", dmg = 34}
+fingerprints.pulverizedtin = {id= "ThermalFoundation:material", dmg = 33}
+
 
 --Main program for AE2 stuff
 --Some constants
@@ -117,11 +118,6 @@ function regetItems(interf)
 end
 
 regetItems(furnaceInterface)
-
-local fingerprint
-fingerprint = {id= "ThermalFoundation:material", dmg = 1}
-
-
 
 MEfunctions.fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedgold, 60)
 MEfunctions.fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedsilver, 60)
