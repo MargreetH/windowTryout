@@ -45,6 +45,7 @@ end
 
 function printTableToTerminal(t)
 
+--Don't print anything if fed nil
 if t == nil then return end
 
   for k,v in pairs(t) do

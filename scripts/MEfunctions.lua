@@ -21,7 +21,7 @@ function fillChest(interface, side)
 
   while canExportToSide do
     returnedTable = interface.exportItem(fingerprint, side, 64, counter1)
-    canExportToSide = interface.canExport("north")
+    canExportToSide = interface.canExport(side)
     counter1 = counter1 + 1
     if counter1 > 5 then canExportToSide = false end
   end

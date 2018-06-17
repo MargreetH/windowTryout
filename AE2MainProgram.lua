@@ -27,4 +27,4 @@ function regetItems()
   numberOfItemTypesNetwork = #items
 end
 
-MEfunctions.fillChest(pulverizerInterface, "west")
+MEfunctions.fillChest(pulverizerInterface, "north")
