@@ -1,4 +1,7 @@
 --Main program for AE2 stuff
+--Some constants
+local chestSizes
+chestSizes["obsidian"]
 
 --Add needed functions
 os.loadAPI("/git/scripts/functions")
@@ -28,7 +31,11 @@ function toggleWindows(win)
   processingWindow.setVisible(false)
   startWindow.setVisible(false)
 
-  if win == "pul"
+  if win == "pul" then
+  elseif win == "fur" then
+  elseif win == "main" then
+  elseif win == "procesing" then
+  end
 end
 
 --toggle windows
