@@ -1,7 +1,25 @@
 os.loadAPI("/git/scripts/functions")
-os.loadAPI("/git/AE2MainProgram")
 --Functions used by the ME program
 
+function processEvents(event)
+
+  if event[1] == "monitor_touch" then
+    AE2MainProgram.touchEvent(event[3], event[4])
+  end
+
+end
+
+local function wait (time)
+  local timer = os.startTimer(time)
+  while true do
+    local event = {os.pullEvent()}
+    if (event[1] == "timer" and event[2] == timer) then
+      break
+    else
+      processEvents(event) -- a custom function in which you would deal with received events
+    end
+  end
+end
 
 --Returns all of the hashes that respond to a given id
 function returnNBThashes(itemid, itemlist)
@@ -52,7 +70,7 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
 
     if counter1 > sizeChest then counter1 = 1 end
     if itemsToBeTransported == 0 then notDoneTransporting = false end
-    AE2MainProgram.wait(3)
+    wait(3)
   end
 
 
