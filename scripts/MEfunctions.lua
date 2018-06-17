@@ -13,4 +13,8 @@ function fillChest(interface, side)
   invName = interface.getInventoryName()
   print(invName)
 
+  local invSize
+  invSize = interface.getInventorySize()
+  print(invSize)
+
 end
