@@ -154,7 +154,7 @@ function touchEvent(xPos, yPos)
   --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
   --if bool then enummy = 1 bool = false end
   print(xPos..","..yPos)
-  tempBool = checkInRangeWindow(windowSwitchFurnace,xPos,yPos)
+  tempBool = functions.checkInRangeWindow(windowSwitchFurnace, xPos, yPos)
   print(tempBool)
 
   if enummy == 1 then
@@ -186,7 +186,7 @@ local function wait (time)
 end
 
 
---Specific functions that have to be here cause of sleep
+--###########Specific functions that have to be here cause of sleep############
 --Fills the whole chest with items
 function fillChest(interface, side, sizeChest, fingerprint, amount)
   local itemsToBeTransported
