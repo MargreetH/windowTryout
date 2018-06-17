@@ -1,3 +1,12 @@
+-- ITEM fingerprints
+local fingerprints = {"pulverizedgold" = {id= "ThermalFoundation:material", dmg = 1},
+"pulverizediron" = {id= "ThermalFoundation:material", dmg = 0},
+"pulverizedcopper" = {id= "ThermalFoundation:material", dmg = 32},
+"pulverizedlead" = {id= "ThermalFoundation:material", dmg = 35},
+"pulverizedsilver" = {id= "ThermalFoundation:material", dmg = 34},
+"pulverizedtin" = {id= "ThermalFoundation:material", dmg = 33}
+}
+
 --Main program for AE2 stuff
 --Some constants
 local chestSizes = {}
@@ -114,4 +123,5 @@ fingerprint = {id= "ThermalFoundation:material", dmg = 1}
 
 
 
-MEfunctions.fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprint, 200)
+MEfunctions.fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedgold, 60)
+MEfunctions.fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedsilver, 60)
