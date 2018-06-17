@@ -14,6 +14,7 @@ local counter = 1
     if itemlist[i].fingerprint.id == itemid then
       	NBThashes[counter] = itemlist[i].fingerprint.nbt_hash
         counter = counter + 1
+        print(itemlist[i].fingerprint.nbt_hash)
     end
   end
   return NBThashes
