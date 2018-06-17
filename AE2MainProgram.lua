@@ -22,21 +22,21 @@ local allItemsNetwork --A list of all items in the ME network,
 local numberOfItemTypesNetwork -- The number of different items in the network
 
 --Gets a list of all items in system
-function regetItems()
-  allItemsNetwork = pulverizerInterface.getAvailableItems(1)
+function regetItems(interf)
+  allItemsNetwork = interf.getAvailableItems(1)
   --numberOfItemTypesNetwork = #allItemsNetwork
 end
 
 functions.printTableToTerminal(allItemsNetwork)
 
-regetItems()
+regetItems(pulverizerInterface)
 
 local fingerprint
 fingerprint = {id= "ThermalFoundation:material", dmg = 0}
 
 functions.printTableToTerminal(fingerprint)
 local returnedHashes
-returnedHashes = MEfunctions.returnNBTHashes(fingerprint["id"], allItemsNetwork)
+returnedHashes = MEfunctions.returnNBThashes(fingerprint["id"], allItemsNetwork)
 
 for i = 1, #returnedHashes, 1 do
   fingerprint["nbt_hash"] = returnedHashes[i]
