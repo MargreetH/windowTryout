@@ -37,7 +37,7 @@ local infoFieldStartWindow = dividedWindows[1]
 local windowSwitchPulverizer = dividedWindows[2]
 local windowSwitchFurnace = dividedWindows[3]
 local windowSwitchCrafting = dividedWindows[4]
-print(windowSwitchCrafting.getPosition())
+print("x="..windowSwitchCrafting.getPosition()[1].."y="....windowSwitchCrafting.getPosition()[2])
 
 function toggleWindows(win)
   pulverizerWindow.setVisible(false)
