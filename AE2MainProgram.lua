@@ -28,7 +28,7 @@ function regetItems(interf)
 end
 
 functions.printTableToTerminal(allItemsNetwork)
-
+print("plap")
 regetItems(pulverizerInterface)
 
 local fingerprint
