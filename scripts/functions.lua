@@ -23,6 +23,18 @@ end
 return mt
 end
 
+--Gets the amount of stacks of a number of items, and the remainder
+function getStacksAndRemainder(n)
+
+  if n == 0 return 0 end
+
+  local stacks
+  local remainder
+  stacks = math.floor(n / 64)
+  remainder = n - stacks * 64
+  return stacks, remainder
+end
+
 function vectorMinus(vec1,vec2)
 tempVec = vector(#vec1)
 	for i = 1, #vec1, 1 do
@@ -32,6 +44,9 @@ tempVec = vector(#vec1)
 end
 
 function printTableToTerminal(t)
+
+if t == nil then return end
+
   for k,v in pairs(t) do
     print("Key: "..tostring(k).." Value: "..tostring(v))
   end
