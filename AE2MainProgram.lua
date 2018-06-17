@@ -1,6 +1,6 @@
 --Main program for AE2 stuff
 --Some constants
-local chestSizes
+local chestSizes = {}
 chestSizes["obsidian"] = 108
 chestSizes["woodSingle"] = 27
 
