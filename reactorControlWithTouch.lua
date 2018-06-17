@@ -110,6 +110,7 @@ function getEnergyPercentage(energy)
 end
 
 function drawTextPart(w)
+  textField.setBackgroundColor(32)
   w.clear()
   w.setCursorPos(1,1)
   local index = currentlyDisplaying
@@ -139,7 +140,14 @@ function drawTextPart(w)
   w.write("RF/tick "..reactors[index].getEnergyProducedLastTick().." RF")
   functions.newLine(w)
   --Interesting part
+end
 
+
+function drawTextPartStandby(w)
+  w.setBackgroundColor(256)
+  w.clear()
+  w.setCursorPos(1,1)
+  w.write("Reactors and program in standby mode.")
 end
 
 -- BUTTON CLICK HANDLERS
@@ -265,7 +273,8 @@ while true do
   waitLonger = checkAllReactorsOffline()
 
   if waitLonger then
-    wait(sleepTime)
+    drawTextPartStandby(textField)
+    wait(offlineTime)
   else
     wait(sleepTime)
   end
