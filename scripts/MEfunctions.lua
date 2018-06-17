@@ -2,13 +2,14 @@ os.loadAPI("/git/scripts/functions")
 --Functions used by the ME program
 
 --Fills the whole chest with items
-function fillChest(interface, side)
+function fillChest(interface, side, sizeChest, fingerprint)
   --local stacksTable
   --stacksTable = interface.getAllStacks(false)
 
 
+
   local itemToBeTransported
-  fingerprint = {id= "minecraft:coal", dmg = 0}
+
 
   local canExportToSide
   canExportToSide = interface.canExport(side)

@@ -27,4 +27,6 @@ function regetItems()
   numberOfItemTypesNetwork = #items
 end
 
-MEfunctions.fillChest(pulverizerInterface, "north")
+fingerprint = {id= "ThermalFoundation:material", dmg = 0}
+
+MEfunctions.fillChest(pulverizerInterface, "north", 10, fingerprint)
