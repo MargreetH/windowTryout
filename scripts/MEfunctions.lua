@@ -12,8 +12,6 @@ function fillChest(interface, side)
 
   local canExportToSide
   canExportToSide = interface.canExport(side)
-  print(canExportToSide)
-
 
   local counter1
   counter1 = 1
