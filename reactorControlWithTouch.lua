@@ -71,6 +71,29 @@ function createTopPart(w)
   w.write("Written by Merlione404")
 end
 
+function drawInfoPart(w)
+  w.clear()
+  w.setCursorPos(1,1)
+  w.write("Number of reactors monitored: "..tostring(numberOfReactors))
+  functions.newLine(w)
+  for i = 1, numberOfReactors, 1
+  w.write("Reactor "..i.." ")
+  local isActive
+  isActive = reactors[i].getActive()
+  if isActive then
+    w.setTextColor(8192) --Green
+    w.write("ACTIVE ")
+  else
+    w.setTextColor(16384) --red
+    w.write("OFFLINE")
+  end
+  w.setTextColor(1)
+  end
+  functions.newLine(w)
+  w.write("INFO PLACEHOLDER")
+
+end
+
 
 -- BUTTON CLICK HANDLERS
 function exitButtonClick()
