@@ -26,7 +26,7 @@ end
 --Gets the amount of stacks of a number of items, and the remainder
 function getStacksAndRemainder(n)
 
-  if n == 0 return 0 end
+  if n == 0 then return 0 end
 
   local stacks
   local remainder
