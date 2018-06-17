@@ -1,7 +1,8 @@
 --Main program for AE2 stuff
 --Some constants
 local chestSizes
-chestSizes["obsidian"]
+chestSizes["obsidian"] = 108
+chestSizes["woodSingle"] = 27
 
 --Add needed functions
 os.loadAPI("/git/scripts/functions")
@@ -92,5 +93,5 @@ fingerprint = {id= "ThermalFoundation:material", dmg = 1}
 --local returnedHashes
 --returnedHashes = MEfunctions.returnNBThashes(fingerprint.id, allItemsNetwork)
 
-MEfunctions.fillChest(pulverizerInterface, "north", 27, fingerprint, 200)
+MEfunctions.fillChest(pulverizerInterface, "north", chestSizes.woodSingle, fingerprint, 200)
 --print(returnedHashes[i])
