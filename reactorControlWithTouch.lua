@@ -12,6 +12,7 @@ sleepTime = 3
 local timeTick = 1
 local numberOfReactors
 local currentlyDisplaying = 1
+local waitLonger = false
 
 -- Read settings file for reactor numbers
 local reactorNumbers = {}
@@ -110,7 +111,11 @@ function getEnergyPercentage(energy)
 end
 
 function drawTextPart(w)
-  textField.setBackgroundColor(32)
+  if waitLonger then
+    textField.setBackgroundColor(256)
+  else
+    textField.setBackgroundColor(32)
+  end
   w.clear()
   w.setCursorPos(1,1)
   local index = currentlyDisplaying
@@ -259,7 +264,7 @@ drawInfoPart(infoField)
 drawTextPart(textField)
 
 
-local waitLonger = false
+
 
 --Main loop
 while true do
@@ -273,7 +278,6 @@ while true do
   waitLonger = checkAllReactorsOffline()
 
   if waitLonger then
-    drawTextPartStandby(textField)
     wait(offlineTime)
   else
     wait(sleepTime)
