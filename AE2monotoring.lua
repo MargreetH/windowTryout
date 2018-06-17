@@ -122,9 +122,10 @@ end
 local oldAmount = functions.vector(#itemsToBeMonitored)
 
 function getAmounts()
+	local tempVec
 	tempVec = functions.vector(#itemsToBeMonitored)
 	for i = 1, #itemsToBeMonitored, 1 do
-		tempVec[i]= AE2.getItemDetail(itemObjects[i] , false).qty
+		tempVec[i] = AE2.getItemDetail(itemObjects[i] , false).qty
 	end
 	return tempVec
 end
