@@ -104,7 +104,8 @@ function getEnergyPercentage(energy)
   if energy == 0 then
     return "0%"
   end
-  maxEnergy = (energy / 10000000) * 100
+  local maxEnergy = (energy / 10000000) * 100
+  maxEnergy = math.floor(maxEnergy)
   return tostring(maxEnergy).."%"
 end
 
@@ -122,7 +123,7 @@ function drawTextPart(w)
   functions.newLine(w)
   w.write("Number of control rods: "..reactors[index].getNumberOfControlRods())
   functions.newLine(w)
-  w.write("Energy stored: "..reactors[index].getEnergyStored().." RF")
+  w.write("Energy stored: "..reactors[index].getEnergyStored().." RF ")
 
   local tempy = getEnergyPercentage(reactors[index].getEnergyStored())
   w.write(tempy)
