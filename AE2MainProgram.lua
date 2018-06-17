@@ -33,6 +33,8 @@ regetItems()
 
 local fingerprint
 fingerprint = {id= "ThermalFoundation:material", dmg = 0}
+
+functions.printTableToTerminal(fingerprint)
 local returnedHashes
 returnedHashes = MEfunctions.returnNBTHashes(fingerprint["id"], allItemsNetwork)
 
