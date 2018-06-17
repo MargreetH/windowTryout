@@ -1,25 +1,7 @@
 os.loadAPI("/git/scripts/functions")
 --Functions used by the ME program
 
-function processEvents(event)
 
-  if event[1] == "monitor_touch" then
-    touchEvent(event[3], event[4])
-  end
-
-end
-
-local function wait (time)
-  local timer = os.startTimer(time)
-  while true do
-    local event = {os.pullEvent()}
-    if (event[1] == "timer" and event[2] == timer) then
-      break
-    else
-      processEvents(event) -- a custom function in which you would deal with received events
-    end
-  end
-end
 
 --Returns all of the hashes that respond to a given id
 function returnNBThashes(itemid, itemlist)

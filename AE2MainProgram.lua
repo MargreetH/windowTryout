@@ -41,7 +41,6 @@ local windowSwitchPulverizer = dividedWindows[2]
 local windowSwitchFurnace = dividedWindows[3]
 local windowSwitchCrafting = dividedWindows[4]
 local xxx, yyy = infoFieldStartWindow.getPosition()
-print("x="..xxx.."y="..yyy)
 
 function toggleWindows(win)
   pulverizerWindow.setVisible(false)
