@@ -125,6 +125,7 @@ function switchButtonClick()
   if currentlyDisplaying > numberOfReactors then
     currentlyDisplaying = 1
   end
+  print("display index number: "..currentlyDisplaying)
   drawTextPart(textField)
 end
 
