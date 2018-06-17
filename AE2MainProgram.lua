@@ -13,6 +13,8 @@ monitors.clear()
 monitors.setCursorPos(1,1)
 monitors.write("Loading....")
 
+print("plip")
+
 --Get the interfaces that are used from the network
 local pulverizerInterface
 pulverizerInterface = peripheral.wrap("tileinterface_5")
@@ -20,6 +22,7 @@ pulverizerInterface = peripheral.wrap("tileinterface_5")
 --Some variables used
 local allItemsNetwork --A list of all items in the ME network,
 local numberOfItemTypesNetwork -- The number of different items in the network
+allItemsNetwork = pulverizerInterface.getAvailableItems(1)
 
 --Gets a list of all items in system
 function regetItems(interf)
@@ -30,7 +33,7 @@ end
 regetItems(pulverizerInterface)
 
 functions.printTableToTerminal(allItemsNetwork)
-print("plip")
+
 
 
 local fingerprint
