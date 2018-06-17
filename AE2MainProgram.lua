@@ -85,10 +85,17 @@ function createInfoFieldStartWindow()
 end
 
 function createWindowSwitchFurnace()
-  createWindowSwitchFurnace.clear()
-  createWindowSwitchFurnace.setCursorPos(1,1)
-  createWindowSwitchFurnace.write("Send stuff to furnace")
-  functions.newLine(createWindowSwitchFurnace)
+  windowSwitchFurnace.clear()
+  windowSwitchFurnace.setCursorPos(1,1)
+  windowSwitchFurnace.write("Send stuff to furnace")
+  functions.newLine(windowSwitchFurnace)
+end
+
+function createWindowSwitchPulverizer()
+  windowSwitchPulverizer.clear()
+  windowSwitchPulverizer.setCursorPos(1,1)
+  windowSwitchPulverizer.write("Send stuff to pulverizer")
+  functions.newLine(windowSwitchPulverizer)
 end
 
 
