@@ -11,12 +11,12 @@ NBThashes = {}
 local counter = 1
 
   for i = 1, numberOfItems, 1 do
-  if itemlist[i].fingerprint.id == itemid then
-    	NBThashes[counter] = itemlist[i].fingerprint.nbt_hash
-      counter = counter + 1
+    if itemlist[i].fingerprint.id == itemid then
+      	NBThashes[counter] = itemlist[i].fingerprint.nbt_hash
+        counter = counter + 1
+    end
   end
   return NBThashes
-end
 
 end
 
