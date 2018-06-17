@@ -25,9 +25,12 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
 
   local itemsToBeTransported
   itemsToBeTransported = amount
-
   local canExportToSide
   canExportToSide = interface.canExport(side)
+
+  if canExportToSide == false then
+    print("Couldn't export to side "..side.." item "..fingerprint.id)
+  end
 
   local counter1
   counter1 = 1
