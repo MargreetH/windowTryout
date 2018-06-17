@@ -15,7 +15,7 @@ monitors.write("Loading....")
 
 --Get the interfaces that are used from the network
 local pulverizerInterface
-pulverizerInterface = peripheral.wrap("tileinterface_6")
+pulverizerInterface = peripheral.wrap("tileinterface_5")
 
 --Some variables used
 local allItemsNetwork --A list of all items in the ME network,
@@ -27,4 +27,4 @@ function regetItems()
   numberOfItemTypesNetwork = #items
 end
 
-MEfunctions.fillChest(pulverizerInterface, "north")
+MEfunctions.fillChest(pulverizerInterface, "west")
