@@ -31,7 +31,7 @@ local processingWindow = window.create(bottomPart, 1, 1, 61, 36)
 
 --STartwindow components
 local infoFieldStartWindow = window.create(startWindow,1, 1, 61, 5)
-local dividedWindows = returnWindows(startWindow, 1, 6, 61, 31, 3, false)
+local dividedWindows = functions.returnWindows(startWindow, 1, 6, 61, 31, 3, false)
 local windowSwitchPulverizer = dividedWindows[1]
 local windowSwitchFurnace = dividedWindows[2]
 local windowSwitchCrafting = dividedWindows[3]
@@ -59,7 +59,10 @@ toggleWindows("start")
 
 functions.fillWindow(startWindow, 64)
 functions.fillWindow(pulverizerWindow, 16384)
-functions.fillWindow(furnaceWindow, 64)
+functions.fillWindow(furnaceWindow, 128)
+functions.fillWindow(windowSwitchFurnace, 64)
+functions.fillWindow(windowSwitchPulverizer, 1)
+functions.fillWindow(windowSwitchCrafting, 2)
 
 
 -- DRawing functions for all windows
