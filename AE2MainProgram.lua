@@ -125,25 +125,7 @@ createWindowSwitchPulverizer()
 createReturnButton()
 --BUTTON HANDLE FUNCTIONS
 --TODO
--- TOUCH FUNCTIONS
 
-function touchEvent(xPos, yPos)
-  local enummy = 0
-  local bool = false
-  --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
-  --if bool then enummy = 1 bool = false end
-  print(xPos..","..yPos)
-  tempBool = checkInRangeWindow(windowSwitchFurnace,xPos,yPos)
-  print(tempBool)
-
-  if enummy == 1 then
-    --function
-  elseif enummy == 2 then
-
-  elseif enummy == 3 then
-
-  end
-end
 
 
 --Get the interfaces that are used from the network
@@ -165,5 +147,78 @@ end
 
 regetItems(furnaceInterface)
 
-MEfunctions.fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedgold, 300)
-MEfunctions.fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedsilver, 300)
+--Handles all touch events
+function touchEvent(xPos, yPos)
+  local enummy = 0
+  local bool = false
+  --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
+  --if bool then enummy = 1 bool = false end
+  print(xPos..","..yPos)
+  tempBool = checkInRangeWindow(windowSwitchFurnace,xPos,yPos)
+  print(tempBool)
+
+  if enummy == 1 then
+    --function
+  elseif enummy == 2 then
+
+  elseif enummy == 3 then
+  end
+end
+
+
+--Timer functions
+function processEvents(event)
+  if event[1] == "monitor_touch" then
+    touchEvent(event[3], event[4])
+  end
+end
+
+local function wait (time)
+  local timer = os.startTimer(time)
+  while true do
+    local event = {os.pullEvent()}
+    if (event[1] == "timer" and event[2] == timer) then
+      break
+    else
+      processEvents(event) -- a custom function in which you would deal with received events
+    end
+  end
+end
+
+
+--Specific functions that have to be here cause of sleep
+--Fills the whole chest with items
+function fillChest(interface, side, sizeChest, fingerprint, amount)
+  local itemsToBeTransported
+  itemsToBeTransported = amount
+  local canExportToSide
+  canExportToSide = interface.canExport(side)
+
+  if canExportToSide == false then
+    print("Couldn't export to side "..side.." item "..fingerprint.id)
+    return
+  end
+  local counter1
+  counter1 = 1
+  local returnedTable
+  local notDoneTransporting
+  notDoneTransporting = true
+
+  while notDoneTransporting do
+    local returnedTable
+    returnedTable = interface.exportItem(fingerprint, side, itemsToBeTransported, counter1)
+
+    if (returnedTable ~= nil) and (returnedTable["size"] ~= nil) then
+      itemsToBeTransported = itemsToBeTransported - tonumber(returnedTable["size"])
+    end
+
+    counter1 = counter1 + 1
+
+    if counter1 > sizeChest then counter1 = 1 end
+    if itemsToBeTransported == 0 then notDoneTransporting = false end
+    wait(3)
+  end
+end
+
+fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedgold, 300)
+fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedsilver, 300)

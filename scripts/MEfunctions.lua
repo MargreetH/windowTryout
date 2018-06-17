@@ -4,7 +4,7 @@ os.loadAPI("/git/scripts/functions")
 function processEvents(event)
 
   if event[1] == "monitor_touch" then
-    AE2MainProgram.touchEvent(event[3], event[4])
+    touchEvent(event[3], event[4])
   end
 
 end
@@ -37,42 +37,4 @@ function returnNBThashes(itemid, itemlist)
     end
   print("Amount of matches found:"..counter)
   return NBThashes
-end
-
---Fills the whole chest with items
-function fillChest(interface, side, sizeChest, fingerprint, amount)
-
-  local itemsToBeTransported
-  itemsToBeTransported = amount
-  local canExportToSide
-  canExportToSide = interface.canExport(side)
-
-  if canExportToSide == false then
-    print("Couldn't export to side "..side.." item "..fingerprint.id)
-    return
-  end
-
-  local counter1
-  counter1 = 1
-  local returnedTable
-  local notDoneTransporting
-  notDoneTransporting = true
-
-  while notDoneTransporting do
-    local returnedTable
-    returnedTable = interface.exportItem(fingerprint, side, itemsToBeTransported, counter1)
-
-    if (returnedTable ~= nil) and (returnedTable["size"] ~= nil) then
-      itemsToBeTransported = itemsToBeTransported - tonumber(returnedTable["size"])
-    end
-
-    counter1 = counter1 + 1
-
-    if counter1 > sizeChest then counter1 = 1 end
-    if itemsToBeTransported == 0 then notDoneTransporting = false end
-    wait(3)
-  end
-
-
-
 end
