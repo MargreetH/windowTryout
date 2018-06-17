@@ -46,6 +46,8 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
     if returnedTable ~= nil then
       if returnedTable["size"] ~= 0 then
         if returnedTable["size"] ~= nil then
+          print(type(itemsToBeTransported))
+          print(type(returnedTable.size))
           itemsToBeTransported = itemsToBeTransported - tonumber(returnedTable["size"])
         end
       end
