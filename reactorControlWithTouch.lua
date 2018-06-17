@@ -126,7 +126,7 @@ function drawTextPart(w)
   w.write("Energy stored: "..reactors[index].getEnergyStored().." RF ")
 
   local tempy = getEnergyPercentage(reactors[index].getEnergyStored())
-  w.write(tempy)
+  w.write("("..tempy..")")
   functions.newLine(w)
   w.write("Fuel temperature: "..reactors[index].getFuelTemperature().." degrees C")
   functions.newLine(w)
