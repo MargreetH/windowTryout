@@ -20,14 +20,14 @@ local currentActiveWindow = "start"
 topPart = window.create(m, 1,1, 50, 4)
 returnButton = window.create(m, 51, 1, 11, 4)
 topPart.setCursorPos(1, 1)
-bottomPart = window.create(m, 1, 5, 61, 36)
+bottomPart = window.create(m, 1, 5, 1, 36)
 bottomPart.setCursorPos(1, 1)
 
 --Creating subwindows
-local startWindow = window.create(bottomPart, 1, 5, 61, 36)
-local pulverizerWindow = window.create(bottomPart, 1, 5, 61, 36)
-local furnaceWindow = window.create(bottomPart, 1, 5, 61, 36)
-local processingWindow = window.create(bottomPart, 1, 5, 61, 36)
+local startWindow = window.create(bottomPart, 1, 1, 61, 36)
+local pulverizerWindow = window.create(bottomPart, 1, 1, 61, 36)
+local furnaceWindow = window.create(bottomPart, 1, 1, 61, 36)
+local processingWindow = window.create(bottomPart, 1, 1, 61, 36)
 
 function toggleWindows(win)
   pulverizerWindow.setVisible(false)
@@ -61,8 +61,6 @@ function createReturnButton()
   functions.fillButton(returnButton, "Return")
 end
 
-
-
 function createTopPart(w)
   w.setBackgroundColor(16384) --Red
   w.setTextColor(32768) --Black
@@ -83,7 +81,9 @@ createReturnButton()
 
 --Get the interfaces that are used from the network
 local pulverizerInterface
-pulverizerInterface = peripheral.wrap("tileinterface_5")
+local furnaceInterface
+pulverizerInterface = peripheral.wrap("tileinterface_7")
+furnaceInterface = peripheral.wrap("tileinterface_6")
 
 --Some variables used
 local allItemsNetwork --A list of all items in the ME network,
@@ -93,16 +93,14 @@ allItemsNetwork = pulverizerInterface.getAvailableItems(1)
 --Gets a list of all items in system
 function regetItems(interf)
   allItemsNetwork = interf.getAvailableItems(1)
-  --numberOfItemTypesNetwork = #allItemsNetwork
+  numberOfItemTypesNetwork = #allItemsNetwork
 end
 
---regetItems(pulverizerInterface)
+regetItems(furnaceInterface)
 
 local fingerprint
 fingerprint = {id= "ThermalFoundation:material", dmg = 1}
 
---local returnedHashes
---returnedHashes = MEfunctions.returnNBThashes(fingerprint.id, allItemsNetwork)
 
-MEfunctions.fillChest(pulverizerInterface, "north", chestSizes.woodSingle, fingerprint, 200)
---print(returnedHashes[i])
+
+MEfunctions.fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprint, 200)
