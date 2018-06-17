@@ -2,6 +2,7 @@
 
 --Add needed functions
 os.loadAPI("/git/scripts/functions")
+os.loadAPI('/git/scripts/MEfunctions')
 
 --Monitors stuff
 local monitors
@@ -17,12 +18,13 @@ local pulverizerInterface
 pulverizerInterface = peripheral.wrap("tileinterface_6")
 
 --Some variables used
-local allItemsNetwork --A list of all items in the ME network, 
+local allItemsNetwork --A list of all items in the ME network,
 local numberOfItemTypesNetwork -- The number of different items in the network
-
 
 --Gets a list of all items in system
 function regetItems()
   allItemsNetwork = pulverizerInterface.getAvailableItems(1)
   numberOfItemTypesNetwork = #items
 end
+
+MEfunctions.fillChest(pulverizerInterface, "north", "plap")
