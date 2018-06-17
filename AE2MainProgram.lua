@@ -13,7 +13,7 @@ monitors.clear()
 monitors.setCursorPos(1,1)
 monitors.write("Loading....")
 
-print("plip")
+print("plep")
 
 --Get the interfaces that are used from the network
 local pulverizerInterface
@@ -36,7 +36,7 @@ local fingerprint
 fingerprint = {id= "ThermalFoundation:material", dmg = 0}
 
 local returnedHashes
-returnedHashes = MEfunctions.returnNBThashes(fingerprint["id"], allItemsNetwork)
+returnedHashes = MEfunctions.returnNBThashes(fingerprint.id, allItemsNetwork)
 print(#returnedHashes)
 
 for i = 1, #returnedHashes, 1 do
