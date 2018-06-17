@@ -1,12 +1,3 @@
--- ITEM fingerprints
-local fingerprints = {}
-fingerprints.pulverizedgold = {id= "ThermalFoundation:material", dmg = 1}
-fingerprints.pulverizediron = {id= "ThermalFoundation:material", dmg = 0}
-fingerprints.pulverizedcopper = {id= "ThermalFoundation:material", dmg = 32}
-fingerprints.pulverizedlead = {id= "ThermalFoundation:material", dmg = 35}
-fingerprints.pulverizedsilver = {id= "ThermalFoundation:material", dmg = 34}
-fingerprints.pulverizedtin = {id= "ThermalFoundation:material", dmg = 33}
-
 
 --Main program for AE2 stuff
 --Some constants
@@ -17,6 +8,7 @@ chestSizes["woodSingle"] = 27
 --Add needed functions
 os.loadAPI("/git/scripts/functions")
 os.loadAPI('/git/scripts/MEfunctions')
+os.loadAPI('/git/data/fingerprints')
 
 --Monitors stuff
 local m
