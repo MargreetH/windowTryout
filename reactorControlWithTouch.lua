@@ -95,6 +95,14 @@ function drawInfoPart(w)
   w.write("INFO PLACEHOLDER")
 end
 
+function getEnergyPercentage(energy)
+  if energy == 0 then
+    return "0%"
+  end
+  maxEnergy = floor((energy / 10000000) * 100)
+  return tostring(maxEnergy).."%"
+end
+
 function drawTextPart(w)
   w.clear()
   w.setCursorPos(1,1)
@@ -110,6 +118,7 @@ function drawTextPart(w)
   w.write("Number of control rods: "..reactors[index].getNumberOfControlRods())
   functions.newLine(w)
   w.write("Energy stored: "..reactors[index].getEnergyStored().." RF")
+  w.write("In percentages:"..getEnergyPercentage(reactors[index].getEnergyStored()))
   functions.newLine(w)
   w.write("Fuel temperature: "..reactors[index].getFuelTemperature().." degrees C")
   functions.newLine(w)
