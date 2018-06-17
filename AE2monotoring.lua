@@ -1,5 +1,5 @@
 --Add needed functions
-os.loadAPI("scripts/functions")
+os.loadAPI("/git/scripts/functions")
 
 
 --Monitors stuff
