@@ -13,7 +13,7 @@ monitors.clear()
 monitors.setCursorPos(1,1)
 monitors.write("Loading....")
 
-print("plop")
+print("plaaaaap")
 
 --Get the interfaces that are used from the network
 local pulverizerInterface
@@ -33,7 +33,7 @@ end
 --regetItems(pulverizerInterface)
 
 local fingerprint
-fingerprint = {id= "ThermalFoundation:material", dmg = 0}
+fingerprint = {id= "minecraft:gold_ingot", dmg = 0}
 print(fingerprint.id)
 print(fingerprint["id"])
 
