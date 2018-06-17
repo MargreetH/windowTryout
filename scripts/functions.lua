@@ -33,7 +33,7 @@ end
 
 function printTableToTerminal(t)
   for k,v in pairs(t) do
-    print("Key: "..tostring(k).." Value: "..tostring(v)
+    print("Key: "..tostring(k).." Value: "..tostring(v))
   end
 end
 
