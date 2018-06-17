@@ -30,7 +30,7 @@ local currentActiveWindow = "start"
 topPart = window.create(m, 1,1, 50, 4)
 returnButton = window.create(m, 51, 1, 11, 4)
 topPart.setCursorPos(1, 1)
-bottomPart = window.create(m, 1, 5, 1, 36)
+bottomPart = window.create(m, 1, 5, 61, 36)
 bottomPart.setCursorPos(1, 1)
 
 --Creating subwindows
