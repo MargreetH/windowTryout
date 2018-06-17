@@ -23,7 +23,7 @@ function fillChest(interface, side)
     counter1 = counter1 + 1
     if counter1 > 5 then canExportToSide = false end
     functions.printTableToTerminal(returnedTable)
-    sleep(1)
+    sleep(3)
   end
 
 
