@@ -30,11 +30,7 @@ function regetItems(interf)
   --numberOfItemTypesNetwork = #allItemsNetwork
 end
 
-regetItems(pulverizerInterface)
-
-functions.printTableToTerminal(allItemsNetwork)
-
-
+--regetItems(pulverizerInterface)
 
 local fingerprint
 fingerprint = {id= "ThermalFoundation:material", dmg = 0}
