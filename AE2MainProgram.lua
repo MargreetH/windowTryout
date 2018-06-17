@@ -27,9 +27,11 @@ function regetItems(interf)
   --numberOfItemTypesNetwork = #allItemsNetwork
 end
 
-functions.printTableToTerminal(allItemsNetwork)
-print("plap")
 regetItems(pulverizerInterface)
+
+functions.printTableToTerminal(allItemsNetwork)
+print("plip")
+
 
 local fingerprint
 fingerprint = {id= "ThermalFoundation:material", dmg = 0}
