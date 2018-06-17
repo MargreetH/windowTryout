@@ -78,7 +78,7 @@ function drawInfoPart(w)
   functions.newLine(w)
 
   for i = 1, numberOfReactors, 1 do
-    w.write("Reactor "..i)
+    w.write("Reactor "..tostring(i))
     local isActive
     isActive = reactors[i].getActive()
       if isActive then
