@@ -32,7 +32,7 @@ functions.fillButton(switchButton, "SWITCH")
 functions.fillButton(viewHistoryButton, "VIEW HISTORY")
 functions.fillButton(exitButton, "EXIT")
 
-
+-- DRawing functions for all windows
 function createTopPart(w)
   w.setBackgroundColor(16384) --Red
   w.setTextColor(32768) --Black

@@ -1,5 +1,6 @@
 os.loadAPI("scripts/functions")
 local m
+m.clear()
 m = peripheral.wrap("right")
 
 -- Some constants
@@ -7,6 +8,9 @@ energyTreshold = 2000000
 justTurnedAllReactorsOff = false
 offlineTime = 60
 sleepTime = 5
+local timeTick = 1
+local numberOfReactors
+local currentlyDisplaying = 1
 
 -- Read settings file for reactor numbers
 local reactorNumbers = {}
@@ -23,17 +27,114 @@ while line ~= nil do
   counter1 = counter1 + 1
 end
 h.close()
+numberOfReactors = #reactors
 
--- Wrap all the reactors connected to network
+-- ### WINDOWS
+--Create all  windows
+topPart = window.create(m, 1,1, 50, 4)
+topPart.setCursorPos(1, 1)
+infoField = window.create(m, 1,5, 50, 3)
+infoField.setCursorPos(1, 1)
+textField = window.create(m, 1,9, 50, 20)
+createdWindows = functions.returnWindows(m, 1, 30, 50, 3, 3, true)
+local switchButton = createdWindows[1]
+local viewHistoryButton = createdWindows[2]
+local exitButton = createdWindows[3]
+textField.setBackgroundColor(32)
+textField.clear()
 
-for i = 1, #reactorNumbers, 1 do
+--Set colors of buttons and such
+switchButton.setBackgroundColor(2)
+viewHistoryButton.setBackgroundColor(4)
+exitButton.setBackgroundColor(8)
+infoField.setBackgroundColor(1024)
+infoField.clear()
+textField.setTextColor(32768)
+textField.setCursorPos(1, 1)
+functions.fillButton(switchButton, "SWITCH")
+functions.fillButton(viewHistoryButton, "VIEW HISTORY")
+functions.fillButton(exitButton, "EXIT")
+
+-- DRawing functions for all windows
+function createTopPart(w)
+  w.setBackgroundColor(16384) --Red
+  w.setTextColor(32768) --Black
+  w.write("****************************************************************")
+  functions.newLine(w)
+  w.write("***********  REACTOR CONTROL PROGRAM  ********************************")
+  functions.newLine(w)
+  w.write("****************************************************************")
+  functions.newLine(w)
+  w.setTextColor(64) --Pink
+  w.setBackgroundColor(32768) --Black
+  w.write("Written by Merlione404")
+end
+
+
+-- BUTTON CLICK HANDLERS
+function exitButtonClick()
+  m.clear()
+ os.exit(0)
+end
+
+function switchButtonClick()
+  infoField.setCursorPos(1,1)
+  infoField.clear()
+  infoField.write("Pressed switch button")
+end
+
+function viewHistoryButtonClick()
+  infoField.setCursorPos(1,1)
+  infoField.clear()
+  infoField.write("Pressed vh button")
+end
+--END BUTTON CLICK HANDLERS
+
+
+
+function touchEvent(xPos, yPos)
+  local enummy = 0
+  local bool = false
+  bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
+  if bool then enummy = 1 bool = false end
+  bool = functions.checkInRangeWindow(viewHistoryButton, xPos, yPos)
+  if bool then enummy = 2 bool = false end
+  bool = functions.checkInRangeWindow(exitButton, xPos, yPos)
+  if bool then enummy = 3 bool = false end
+
+  if enummy == 1 then
+    switchButtonClick()
+  elseif enummy == 2 then
+    viewHistoryButtonClick()
+  elseif enummy == 3 then
+    exitButtonClick()
+  end
+end
+
+
+function processEvents(event)
+
+  if event[1] == "monitor_touch" then
+    touchEvent(event[3], event[4])
+  end
 
 end
 
---Function that checks what to do with a reactor
--- 1 : reactor off, no energy stored
--- 2: reactor off, energy stored > treshold
---
+local function wait (time)
+  local timer = os.startTimer(time)
+  while true do
+    local event = {os.pullEvent()}
+    if (event[1] == "timer" and event[2] == timer) then
+      break
+    else
+      processEvents(event) -- a custom function in which you would deal with received events
+    end
+  end
+end
+
+
+
+-- ####### Functions for the reactors
 function handleReactor(reactor, index)
   local active = reactor.getActive()
   local energy = reactor.getEnergyStored()
@@ -61,8 +162,14 @@ function checkAllReactorsOffline()
   end
   return true
 end
+--END reactor functions
+
+--Fill static windows
+createTopPart(topPart)
+
 
 local waitLonger = false
+
 --Main loop
 while true do
 
@@ -73,15 +180,9 @@ while true do
   waitLonger = checkAllReactorsOffline()
 
   if waitLonger then
-    sleep(offlineTime)
+    wait(offlineTime)
   else
-    sleep(sleepTime)
+    wait(sleepTime)
   end
 
-end
-
-
---Display something to test if this works so far
-for i = 1, #reactorNumbers, 1 do
-  print(reactors[i].getEnergyStored())
 end
