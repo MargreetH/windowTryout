@@ -4,21 +4,18 @@ os.loadAPI("/git/scripts/functions")
 
 --Returns all of the hashes that respond to a given id
 function returnNBThashes(itemid, itemlist)
-
-local numberofItems = #itemlist
-local NBThashes
-NBThashes = {}
-local counter = 1
-
-  for i = 1, numberOfItems, 1 do
-    if itemlist[i].fingerprint.id == itemid then
-      	NBThashes[counter] = itemlist[i].fingerprint.nbt_hash
-        counter = counter + 1
-        print(itemlist[i].fingerprint.nbt_hash)
+  local numberofItems = #itemlist
+  local NBThashes
+  NBThashes = {}
+  local counter = 1
+    for i = 1, numberOfItems, 1 do
+      if itemlist[i].fingerprint.id == itemid then
+        	NBThashes[counter] = itemlist[i].fingerprint.nbt_hash
+          counter = counter + 1
+          print(itemlist[i].fingerprint.nbt_hash)
+      end
     end
-  end
   return NBThashes
-
 end
 
 --Fills the whole chest with items
