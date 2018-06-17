@@ -8,7 +8,7 @@ local timeTick = 1
 energyTreshold = 2000000
 justTurnedAllReactorsOff = false
 offlineTime = 60
-sleepTime = 5
+sleepTime = 3
 local timeTick = 1
 local numberOfReactors
 local currentlyDisplaying = 1
@@ -108,7 +108,6 @@ function drawTextPart(w)
   functions.newLine(w)
   functions.newLine(w)
   w.write("Number of control rods: "..reactors[index].getNumberOfControlRods())
-
   --Interesting part
 
 end
@@ -237,7 +236,7 @@ while true do
   waitLonger = checkAllReactorsOffline()
 
   if waitLonger then
-    wait(offlineTime)
+    wait(sleepTime)
   else
     wait(sleepTime)
   end
