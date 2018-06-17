@@ -7,6 +7,7 @@ function returnNBThashes(itemid, itemlist)
   local NBThashes
   NBThashes = {}
   local counter = 1
+  print(#itemlist)
     for i = 1, #itemlist, 1 do
       if (itemlist[i].fingerprint.id == itemid) and (itemlist[i].fingerprint.nbt_hash ~= nil) and (itemlist[i].fingerprint.nbt_hash ~= "") then
         	NBThashes[counter] = itemlist[i].fingerprint.nbt_hash
