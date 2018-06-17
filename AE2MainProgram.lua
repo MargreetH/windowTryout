@@ -10,13 +10,22 @@ m = peripheral.wrap("left")
 m.clear()
 
 --Creating the main Windows
-topPart = window.create(m, 1,1, 61, 4)
+topPart = window.create(m, 1,1, 50, 4)
+returnButton = window.create(m, 51, 11, 4)
 topPart.setCursorPos(1, 1)
 bottomPart = window.create(m, 1, 5, 61, 36)
 bottomPart.setCursorPos(1, 1)
 --Creating subwindows
 
+startWindow = window.create(bottomPart, 1, 5, 61, 36, true)
+pulverizerWindow = window.create(bottomPart, 1, 5, 61, 36, false)
+furnaceWindow = window.create(bottomPart, 1, 5, 61, 36, false)
+processingWindow = window.create(bottomPart, 1, 5, 61, 36, false)
 
+fillWindow(startWindow, 64)
+fillWindow(pulverizerWindow, 16384)
+fillWindow(furnaceWindow, 64)
+fillWindow(returnButton, 8192)
 
 
 
