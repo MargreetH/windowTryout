@@ -30,6 +30,7 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
 
   if canExportToSide == false then
     print("Couldn't export to side "..side.." item "..fingerprint.id)
+    return
   end
 
   local counter1
@@ -40,12 +41,9 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
 
   while notDoneTransporting do
     local returnedTable
-    print("itemToBeTransported= "..itemsToBeTransported)
     returnedTable = interface.exportItem(fingerprint, side, itemsToBeTransported, counter1)
 
     if (returnedTable ~= nil) and (returnedTable["size"] ~= nil) then
-      print(type(itemsToBeTransported))
-      print(type(returnedTable.size))
       itemsToBeTransported = itemsToBeTransported - tonumber(returnedTable["size"])
     end
 
@@ -53,7 +51,7 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
 
     if counter1 > sizeChest then counter1 = 1 end
     if itemsToBeTransported == 0 then notDoneTransporting = false end
-    sleep(2)
+    sleep(0.5)
   end
 
 
