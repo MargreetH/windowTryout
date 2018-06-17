@@ -96,6 +96,9 @@ function drawInfoPart(w)
 end
 
 function getEnergyPercentage(energy)
+  if energy == nil then
+    return ""
+  end
   if energy == 0 then
     return "0%"
   end
