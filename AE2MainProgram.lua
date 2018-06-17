@@ -13,7 +13,7 @@ monitors.clear()
 monitors.setCursorPos(1,1)
 monitors.write("Loading....")
 
-print("plaaaaap")
+print("plaap")
 
 --Get the interfaces that are used from the network
 local pulverizerInterface
