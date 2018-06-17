@@ -17,10 +17,14 @@ bottomPart = window.create(m, 1, 5, 61, 36)
 bottomPart.setCursorPos(1, 1)
 --Creating subwindows
 
-startWindow = window.create(bottomPart, 1, 5, 61, 36, [true])
-pulverizerWindow = window.create(bottomPart, 1, 5, 61, 36, [false])
-furnaceWindow = window.create(bottomPart, 1, 5, 61, 36, [false])
-processingWindow = window.create(bottomPart, 1, 5, 61, 36, [false])
+startWindow = window.create(bottomPart, 1, 5, 61, 36)
+pulverizerWindow = window.create(bottomPart, 1, 5, 61, 36)
+furnaceWindow = window.create(bottomPart, 1, 5, 61, 36)
+processingWindow = window.create(bottomPart, 1, 5, 61, 36)
+
+pulverizerWindow.setActive(false)
+furnaceWindow.setActive(false)
+processingWindow.setActive(false)
 
 fillWindow(startWindow, 64)
 fillWindow(pulverizerWindow, 16384)
