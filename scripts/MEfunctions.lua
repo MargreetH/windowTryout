@@ -3,6 +3,6 @@
 --Fills the whole chest with items
 function fillChest(interface, chestLocation, fingerprint)
   local stacksTable
-  stacksTable = interface.getAllStacks(chestLocation)
+  stacksTable = interface.getAllStacks(true)
   print(stacksTable[1])
 end
