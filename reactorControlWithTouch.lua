@@ -96,11 +96,11 @@ function drawInfoPart(w)
 end
 
 function getEnergyPercentage(energy)
-
+  print(energy)
   if energy == nil then
     return ""
   end
-  
+
   if energy == 0 then
     return "0%"
   end
@@ -124,7 +124,8 @@ function drawTextPart(w)
   functions.newLine(w)
   w.write("Energy stored: "..reactors[index].getEnergyStored().." RF")
   functions.newLine(w)
-  w.write("In percentages:"..getEnergyPercentage(reactors[index].getEnergyStored()))
+  local tempy = reactors[index].getEnergyStored()
+  w.write("In percentages:"..getEnergyPercentage(tempy))
   functions.newLine(w)
   w.write("Fuel temperature: "..reactors[index].getFuelTemperature().." degrees C")
   functions.newLine(w)
@@ -152,7 +153,6 @@ function switchButtonClick()
   if currentlyDisplaying > numberOfReactors then
     currentlyDisplaying = 1
   end
-  print("display index number: "..currentlyDisplaying)
   drawTextPart(textField)
 end
 
