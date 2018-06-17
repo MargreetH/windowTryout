@@ -40,5 +40,5 @@ print(fingerprint.id)
 --local returnedHashes
 --returnedHashes = MEfunctions.returnNBThashes(fingerprint.id, allItemsNetwork)
 
-MEfunctions.fillChest(pulverizerInterface, "north", 27, fingerprint, 64)
+MEfunctions.fillChest(pulverizerInterface, "north", 27, fingerprint, 200)
 --print(returnedHashes[i])
