@@ -22,7 +22,7 @@ local allItemsNetwork --A list of all items in the ME network,
 local numberOfItemTypesNetwork -- The number of different items in the network
 
 --Gets a list of all items in system
-function regetItems()
+local function regetItems()
   allItemsNetwork = pulverizerInterface.getAvailableItems(1)
   numberOfItemTypesNetwork = #allItemsNetwork
 end
