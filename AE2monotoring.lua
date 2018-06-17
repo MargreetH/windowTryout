@@ -23,7 +23,8 @@ local numberOfItems
 --SET THESE YOURSELF
 local itemsToBeMonitored = {"minecraft:coal", "appliedenergistics2:item.ItemMultiMaterial:1", "DraconicEvolution:draconiumIngot", "minecraft:cobblestone","minecraft:redstone"}
 local labels = {"coal", "charged certus", "draconium", "cobblestone", "redstone"}
-local itemObjects = functions.vector(#itemsToBeMonitored)
+local itemObjects
+itemObjects = functions.vector(#itemsToBeMonitored)
 
 --The matrices that track the speed differences
 local speeds = functions.vector(#itemsToBeMonitored)
