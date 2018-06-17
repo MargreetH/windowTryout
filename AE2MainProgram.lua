@@ -33,16 +33,15 @@ end
 --regetItems(pulverizerInterface)
 
 local fingerprint
-fingerprint = {id= "5628:1", dmg = 0}
+fingerprint = {id= "ThermalFoundation:material", dmg = 1}
 print(fingerprint.id)
+
 
 local returnedHashes
 returnedHashes = MEfunctions.returnNBThashes(fingerprint.id, allItemsNetwork)
 print("Number of returned hashes: "..#returnedHashes)
 
-for i = 1, #returnedHashes, 1 do
-  print("ik kom hier")
-  fingerprint["nbt_hash"] = returnedHashes[i]
-  MEfunctions.fillChest(pulverizerInterface, "north", 27, fingerprint, 64)
-  print(returnedHashes[i])
-end
+
+print("ik kom hier")
+MEfunctions.fillChest(pulverizerInterface, "north", 27, fingerprint, 64)
+print(returnedHashes[i])
