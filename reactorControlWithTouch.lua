@@ -104,7 +104,7 @@ function getEnergyPercentage(energy)
   if energy == 0 then
     return "0%"
   end
-  maxEnergy = floor((tonumber(energy) / 10000000) * 100)
+  maxEnergy = math.floor((tonumber(energy) / 10000000) * 100)
   return tostring(maxEnergy).."%"
 end
 
