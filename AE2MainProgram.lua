@@ -11,7 +11,7 @@ m.clear()
 
 --Creating the main Windows
 topPart = window.create(m, 1,1, 50, 4)
-returnButton = window.create(m, 51, 11, 4)
+returnButton = window.create(m, 51, 1, 11, 4)
 topPart.setCursorPos(1, 1)
 bottomPart = window.create(m, 1, 5, 61, 36)
 bottomPart.setCursorPos(1, 1)
@@ -21,6 +21,15 @@ startWindow = window.create(bottomPart, 1, 5, 61, 36)
 pulverizerWindow = window.create(bottomPart, 1, 5, 61, 36)
 furnaceWindow = window.create(bottomPart, 1, 5, 61, 36)
 processingWindow = window.create(bottomPart, 1, 5, 61, 36)
+
+function toggleWindows(win)
+  pulverizerWindow.setVisible(false)
+  furnaceWindow.setVisible(false)
+  processingWindow.setVisible(false)
+  startWindow.setVisible(false)
+
+  if win == "pul"
+end
 
 --toggle windows
 pulverizerWindow.setVisible(false)
