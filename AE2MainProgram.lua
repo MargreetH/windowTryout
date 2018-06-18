@@ -71,7 +71,7 @@ function toggleWindows(win)
   elseif win == "start" then
     startWindow.setVisible(true)
   elseif win == "amount" then
-    processingWindow.setVisible(true)
+    amountWindow.setVisible(true)
   elseif win == "processing" then
     processingWindow.setVisible(true)
   end
