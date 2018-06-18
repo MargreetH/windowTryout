@@ -76,7 +76,6 @@ toggleWindows("start")
 
 functions.fillWindow(startWindow, 64)
 functions.fillWindow(pulverizerWindow, 16384)
-functions.fillWindow(furnaceWindow, 128)
 functions.fillWindow(windowSwitchFurnace, 64) -- pink
 functions.fillWindow(windowSwitchPulverizer, 1)
 functions.fillWindow(windowSwitchCrafting, 2)
@@ -144,6 +143,7 @@ createInfoFieldStartWindow()
 createWindowSwitchFurnace()
 createWindowSwitchPulverizer()
 createReturnButton()
+createFurnaceButtons()
 --BUTTON HANDLE FUNCTIONS
 --TODO
 
