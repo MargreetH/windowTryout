@@ -212,6 +212,7 @@ end
 
 function clickedWindowSwitchFurnaceButton()
   toggleWindows("fur")
+  sleep(0.2)
 end
 
 function clickedGoldButton1()
@@ -240,8 +241,6 @@ function touchEventFurnaceWindow(xPos, yPos)
   print(xPos..","..yPos)
 
   --Buttons located at normal x,y
-
-
   --Buttons that are transposed
   yPos = yPos - 4
   bool = functions.checkInRangeWindow(goldButton1, xPos, yPos)
@@ -272,8 +271,6 @@ function touchEventStartWindow(xPos, yPos)
   print(xPos..","..yPos)
 
   --Buttons located at normal x,y
-
-
   --Buttons that are transposed
   yPos = yPos - 4
   bool = functions.checkInRangeWindow(windowSwitchFurnace, xPos, yPos)
