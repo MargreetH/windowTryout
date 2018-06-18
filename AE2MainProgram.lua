@@ -21,6 +21,7 @@ m.clear()
 --variables
 local currentActiveWindow = "start"
 local amountOf
+local currentFingerprint
 
 --Creating the main Windows
 topPart = window.create(m, 1,1, 50, 4)
@@ -45,16 +46,17 @@ local windowSwitchCrafting = dividedWindows[4]
 local xxx, yyy = infoFieldStartWindow.getPosition()
 
 --Furnacewindow components: 5x5 rows
-local dividedWindows1 = functions.returnWindows(furnaceWindow, 1, 1, 61, 7, 5, true)
-local dividedWindows2 = functions.returnWindows(furnaceWindow, 1, 8, 61, 7, 5, true)
-local dividedWindows3 = functions.returnWindows(furnaceWindow, 1, 15, 61, 7, 5, true)
-local dividedWindows4 = functions.returnWindows(furnaceWindow, 1, 22, 61, 7, 5, true)
-local dividedWindows5 = functions.returnWindows(furnaceWindow, 1, 29, 61, 8, 5, true)
+local dividedWindows1 = functions.returnWindows(furnaceWindow, 1, 1, 61, 7, 4, true)
+local dividedWindows2 = functions.returnWindows(furnaceWindow, 1, 8, 61, 7, 4, true)
+local dividedWindows3 = functions.returnWindows(furnaceWindow, 1, 15, 61, 7, 4, true)
+local dividedWindows4 = functions.returnWindows(furnaceWindow, 1, 22, 61, 7, 4, true)
+local dividedWindows5 = functions.returnWindows(furnaceWindow, 1, 29, 61, 8, 4, true)
 
 --Amountwindow components: 5x5 rows
 
 local goldButton1 = dividedWindows1[1]
 local ironButton1 = dividedWindows1[2]
+local sandButton1 = dividedWindows2[1]
 
 function toggleWindows(win)
   pulverizerWindow.setVisible(false)
@@ -196,7 +198,53 @@ function clickedWindowSwitchFurnaceButton()
   toggleWindows("fur")
 end
 
+function clickedGoldButton1()
+  currentFingerprint = fingerprints.pulverizedgold
+  amountOf = "fur"
+  toggleWindows("amount")
+end
 
+function clickedIronButton1()
+  currentFingerprint = fingerprints.pulverizediron
+  amountOf = "fur"
+  toggleWindows("amount")
+end
+
+function clickedSandButton1()
+  currentFingerprint = fingerprints.sand
+  amountOf = "fur"
+  toggleWindows("amount")
+end
+--Handles all touch events
+function touchEventFurnaceWindow(xPos, yPos)
+  local enummy = 0
+  local bool = false
+  --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
+  --if bool then enummy = 1 bool = false end
+  print(xPos..","..yPos)
+
+  --Buttons located at normal x,y
+
+
+  --Buttons that are transposed
+  yPos = yPos - 4
+  bool = functions.checkInRangeWindow(goldButton1, xPos, yPos)
+  if bool then enummy = 1 bool = false end
+  bool = functions.checkInRangeWindow(ironButton1, xPos, yPos)
+  if bool then enummy = 2 bool = false end
+  bool = functions.checkInRangeWindow(sandButton1, xPos, yPos)
+  if bool then enummy = 3 bool = false end
+
+  if enummy == 1 then
+    clickedWindowSwitchFurnaceButton()
+  elseif enummy == 2 then
+    clickedWindowSwitchPulverizerButton()
+  elseif enummy == 3 then
+
+  elseif enummy == 4 then
+    clickedReturnButton()
+  end
+end
 
 
 --Handles all touch events
@@ -220,9 +268,9 @@ function touchEventStartWindow(xPos, yPos)
   if bool then print("in range craf") enummy = 3 bool = false end
 
   if enummy == 1 then
-    clickedWindowSwitchPulverizerButton()
-  elseif enummy == 2 then
     clickedWindowSwitchFurnaceButton()
+  elseif enummy == 2 then
+    clickedWindowSwitchPulverizerButton()
   elseif enummy == 3 then
 
   elseif enummy == 4 then
