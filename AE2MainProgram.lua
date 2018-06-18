@@ -177,8 +177,7 @@ function touchEventStartWindow(xPos, yPos)
   print(xPos..","..yPos)
 
   --Buttons located at normal x,y
-  bool = functions.checkInRangeWindow(returnButton, xPos, yPos)
-  if bool then print("in range exit") enummy = 4 bool = false end
+
 
   --Buttons that are transposed
   yPos = yPos - 4
@@ -204,6 +203,9 @@ end
 --Timer functions
 function processEvents(event)
   if event[1] == "monitor_touch" then
+    bool = functions.checkInRangeWindow(returnButton, xPos, yPos)
+    if bool then clickedReturnButton() return end
+
     if currentActiveWindow == "start" then
       touchEventStartWindow(event[3], event[4])
     end
