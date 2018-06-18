@@ -20,6 +20,7 @@ m.clear()
 
 --variables
 local currentActiveWindow = "start"
+local amountOf
 
 --Creating the main Windows
 topPart = window.create(m, 1,1, 50, 4)
@@ -32,6 +33,7 @@ bottomPart.setCursorPos(1, 1)
 local startWindow = window.create(bottomPart, 1, 1, 61, 36)
 local pulverizerWindow = window.create(bottomPart, 1, 1, 61, 36)
 local furnaceWindow = window.create(bottomPart, 1, 1, 61, 36)
+local amountWindow = window.create(bottomPart, 1, 1, 61, 36)
 local processingWindow = window.create(bottomPart, 1, 1, 61, 36)
 
 --STartwindow components
@@ -49,6 +51,8 @@ local dividedWindows3 = functions.returnWindows(furnaceWindow, 1, 15, 61, 7, 5, 
 local dividedWindows4 = functions.returnWindows(furnaceWindow, 1, 22, 61, 7, 5, true)
 local dividedWindows5 = functions.returnWindows(furnaceWindow, 1, 29, 61, 8, 5, true)
 
+--Amountwindow components: 5x5 rows
+
 local goldButton1 = dividedWindows1[1]
 local ironButton1 = dividedWindows1[2]
 
@@ -57,12 +61,17 @@ function toggleWindows(win)
   furnaceWindow.setVisible(false)
   processingWindow.setVisible(false)
   startWindow.setVisible(false)
+  amountWindow.setVisible(false)
   if win == "pul" then
     pulverizerWindow.setVisible(true)
+    amountOf = "pul"
   elseif win == "fur" then
     furnaceWindow.setVisible(true)
+    amountOf = "fur"
   elseif win == "start" then
     startWindow.setVisible(true)
+  elseif win == "amount" then
+    processingWindow.setVisible(true)
   elseif win == "processing" then
     processingWindow.setVisible(true)
   end
