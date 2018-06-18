@@ -155,7 +155,14 @@ function clickedReturnButton()
   elseif (currentActiveWindow == "pul") or (currentActiveWindow == "fur") then
     toggleWindows("start")
   end
+end
 
+function clickedWindowSwitchPulverizerButton()
+  toggleWindows("pul")
+end
+
+function clickedWindowSwitchFurnaceButton()
+  toggleWindows("fur")
 end
 
 
@@ -183,9 +190,9 @@ function touchEventStartWindow(xPos, yPos)
   if bool then print("in range craf") enummy = 3 bool = false end
 
   if enummy == 1 then
-    --function
+    clickedWindowSwitchPulverizerButton()
   elseif enummy == 2 then
-
+    clickedWindowSwitchFurnaceButton()
   elseif enummy == 3 then
 
   elseif enummy == 4 then
