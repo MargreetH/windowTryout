@@ -203,7 +203,7 @@ end
 --Timer functions
 function processEvents(event)
   if event[1] == "monitor_touch" then
-    bool = functions.checkInRangeWindow(returnButton, xPos, yPos)
+    bool = functions.checkInRangeWindow(returnButton, event[3], event[4])
     if bool then clickedReturnButton() return end
 
     if currentActiveWindow == "start" then
