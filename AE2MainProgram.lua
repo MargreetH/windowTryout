@@ -153,8 +153,19 @@ function touchEvent(xPos, yPos)
   --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
   --if bool then enummy = 1 bool = false end
   print(xPos..","..yPos)
-  tempBool = functions.checkInRangeWindow(windowSwitchFurnace, xPos, yPos)
-  print(tempBool)
+
+  --Buttons located at normal x,y
+  bool = functions.checkInRangeWindow(returnButton, xPos, yPos)
+  if bool then print("in range exit") enummy = 4 bool = false end
+
+  --Buttons that are transposed
+  yPos = yPos + 4
+  bool = functions.checkInRangeWindow(windowSwitchFurnace, xPos, yPos)
+  if bool then print("in range furnace") enummy = 1 bool = false end
+  bool = functions.checkInRangeWindow(windowSwitchPulverizer, xPos, yPos)
+  if bool then print("in range pul") enummy = 2 bool = false end
+  bool = functions.checkInRangeWindow(windowSwitchCrafting, xPos, yPos)
+  if bool then print("in range craf") enummy = 3 bool = false end
 
   if enummy == 1 then
     --function
