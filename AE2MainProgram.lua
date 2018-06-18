@@ -250,5 +250,5 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
   end
 end
 
-fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedgold, 300)
+fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizediron, 300)
 fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedsilver, 300)
