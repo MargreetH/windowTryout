@@ -1,5 +1,5 @@
 
-
+print("adasasddsa")
 
 
 --Main program for AE2 stuff
@@ -116,7 +116,7 @@ function createTopPart(w)
   w.write("Written by Merlione404")
 end
 
-print("psadasdasdp")
+
 createTopPart(topPart)
 createInfoFieldStartWindow()
 createWindowSwitchFurnace()
