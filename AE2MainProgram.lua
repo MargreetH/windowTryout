@@ -274,11 +274,11 @@ function touchEventStartWindow(xPos, yPos)
   --Buttons that are transposed
   yPos = yPos - 4
   bool = functions.checkInRangeWindow(windowSwitchFurnace, xPos, yPos)
-  if bool then print("in range furnace") enummy = 1 bool = false end
+  if bool then  enummy = 1 bool = false end
   bool = functions.checkInRangeWindow(windowSwitchPulverizer, xPos, yPos)
-  if bool then print("in range pul") enummy = 2 bool = false end
+  if bool then  enummy = 2 bool = false end
   bool = functions.checkInRangeWindow(windowSwitchCrafting, xPos, yPos)
-  if bool then print("in range craf") enummy = 3 bool = false end
+  if bool then  enummy = 3 bool = false end
 
   if enummy == 1 then
     clickedWindowSwitchFurnaceButton()
@@ -300,7 +300,10 @@ function processEvents(event)
 
     if currentActiveWindow == "start" then
       touchEventStartWindow(event[3], event[4])
+    elseif currentActiveWindow == "fur" then
+      touchEventFurnaceWindow(event[3], event[4])
     end
+
   end
 end
 
