@@ -162,7 +162,7 @@ end
 
 
 --Handles all touch events
-function touchEvent(xPos, yPos)
+function touchEventStartWindow(xPos, yPos)
   local enummy = 0
   local bool = false
   --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
@@ -197,7 +197,9 @@ end
 --Timer functions
 function processEvents(event)
   if event[1] == "monitor_touch" then
-    touchEvent(event[3], event[4])
+    if currentActiveWindow == "start" then
+      touchEventStartWindow(event[3], event[4])
+    end
   end
 end
 
