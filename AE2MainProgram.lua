@@ -45,18 +45,24 @@ local windowSwitchFurnace = dividedWindows[3]
 local windowSwitchCrafting = dividedWindows[4]
 local xxx, yyy = infoFieldStartWindow.getPosition()
 
---Furnacewindow components: 5x5 rows
+--Furnacewindow components: 5x4 rows
 local dividedWindows1 = functions.returnWindows(furnaceWindow, 1, 1, 61, 7, 4, true)
 local dividedWindows2 = functions.returnWindows(furnaceWindow, 1, 8, 61, 7, 4, true)
 local dividedWindows3 = functions.returnWindows(furnaceWindow, 1, 15, 61, 7, 4, true)
 local dividedWindows4 = functions.returnWindows(furnaceWindow, 1, 22, 61, 7, 4, true)
 local dividedWindows5 = functions.returnWindows(furnaceWindow, 1, 29, 61, 8, 4, true)
-
---Amountwindow components: 5x5 rows
-
 local goldButton1 = dividedWindows1[1]
 local ironButton1 = dividedWindows1[2]
 local sandButton1 = dividedWindows2[1]
+
+--Amountwindow components: 5x5 rows
+local dividedWindows6 = functions.returnWindows(furnaceWindow, 1, 1, 61, 7, 4, true)
+local dividedWindows7 = functions.returnWindows(furnaceWindow, 1, 8, 61, 7, 4, true)
+local dividedWindows8 = functions.returnWindows(furnaceWindow, 1, 15, 61, 7, 4, true)
+local dividedWindows9 = functions.returnWindows(furnaceWindow, 1, 22, 61, 7, 4, true)
+local dividedWindows10 = functions.returnWindows(furnaceWindow, 1, 29, 61, 8, 4, true)
+-- I'm not gonna name them all
+
 
 function toggleWindows(win)
   pulverizerWindow.setVisible(false)
@@ -94,6 +100,15 @@ functions.fillWindow(infoFieldStartWindow, 16)
 
 
 -- Drawing functions for all windows
+function createAmountWindowComponents()
+  for i = 1, 4, 1 do
+    functions.fillButton(dividedWindows6[i], tostring((i-1)*4+1).."x 64")
+    functions.fillButton(dividedWindows7[i], tostring((i-1)*4+2).."x 64")
+    functions.fillButton(dividedWindows8[i], tostring((i-1)*4+3).."x 64")
+    functions.fillButton(dividedWindows9[i], tostring((i-1)*4+4).."x 64")
+  end
+end
+
 function createFurnaceButtons()
   goldButton1.setBackgroundColor(128)
   goldButton1.setTextColor(1)
@@ -155,6 +170,7 @@ createWindowSwitchFurnace()
 createWindowSwitchPulverizer()
 createReturnButton()
 createFurnaceButtons()
+createAmountWindowComponents()
 --BUTTON HANDLE FUNCTIONS
 --TODO
 
