@@ -42,6 +42,16 @@ local windowSwitchFurnace = dividedWindows[3]
 local windowSwitchCrafting = dividedWindows[4]
 local xxx, yyy = infoFieldStartWindow.getPosition()
 
+--Furnacewindow components: 5x5 rows
+local dividedWindows1 = functions.returnWindows(furnaceWindow, 1, 1, 61, 7, 5, true)
+local dividedWindows2 = functions.returnWindows(furnaceWindow, 1, 8, 61, 7, 5, true)
+local dividedWindows3 = functions.returnWindows(furnaceWindow, 1, 15, 61, 7, 5, true)
+local dividedWindows4 = functions.returnWindows(furnaceWindow, 1, 22, 61, 7, 5, true)
+local dividedWindows5 = functions.returnWindows(furnaceWindow, 1, 29, 61, 8, 5, true)
+
+local goldButton1 = dividedWindows1[1]
+local ironButton1 = dividedWindows1[2]
+
 function toggleWindows(win)
   pulverizerWindow.setVisible(false)
   furnaceWindow.setVisible(false)
@@ -59,6 +69,8 @@ function toggleWindows(win)
   currentActiveWindow = win
 end
 
+
+
 --Set startwindow as active one
 toggleWindows("start")
 
@@ -72,6 +84,16 @@ functions.fillWindow(infoFieldStartWindow, 16)
 
 
 -- Drawing functions for all windows
+function createFurnaceButtons()
+  goldButton1.setBackgroundColor(128)
+  goldButton1.setTextColor(1)
+  functions.fillButton(goldButton1, "pulv. gold")
+
+  ironButton1.setBackgroundColor(128)
+  ironButton1.setTextColor(1)
+  functions.fillButton(ironButton1, "pulv. iron")
+end
+
 function createReturnButton()
   returnButton.setBackgroundColor(128)
   returnButton.setTextColor(1)
