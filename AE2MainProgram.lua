@@ -146,6 +146,21 @@ end
 
 regetItems(furnaceInterface)
 
+--Button click handlers
+function clickedReturnButton()
+  if currentActiveWindow == "start" then
+    m.clear()
+    print("shutting down program")
+   os.exit(0)
+  elseif (currentActiveWindow == "pul") or (currentActiveWindow == "fur") then
+    toggleWindows("start")
+  end
+
+end
+
+
+
+
 --Handles all touch events
 function touchEvent(xPos, yPos)
   local enummy = 0
@@ -172,6 +187,9 @@ function touchEvent(xPos, yPos)
   elseif enummy == 2 then
 
   elseif enummy == 3 then
+
+  elseif enummy == 4 then
+    clickedReturnButton()
   end
 end
 
