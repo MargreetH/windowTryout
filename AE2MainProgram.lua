@@ -174,7 +174,7 @@ function touchEventStartWindow(xPos, yPos)
   if bool then print("in range exit") enummy = 4 bool = false end
 
   --Buttons that are transposed
-  yPos = yPos + 4
+  yPos = yPos - 4
   bool = functions.checkInRangeWindow(windowSwitchFurnace, xPos, yPos)
   if bool then print("in range furnace") enummy = 1 bool = false end
   bool = functions.checkInRangeWindow(windowSwitchPulverizer, xPos, yPos)
