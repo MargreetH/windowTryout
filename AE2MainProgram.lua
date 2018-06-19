@@ -532,7 +532,7 @@ function touchEventPulverizerWindow(xPos, yPos)
   elseif enummy == 4 then
 
   elseif enummy == 5 then
-    
+
   elseif enummy == 6 then
     --clickedRubberWoodButton1()
   elseif enummy == 7 then
@@ -575,7 +575,6 @@ function touchEventPulverizerWindow(xPos, yPos)
     --clickedRubberWoodButton1()
   end
 
-  end
 end
 
 
@@ -654,8 +653,6 @@ function touchEventFurnaceWindow(xPos, yPos)
   elseif enummy == 25 then
     --clickedRubberWoodButton1()
   end
-
-
 end
 
 
