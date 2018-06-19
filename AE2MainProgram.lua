@@ -262,12 +262,11 @@ function createPulverizerButtons()
     for j = 1, 5, 1 do
       index = i * j
       if labelsPulverizerWindow[index] == nil then return end
-        currentWindow[j].clear()
-        currentWindow[j].setCursorPos(1,1)
-        currentWindow[j].setBackgroundColor(128)
-        currentWindow[j].setTextColor(1)
-        functions.fillButton(currentWindow[j], labelsPulverizerWindow[index])
-      end
+      currentWindow[j].clear()
+      currentWindow[j].setCursorPos(1,1)
+      currentWindow[j].setBackgroundColor(128)
+      currentWindow[j].setTextColor(1)
+      functions.fillButton(currentWindow[j], labelsPulverizerWindow[index])
     end
   end
 end
