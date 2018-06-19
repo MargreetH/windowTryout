@@ -56,11 +56,11 @@ local ironButton1 = dividedWindows1[2]
 local sandButton1 = dividedWindows2[1]
 
 --Amountwindow components: 5x5 rows
-local dividedWindows6 = functions.returnWindows(furnaceWindow, 1, 1, 61, 7, 4, true)
-local dividedWindows7 = functions.returnWindows(furnaceWindow, 1, 8, 61, 7, 4, true)
-local dividedWindows8 = functions.returnWindows(furnaceWindow, 1, 15, 61, 7, 4, true)
-local dividedWindows9 = functions.returnWindows(furnaceWindow, 1, 22, 61, 7, 4, true)
-local dividedWindows10 = functions.returnWindows(furnaceWindow, 1, 29, 61, 8, 4, true)
+local dividedWindows6 = functions.returnWindows(amountWindow, 1, 1, 61, 7, 4, true)
+local dividedWindows7 = functions.returnWindows(amountWindow, 1, 8, 61, 7, 4, true)
+local dividedWindows8 = functions.returnWindows(amountWindow, 1, 15, 61, 7, 4, true)
+local dividedWindows9 = functions.returnWindows(amountWindow, 1, 22, 61, 7, 4, true)
+local dividedWindows10 = functions.returnWindows(amountWindow, 1, 29, 61, 8, 4, true)
 -- I'm not gonna name them all
 
 
@@ -106,6 +106,7 @@ function createAmountWindowComponents()
     functions.fillButton(dividedWindows7[i], tostring((i-1)*4+2).."x 64")
     functions.fillButton(dividedWindows8[i], tostring((i-1)*4+3).."x 64")
     functions.fillButton(dividedWindows9[i], tostring((i-1)*4+4).."x 64")
+    functions.fillButton(dividedWindows9[i], tostring((i-1)*4+5).."x 64")
   end
 end
 
