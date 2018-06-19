@@ -265,21 +265,20 @@ function createAmountWindowComponents()
   currentColor = 4096
 
   for i = 1, 4, 1 do
-
-    functions.fillButton(dividedWindows6[i], tostring((i-1)*4+1).."x 64")
     dividedWindows6[i].setBackgroundColor(currentColor)
+    functions.fillButton(dividedWindows6[i], tostring((i-1)*4+1).."x 64")  
     currentColor = toggleColor(currentColor)
-    functions.fillButton(dividedWindows7[i], tostring((i-1)*4+2).."x 64")
     dividedWindows7[i].setBackgroundColor(currentColor)
+    functions.fillButton(dividedWindows7[i], tostring((i-1)*4+2).."x 64")
     currentColor = toggleColor(currentColor)
-    functions.fillButton(dividedWindows8[i], tostring((i-1)*4+3).."x 64")
     dividedWindows8[i].setBackgroundColor(currentColor)
+    functions.fillButton(dividedWindows8[i], tostring((i-1)*4+3).."x 64")
     currentColor = toggleColor(currentColor)
-    functions.fillButton(dividedWindows9[i], tostring((i-1)*4+4).."x 64")
     dividedWindows9[i].setBackgroundColor(currentColor)
+    functions.fillButton(dividedWindows9[i], tostring((i-1)*4+4).."x 64")
     currentColor = toggleColor(currentColor)
-    functions.fillButton(dividedWindows10[i], tostring((i-1)*4+5).."x 64")
     dividedWindows10[i].setBackgroundColor(currentColor)
+    functions.fillButton(dividedWindows10[i], tostring((i-1)*4+5).."x 64")
     currentColor = toggleColor(currentColor)
   end
 end
