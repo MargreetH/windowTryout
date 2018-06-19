@@ -174,7 +174,7 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
 
     if (returnedTable ~= nil) and (returnedTable["size"] ~= nil) then
       itemsToBeTransported = itemsToBeTransported - tonumber(returnedTable["size"])
-      transportedSoFar = transportedSoFar + tonumber(returnedTable["size"]
+      transportedSoFar = transportedSoFar + tonumber(returnedTable["size"])
     end
 
     counter1 = counter1 + 1
