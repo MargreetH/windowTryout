@@ -118,6 +118,10 @@ function createFurnaceButtons()
   ironButton1.setBackgroundColor(128)
   ironButton1.setTextColor(1)
   functions.fillButton(ironButton1, "pulv. iron")
+
+  ironButton1.setBackgroundColor(128)
+  ironButton1.setTextColor(1)
+  functions.fillButton(sandButton1, "sand")
 end
 
 function createReturnButton()
@@ -213,7 +217,6 @@ end
 
 function clickedWindowSwitchFurnaceButton()
   toggleWindows("fur")
-  wait(0.5)
 end
 
 function clickedGoldButton1()
