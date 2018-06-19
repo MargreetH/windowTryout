@@ -266,19 +266,19 @@ function createAmountWindowComponents()
 
   for i = 1, 4, 1 do
     dividedWindows6[i].setBackgroundColor(currentColor)
-    functions.fillButton(dividedWindows6[i], tostring((i-1)*4+1).."x 64")  
+    functions.fillButton(dividedWindows6[i], tostring(i).."x 64")
     currentColor = toggleColor(currentColor)
     dividedWindows7[i].setBackgroundColor(currentColor)
-    functions.fillButton(dividedWindows7[i], tostring((i-1)*4+2).."x 64")
+    functions.fillButton(dividedWindows7[i], tostring(i*2).."x 64")
     currentColor = toggleColor(currentColor)
     dividedWindows8[i].setBackgroundColor(currentColor)
-    functions.fillButton(dividedWindows8[i], tostring((i-1)*4+3).."x 64")
+    functions.fillButton(dividedWindows8[i], tostring(i*4).."x 64")
     currentColor = toggleColor(currentColor)
     dividedWindows9[i].setBackgroundColor(currentColor)
-    functions.fillButton(dividedWindows9[i], tostring((i-1)*4+4).."x 64")
+    functions.fillButton(dividedWindows9[i], tostring(i*16).."x 64")
     currentColor = toggleColor(currentColor)
     dividedWindows10[i].setBackgroundColor(currentColor)
-    functions.fillButton(dividedWindows10[i], tostring((i-1)*4+5).."x 64")
+    functions.fillButton(dividedWindows10[i], tostring(i*27).."x 64")
     currentColor = toggleColor(currentColor)
   end
 end
@@ -483,15 +483,15 @@ function touchEventAmountWindow(xPos, yPos)
 
   for i = 1, 5, 1 do
     bool = functions.checkInRangeWindow(dividedWindows6[i], xPos, yPos)
-    if bool then amountOfItemsToSend = ((i-1)*4+1) * 64 break end
+    if bool then amountOfItemsToSend = i * 64 break end
     bool = functions.checkInRangeWindow(dividedWindows7[i], xPos, yPos)
-    if bool then amountOfItemsToSend = ((i-1)*4+2) * 64 break end
+    if bool then amountOfItemsToSend = i*2 * 64 break end
     bool = functions.checkInRangeWindow(dividedWindows8[i], xPos, yPos)
-    if bool then amountOfItemsToSend = ((i-1)*4+3) * 64 break end
+    if bool then amountOfItemsToSend = i*4 * 64 break end
     bool = functions.checkInRangeWindow(dividedWindows9[i], xPos, yPos)
-    if bool then amountOfItemsToSend = ((i-1)*4+4) * 64 break end
+    if bool then amountOfItemsToSend = i*16 * 64 break end
     bool = functions.checkInRangeWindow(dividedWindows10[i], xPos, yPos)
-    if bool then amountOfItemsToSend = ((i-1)*4+5) * 64 break end
+    if bool then amountOfItemsToSend = i*27 * 64 break end
   end
 if amountOf == "pul" then
   fillChest(pulverizerInterface, "west", chestSizes.obsidian, currentFingerprint, amountOfItemsToSend)
