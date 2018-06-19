@@ -75,7 +75,7 @@ local dividedWindows32 = functions.returnWindows(pulverizerWindow, 1, 8, 61, 7, 
 local dividedWindows33 = functions.returnWindows(pulverizerWindow, 1, 15, 61, 7, 4, true)
 local dividedWindows34 = functions.returnWindows(pulverizerWindow, 1, 22, 61, 7, 4, true)
 local dividedWindows35 = functions.returnWindows(pulverizerWindow, 1, 29, 61, 8, 4, true)
-local fingerprintsPulverizerWindow = {fingerprints.cobblestone, fingerprints.sand}
+local fingerprintsPulverizerWindow = {fingerprints.cobble, fingerprints.sand}
 labelsPulverizerWindow = {"cobble", "sand"}
 
 --Amountwindow components: 5x5 rows
@@ -475,7 +475,7 @@ function touchEventPulverizerWindow(xPos, yPos)
   if bool then enummy = 3 bool = false end
   bool = functions.checkInRangeWindow(dividedWindows31[4], xPos, yPos)
   if bool then enummy = 4 bool = false end
-  bool = functions.checkInRangeWindow(dividedWindows32[1], xPos, yPos)
+  bool = functions.checkInRangeWindow(dividedWindows31[1], xPos, yPos)
   if bool then enummy = 5 bool = false end
 
   if enummy == 1 then
