@@ -68,6 +68,7 @@ local goldButton1 = dividedWindows1[1]
 local ironButton1 = dividedWindows1[2]
 local sandButton1 = dividedWindows2[1]
 local cobbleButton1 = dividedWindows2[2]
+local rubberwoodButton1 = dividedWindows2[3]
 
 --Pulverizer window components, same as above
 local dividedWindows31 = functions.returnWindows(pulverizerWindow, 1, 1, 61, 7, 4, true)
@@ -300,10 +301,14 @@ function createPulverizerButtons()
 
     local index
 
+    local currentColor = 32768
+
     for j = 1, 5, 1 do
       index = i * j
       if labelsPulverizerWindow[index] == nil then return end
       currentWindow[j].setBackgroundColor(128)
+      currentWindow[j].setBackgroundColor(currentColor)
+      currentColor = toggleColor(currentColor)
       currentWindow[j].setTextColor(1)
       currentWindow[j].clear()
       currentWindow[j].setCursorPos(1,1)
@@ -317,17 +322,21 @@ function createFurnaceButtons()
   goldButton1.setTextColor(1)
   functions.fillButton(goldButton1, "pulv. gold")
 
-  ironButton1.setBackgroundColor(128)
+  ironButton1.setBackgroundColor(32768)
   ironButton1.setTextColor(1)
   functions.fillButton(ironButton1, "pulv. iron")
 
-  ironButton1.setBackgroundColor(128)
+  ironButton1.setBackgroundColor(4096)
   ironButton1.setTextColor(1)
   functions.fillButton(sandButton1, "sand")
 
   cobbleButton1.setBackgroundColor(128)
   cobbleButton1.setTextColor(1)
   functions.fillButton(cobbleButton1 , "cob.stone")
+
+  cobbleButton1.setBackgroundColor(32768)
+  cobbleButton1.setTextColor(1)
+  functions.fillButton(rubberwoodButton1 , "rubberwood")
 end
 
 function createReturnButton()
@@ -440,6 +449,12 @@ function clickedCobbleButton1()
   toggleWindows("amount")
 end
 
+function clickedRubberWoodButton1()
+  currentFingerprint = fingerprints.rubberwood
+  amountOf = "fur"
+  toggleWindows("amount")
+end
+
 function clickedCobbleButton2()
   currentFingerprint = fingerprints.cobble
   amountOf = "pul"
@@ -517,6 +532,48 @@ function touchEventPulverizerWindow(xPos, yPos)
   elseif enummy == 4 then
 
   elseif enummy == 5 then
+    
+  elseif enummy == 6 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 7 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 8 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 9 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 10 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 11 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 12 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 13 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 14 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 15 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 16 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 17 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 18 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 19 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 20 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 21 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 22 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 23 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 24 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 25 then
+    --clickedRubberWoodButton1()
+  end
 
   end
 end
@@ -541,6 +598,10 @@ function touchEventFurnaceWindow(xPos, yPos)
   if bool then enummy = 3 bool = false end
   bool = functions.checkInRangeWindow(cobbleButton1, xPos, yPos)
   if bool then enummy = 4 bool = false end
+  bool = functions.checkInRangeWindow(rubberwoodButton1, xPos, yPos)
+  if bool then enummy = 5 bool = false end
+
+
 
   if enummy == 1 then
     clickedGoldButton1()
@@ -550,7 +611,51 @@ function touchEventFurnaceWindow(xPos, yPos)
     clickedSandButton1()
   elseif enummy == 4 then
     clickedCobbleButton1()
+  elseif enummy == 5 then
+    clickedRubberWoodButton1()
+  elseif enummy == 6 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 7 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 8 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 9 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 10 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 11 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 12 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 13 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 14 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 15 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 16 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 17 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 18 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 19 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 20 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 21 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 22 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 23 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 24 then
+    --clickedRubberWoodButton1()
+  elseif enummy == 25 then
+    --clickedRubberWoodButton1()
   end
+
+
 end
 
 
