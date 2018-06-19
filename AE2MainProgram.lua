@@ -130,28 +130,27 @@ function setProcessingStatus(status)
   if status == "processing" then
     successFieldProcessingWindow.setBackgroundColor(128)
     successFieldProcessingWindow.setTextColor(1)
-    successFieldProcessingWindow.write("Job in progress.")
+    functions.textInMiddleButton(successFieldProcessingWindow,"Job in progress.")
     functions.newLine(successFieldProcessingWindow)
     if amountOf == "pul" then
-      successFieldProcessingWindow.write("Sending to pulverizer chest...")
+      functions.textInMiddleButton(successFieldProcessingWindow,"Sending to pulverizer chest...")
     elseif amountOf == "fur" then
-      successFieldProcessingWindow.write("Sending to furnace chest...")
+      functions.textInMiddleButton(successFieldProcessingWindow,"Sending to furnace chest...")
     end
   elseif status == "done" then
     successFieldProcessingWindow.setBackgroundColor(32)
     successFieldProcessingWindow.setTextColor(32768	)
-    successFieldProcessingWindow.write("Job completed succesfully")
+    functions.textInMiddleButton(successFieldProcessingWindow,"Job completed succesfully")
   elseif status == "failed" then
     successFieldProcessingWindow.setBackgroundColor(16384)
     successFieldProcessingWindow.setTextColor(32768	)
-    successFieldProcessingWindow.write("Job completed without transporting all items")
+    functions.textInMiddleButton(successFieldProcessingWindow,"Job completed without transporting all items")
   end
 end
 
 function rewriteChangingField(currentlytransported, totalamount)
-  changingFieldProcessingWindow.clear()
-changingFieldProcessingWindow.setCursorPos(1,1)
-changingFieldProcessingWindow.write("Transported "..currentlytransported.." of "..totalamount)
+functions.textInMiddleButton(changingFieldProcessingWindow, "Transported "..currentlytransported.." of "..totalamount)
+
 end
 
 -- Drawing functions for all windows
@@ -159,7 +158,7 @@ function createProcessingWindowComponents()
  infoFieldProcessingWindow.setCursorPos(1,1)
  infoFieldProcessingWindow.setBackgroundColor(4096)
  infoFieldProcessingWindow.setTextColor(1)
- infoFieldProcessingWindow.write("Currently processing resources.")
+ functions.textInMiddleButton(infoFieldProcessingWindow, "Currently processing resources.")
 
  changingFieldProcessingWindow.setCursorPos(1,1)
  changingFieldProcessingWindow.setBackgroundColor(128)
@@ -168,7 +167,7 @@ function createProcessingWindowComponents()
  successFieldProcessingWindow.setCursorPos(1,1)
  successFieldProcessingWindow.setBackgroundColor(2048)
  successFieldProcessingWindow.setTextColor(1)
-  successFieldProcessingWindow.write("Job in progress.")
+ functions.textInMiddleButton(successFieldProcessingWindow, "Job in progress.")
 end
 
 --Function to send items to somewhere
@@ -196,23 +195,21 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
 
   if amountStored == 0 or amountStored == nil then
     setProcessingStatus("failed")
-    infoFieldProcessingWindow.clear()
-    infoFieldProcessingWindow.setCursorPos(1,1)
-    infoFieldProcessingWindow.write("No items of this type are stored in the system!")
+    functions.textInMiddleButton(infoFieldProcessingWindow, "No items of this type are stored in the system!")
     sleep(5)
     toggleWindows("start")
     return
   elseif amountStored < amount then
   infoFieldProcessingWindow.clear()
   infoFieldProcessingWindow.setCursorPos(1,1)
-  infoFieldProcessingWindow.write("Only "..amountStored.." of "..amount.." requested items are present. Transporting those.")
+  functions.textInMiddleButton(infoFieldProcessingWindow, "Only "..amountStored.." of "..amount.." requested items are present. Transporting those.")
   itemsToBeTransported = amountStored
   else
   infoFieldProcessingWindow.clear()
   infoFieldProcessingWindow.setCursorPos(1,1)
   infoFieldProcessingWindow.setBackgroundColor(4096)
   infoFieldProcessingWindow.setTextColor(1)
-  infoFieldProcessingWindow.write("Currently processing resources.")
+  functions.textInMiddleButton(infoFieldProcessingWindow, "Currently processing resources.")
   end
 
   local counter1
@@ -355,14 +352,14 @@ end
 function createWindowSwitchFurnace()
   windowSwitchFurnace.clear()
   windowSwitchFurnace.setCursorPos(1,1)
-  windowSwitchFurnace.write("Send stuff to furnace")
+  functions.textInMiddleButton(windowSwitchFurnace,"Send stuff to furnace")
   functions.newLine(windowSwitchFurnace)
 end
 
 function createWindowSwitchPulverizer()
   windowSwitchPulverizer.clear()
   windowSwitchPulverizer.setCursorPos(1,1)
-  windowSwitchPulverizer.write("Send stuff to pulverizer")
+  functions.textInMiddleButton(windowSwitchPulverizer,"Send stuff to pulverizer")
   functions.newLine(windowSwitchPulverizer)
 end
 
