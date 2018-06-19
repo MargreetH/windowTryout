@@ -355,7 +355,7 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
 end
 
 while true do
-  wait(5)
+  wait(0.05)
 end
 
 --fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizediron, 300)
