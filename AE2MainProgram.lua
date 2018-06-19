@@ -59,11 +59,11 @@ local sandButton1 = dividedWindows2[1]
 local cobbleButton1 = dividedWindows2[2]
 
 --Pulverizer window components, same as above
-local dividedWindows31 = functions.returnWindows(furnaceWindow, 1, 1, 61, 7, 4, true)
-local dividedWindows32 = functions.returnWindows(furnaceWindow, 1, 8, 61, 7, 4, true)
-local dividedWindows33 = functions.returnWindows(furnaceWindow, 1, 15, 61, 7, 4, true)
-local dividedWindows34 = functions.returnWindows(furnaceWindow, 1, 22, 61, 7, 4, true)
-local dividedWindows35 = functions.returnWindows(furnaceWindow, 1, 29, 61, 8, 4, true)
+local dividedWindows31 = functions.returnWindows(pulverizerWindow, 1, 1, 61, 7, 4, true)
+local dividedWindows32 = functions.returnWindows(pulverizerWindow, 1, 8, 61, 7, 4, true)
+local dividedWindows33 = functions.returnWindows(pulverizerWindow, 1, 15, 61, 7, 4, true)
+local dividedWindows34 = functions.returnWindows(pulverizerWindow, 1, 22, 61, 7, 4, true)
+local dividedWindows35 = functions.returnWindows(pulverizerWindow, 1, 29, 61, 8, 4, true)
 local fingerprintsPulverizerWindow = {fingerprints.cobblestone, fingerprints.sand}
 labelsPulverizerWindow = {"cobble", "sand"}
 
@@ -262,10 +262,10 @@ function createPulverizerButtons()
     for j = 1, 5, 1 do
       index = i * j
       if labelsPulverizerWindow[index] == nil then return end
-      currentWindow[j].clear()
-      currentWindow[j].setCursorPos(1,1)
       currentWindow[j].setBackgroundColor(128)
       currentWindow[j].setTextColor(1)
+      currentWindow[j].clear()
+      currentWindow[j].setCursorPos(1,1)
       functions.fillButton(currentWindow[j], labelsPulverizerWindow[index])
     end
   end
