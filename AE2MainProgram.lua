@@ -163,7 +163,7 @@ end
 --###########Specific functions that have to be here cause of sleep############
 --Fills the whole chest with items
 function fillChest(interface, side, sizeChest, fingerprint, amount)
-  regetItems(furnaceInterface)
+  regetItems(interface)
   toggleWindows("processing")
   setProcessingStatus("processing")
   local itemsToBeTransported
