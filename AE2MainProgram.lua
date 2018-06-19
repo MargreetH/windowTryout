@@ -65,6 +65,11 @@ local dividedWindows9 = functions.returnWindows(amountWindow, 1, 22, 61, 7, 4, t
 local dividedWindows10 = functions.returnWindows(amountWindow, 1, 29, 61, 8, 4, true)
 -- I'm not gonna name them all
 
+--Processingwindow componenents
+local dividedWindows11 = = functions.returnWindows(startWindow, 1, 1, 61, 36, 3, false)
+local infoFieldProcessingWindow = dividedWindows11[1]
+local changingFieldProcessingWindow = dividedWindows11[2]
+local successFieldProcessingWindow = dividedWindows11[3]
 
 function toggleWindows(win)
   pulverizerWindow.setVisible(false)
@@ -93,15 +98,28 @@ end
 --Set startwindow as active one
 toggleWindows("start")
 
-functions.fillWindow(startWindow, 64)
-functions.fillWindow(pulverizerWindow, 16384)
-functions.fillWindow(windowSwitchFurnace, 64) -- pink
 functions.fillWindow(windowSwitchPulverizer, 1)
-functions.fillWindow(windowSwitchCrafting, 2)
-functions.fillWindow(infoFieldStartWindow, 16)
+goldButton1.setBackgroundColor(128)
+goldButton1.setTextColor(1)
 
 
 -- Drawing functions for all windows
+function createProcessingWindowComponents()
+ infoFieldProcessingWindow.setCursorPos(1,1)
+ infoFieldProcessingWindow.setBackgroundColor(4096)
+ infoFieldProcessingWindow.setTextColor(4096)
+ infoFieldProcessingWindow.write("Currently processing resources.")
+
+ infoFieldProcessingWindow.setCursorPos(1,1)
+ infoFieldProcessingWindow.setBackgroundColor(128)
+ infoFieldProcessingWindow.setTextColor(4096)
+
+ infoFieldProcessingWindow.setCursorPos(1,1)
+ infoFieldProcessingWindow.setBackgroundColor(2048)
+ infoFieldProcessingWindow.setTextColor(4096)
+end
+
+
 function createAmountWindowComponents()
   for i = 1, 4, 1 do
     functions.fillButton(dividedWindows6[i], tostring((i-1)*4+1).."x 64")
@@ -128,9 +146,6 @@ function createFurnaceButtons()
   cobbleButton1.setBackgroundColor(128)
   cobbleButton1.setTextColor(1)
   functions.fillButton(cobbleButton1 , "cob.stone")
-
-
-
 end
 
 function createReturnButton()
@@ -185,6 +200,7 @@ createWindowSwitchPulverizer()
 createReturnButton()
 createFurnaceButtons()
 createAmountWindowComponents()
+createProcessingWindowComponents()
 --BUTTON HANDLE FUNCTIONS
 --TODO
 
@@ -254,6 +270,43 @@ function clickedCobbleButton1()
   toggleWindows("amount")
 end
 
+--Function to send items to somewhere
+--###########Specific functions that have to be here cause of sleep############
+--Fills the whole chest with items
+function fillChest(interface, side, sizeChest, fingerprint, amount)
+  toggleWindows("processing")
+  local itemsToBeTransported
+  itemsToBeTransported = amount
+  local canExportToSide
+  canExportToSide = interface.canExport(side)
+
+  if canExportToSide == false then
+    print("Couldn't export to side "..side.." item "..fingerprint.id)
+    return
+  end
+  local counter1
+  counter1 = 1
+  local returnedTable
+  local notDoneTransporting
+  notDoneTransporting = true
+
+  while notDoneTransporting do
+    local returnedTable
+    returnedTable = interface.exportItem(fingerprint, side, itemsToBeTransported, counter1)
+
+    if (returnedTable ~= nil) and (returnedTable["size"] ~= nil) then
+      itemsToBeTransported = itemsToBeTransported - tonumber(returnedTable["size"])
+    end
+
+    counter1 = counter1 + 1
+
+    if counter1 > sizeChest then counter1 = 1 end
+    if itemsToBeTransported == 0 then notDoneTransporting = false end
+    ---wait(3)
+  end
+end
+
+
 --Handles all touch events
 function touchEventAmountWindow(xPos, yPos)
   local enummy = 0
@@ -279,8 +332,11 @@ function touchEventAmountWindow(xPos, yPos)
     if bool then amountOfItemsToSend = ((i-1)*4+5) * 64 break end
   end
 print(amountOfItemsToSend)
-toggleWindows("amountWindow")
-
+if amountOf == "pul" then
+  fillChest(pulverizerInterface, "west", chestSizes.obsidian, currentFingerprint, amountOfItemsToSend)
+elseif amountOf == "fur" then
+  fillChest(furnaceInterface, "north", chestSizes.obsidian, currentFingerprint, amountOfItemsToSend)
+end
 end
 
 
@@ -377,39 +433,7 @@ local function wait (time)
 end
 
 
---###########Specific functions that have to be here cause of sleep############
---Fills the whole chest with items
-function fillChest(interface, side, sizeChest, fingerprint, amount)
-  local itemsToBeTransported
-  itemsToBeTransported = amount
-  local canExportToSide
-  canExportToSide = interface.canExport(side)
 
-  if canExportToSide == false then
-    print("Couldn't export to side "..side.." item "..fingerprint.id)
-    return
-  end
-  local counter1
-  counter1 = 1
-  local returnedTable
-  local notDoneTransporting
-  notDoneTransporting = true
-
-  while notDoneTransporting do
-    local returnedTable
-    returnedTable = interface.exportItem(fingerprint, side, itemsToBeTransported, counter1)
-
-    if (returnedTable ~= nil) and (returnedTable["size"] ~= nil) then
-      itemsToBeTransported = itemsToBeTransported - tonumber(returnedTable["size"])
-    end
-
-    counter1 = counter1 + 1
-
-    if counter1 > sizeChest then counter1 = 1 end
-    if itemsToBeTransported == 0 then notDoneTransporting = false end
-    wait(3)
-  end
-end
 
 while true do
   wait(0.05)
