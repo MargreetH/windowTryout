@@ -22,6 +22,7 @@ m.clear()
 local currentActiveWindow = "start"
 local amountOf
 local currentFingerprint
+local amountOfItemsToSend
 
 --Creating the main Windows
 topPart = window.create(m, 1,1, 50, 4)
@@ -266,27 +267,20 @@ function touchEventAmountWindow(xPos, yPos)
   yPos = yPos - 4
 
   for i = 1, 5, 1 do
-
+    bool = functions.checkInRangeWindow(dividedWindows6[i], xPos, yPos)
+    if bool then amountOfItemsToSend = ((i-1)*4+1) * 64 break end
+    bool = functions.checkInRangeWindow(dividedWindows7[i], xPos, yPos)
+    if bool then amountOfItemsToSend = ((i-1)*4+2) * 64 break end
+    bool = functions.checkInRangeWindow(dividedWindows8[i], xPos, yPos)
+    if bool then amountOfItemsToSend = ((i-1)*4+3) * 64 break end
+    bool = functions.checkInRangeWindow(dividedWindows9[i], xPos, yPos)
+    if bool then amountOfItemsToSend = ((i-1)*4+4) * 64 break end
+    bool = functions.checkInRangeWindow(dividedWindows9[i], xPos, yPos)
+    if bool then amountOfItemsToSend = ((i-1)*4+5) * 64 break end
   end
 
-  bool = functions.checkInRangeWindow(goldButton1, xPos, yPos)
-  if bool then enummy = 1 bool = false end
-  bool = functions.checkInRangeWindow(ironButton1, xPos, yPos)
-  if bool then enummy = 2 bool = false end
-  bool = functions.checkInRangeWindow(sandButton1, xPos, yPos)
-  if bool then enummy = 3 bool = false end
-  bool = functions.checkInRangeWindow(cobbleButton1, xPos, yPos)
-  if bool then enummy = 4 bool = false end
+toggleWindows("amountWindow")
 
-  if enummy == 1 then
-    clickedGoldButton1()
-  elseif enummy == 2 then
-    clickedIronButton1()
-  elseif enummy == 3 then
-    clickedSandButton1()
-  elseif enummy == 4 then
-    clickedCobbleButton1()
-  end
 end
 
 
