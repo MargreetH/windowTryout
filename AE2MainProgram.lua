@@ -475,8 +475,8 @@ function touchEventPulverizerWindow(xPos, yPos)
   if bool then enummy = 3 bool = false end
   bool = functions.checkInRangeWindow(dividedWindows31[4], xPos, yPos)
   if bool then enummy = 4 bool = false end
-  bool = functions.checkInRangeWindow(dividedWindows31[5], xPos, yPos)
-  if bool then enummy = 4 bool = false end
+  bool = functions.checkInRangeWindow(dividedWindows32[1], xPos, yPos)
+  if bool then enummy = 5 bool = false end
 
   if enummy == 1 then
     clickedCobbleButton2()
