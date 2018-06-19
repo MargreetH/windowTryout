@@ -566,6 +566,8 @@ function processEvents(event)
       touchEventFurnaceWindow(event[3], event[4])
     elseif currentActiveWindow == "amount" then
       touchEventAmountWindow(event[3], event[4])
+    else if currentActiveWindow == "pul" then
+      touchEventPulverizerWindow(event[3], event[4])
     end
 
   end
