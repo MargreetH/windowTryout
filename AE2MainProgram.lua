@@ -278,7 +278,7 @@ function touchEventAmountWindow(xPos, yPos)
     bool = functions.checkInRangeWindow(dividedWindows9[i], xPos, yPos)
     if bool then amountOfItemsToSend = ((i-1)*4+5) * 64 break end
   end
-
+print(amountOfItemsToSend)
 toggleWindows("amountWindow")
 
 end
