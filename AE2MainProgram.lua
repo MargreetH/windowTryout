@@ -245,16 +245,34 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
   toggleWindows("start")
 end
 
-
+function toggleColor(col)
+  if col == 4096 then return 128 end
+  if col == 128 then return 32768 end
+  if col == 32768 then return 4096 end
+end
 
 
 function createAmountWindowComponents()
+  local currentColor
+  currentColor = 4096
+
   for i = 1, 4, 1 do
+
     functions.fillButton(dividedWindows6[i], tostring((i-1)*4+1).."x 64")
+    dividedWindows6[i].setBackgroundColor(currentColor)
+    currentColor = toggleColor(currentColor)
     functions.fillButton(dividedWindows7[i], tostring((i-1)*4+2).."x 64")
+    dividedWindows7[i].setBackgroundColor(currentColor)
+    currentColor = toggleColor(currentColor)
     functions.fillButton(dividedWindows8[i], tostring((i-1)*4+3).."x 64")
+    dividedWindows8[i].setBackgroundColor(currentColor)
+    currentColor = toggleColor(currentColor)
     functions.fillButton(dividedWindows9[i], tostring((i-1)*4+4).."x 64")
-    functions.fillButton(dividedWindows9[i], tostring((i-1)*4+5).."x 64")
+    dividedWindows9[i].setBackgroundColor(currentColor)
+    currentColor = toggleColor(currentColor)
+    functions.fillButton(dividedWindows10[i], tostring((i-1)*4+5).."x 64")
+    dividedWindows10[i].setBackgroundColor(currentColor)
+    currentColor = toggleColor(currentColor)
   end
 end
 
