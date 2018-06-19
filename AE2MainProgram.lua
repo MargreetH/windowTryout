@@ -357,10 +357,6 @@ createPulverizerButtons()
 --BUTTON HANDLE FUNCTIONS
 --TODO
 
-
-
-
-
 --Gets a list of all items in system
 function regetItems(interf)
   allItemsNetwork = interf.getAvailableItems(1)
