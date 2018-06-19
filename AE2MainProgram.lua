@@ -266,19 +266,19 @@ function createAmountWindowComponents()
 
   for i = 1, 4, 1 do
     dividedWindows6[i].setBackgroundColor(currentColor)
-    functions.fillButton(dividedWindows6[i], tostring(i).."x 64")
+    functions.textInMiddleButton(dividedWindows6[i], tostring(i).."x 64")
     currentColor = toggleColor(currentColor)
     dividedWindows7[i].setBackgroundColor(currentColor)
-    functions.fillButton(dividedWindows7[i], tostring(i*2).."x 64")
+    functions.textInMiddleButton(dividedWindows7[i], tostring(i*2).."x 64")
     currentColor = toggleColor(currentColor)
     dividedWindows8[i].setBackgroundColor(currentColor)
-    functions.fillButton(dividedWindows8[i], tostring(i*4).."x 64")
+    functions.textInMiddleButton(dividedWindows8[i], tostring(i*4).."x 64")
     currentColor = toggleColor(currentColor)
     dividedWindows9[i].setBackgroundColor(currentColor)
-    functions.fillButton(dividedWindows9[i], tostring(i*16).."x 64")
+    functions.textInMiddleButton(dividedWindows9[i], tostring(i*16).."x 64")
     currentColor = toggleColor(currentColor)
     dividedWindows10[i].setBackgroundColor(currentColor)
-    functions.fillButton(dividedWindows10[i], tostring(i*27).."x 64")
+    functions.textInMiddleButton(dividedWindows10[i], tostring(i*27).."x 64")
     currentColor = toggleColor(currentColor)
   end
 end
@@ -311,7 +311,7 @@ function createPulverizerButtons()
       currentWindow[j].setTextColor(1)
       currentWindow[j].clear()
       currentWindow[j].setCursorPos(1,1)
-      functions.fillButton(currentWindow[j], labelsPulverizerWindow[index])
+      functions.textInMiddleButton(currentWindow[j], labelsPulverizerWindow[index])
     end
   end
 end
@@ -319,29 +319,29 @@ end
 function createFurnaceButtons()
   goldButton1.setBackgroundColor(128)
   goldButton1.setTextColor(1)
-  functions.fillButton(goldButton1, "pulv. gold")
+  functions.textInMiddleButton(goldButton1, "pulv. gold")
 
   ironButton1.setBackgroundColor(32768)
   ironButton1.setTextColor(1)
-  functions.fillButton(ironButton1, "pulv. iron")
+  functions.textInMiddleButton(ironButton1, "pulv. iron")
 
   ironButton1.setBackgroundColor(4096)
   ironButton1.setTextColor(1)
-  functions.fillButton(sandButton1, "sand")
+  functions.textInMiddleButton(sandButton1, "sand")
 
   cobbleButton1.setBackgroundColor(128)
   cobbleButton1.setTextColor(1)
-  functions.fillButton(cobbleButton1 , "cob.stone")
+  functions.textInMiddleButton(cobbleButton1 , "cob.stone")
 
   cobbleButton1.setBackgroundColor(32768)
   cobbleButton1.setTextColor(1)
-  functions.fillButton(rubberwoodButton1 , "rubberwood")
+  functions.textInMiddleButton(rubberwoodButton1 , "rubberwood")
 end
 
 function createReturnButton()
   returnButton.setBackgroundColor(128)
   returnButton.setTextColor(1)
-  functions.fillButton(returnButton, "Return")
+  functions.textInMiddleButton(returnButton, "Return")
 end
 
 function createInfoFieldStartWindow()

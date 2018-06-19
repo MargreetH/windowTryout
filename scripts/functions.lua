@@ -98,7 +98,7 @@ function subDivideRegion(x, y, width, height, parts, divideVertically)
       sum = sum + widthSplit
     end
     returnTable[parts]["width"] = returnTable[parts]["width"] + width - sum
-    return returnTable    
+    return returnTable
   end
 
 -- other case, make rows
@@ -158,4 +158,21 @@ function fillWindow(w, bgcolor)
     w.write(longString)
     functions.newLine(w)
   end
+end
+
+function textInMiddleButton(w, text)
+  local width, height = w.getSize()
+  w.clear()
+  w.setCursorPos(1,1)
+  local spacingHorizontal = math.floor((width - #text)/ 2)
+  local spacingVertical = math.floor(height / 2)
+
+  for i = 1, spacingVertical, 1 do
+    newLine(w)
+  end
+
+  for i = 1, spacingHorizontal, 1 do
+    w.write(" ")
+  end
+  w.write(text)
 end
