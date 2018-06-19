@@ -451,7 +451,7 @@ function touchEventAmountWindow(xPos, yPos)
     if bool then amountOfItemsToSend = ((i-1)*4+3) * 64 break end
     bool = functions.checkInRangeWindow(dividedWindows9[i], xPos, yPos)
     if bool then amountOfItemsToSend = ((i-1)*4+4) * 64 break end
-    bool = functions.checkInRangeWindow(dividedWindows9[i], xPos, yPos)
+    bool = functions.checkInRangeWindow(dividedWindows10[i], xPos, yPos)
     if bool then amountOfItemsToSend = ((i-1)*4+5) * 64 break end
   end
 print(amountOfItemsToSend)
