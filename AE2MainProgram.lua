@@ -206,6 +206,11 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
   infoFieldProcessingWindow.setCursorPos(1,1)
   infoFieldProcessingWindow.write("Only "..amountStored.." of "..amount.." requested items are present. Transporting those.")
   itemsToBeTransported = amountStored
+  else
+  infoFieldProcessingWindow.setCursorPos(1,1)
+  infoFieldProcessingWindow.setBackgroundColor(4096)
+  infoFieldProcessingWindow.setTextColor(1)
+  infoFieldProcessingWindow.write("Currently processing resources.")
   end
 
   local counter1
