@@ -205,6 +205,7 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
   infoFieldProcessingWindow.clear()
   infoFieldProcessingWindow.setCursorPos(1,1)
   infoFieldProcessingWindow.write("Only "..amountStored.." of "..amount.." requested items are present. Transporting those.")
+  itemsToBeTransported = amountStored
   end
 
   local counter1
@@ -472,7 +473,6 @@ function touchEventAmountWindow(xPos, yPos)
     bool = functions.checkInRangeWindow(dividedWindows10[i], xPos, yPos)
     if bool then amountOfItemsToSend = ((i-1)*4+5) * 64 break end
   end
-print(amountOfItemsToSend)
 if amountOf == "pul" then
   fillChest(pulverizerInterface, "west", chestSizes.obsidian, currentFingerprint, amountOfItemsToSend)
 elseif amountOf == "fur" then
