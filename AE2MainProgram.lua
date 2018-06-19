@@ -233,6 +233,9 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
     if itemsToBeTransported == 0 then notDoneTransporting = false end
     if counter2 > 500 then --Chest is fulll and not being emptied, abort the exporting.
       setProcessingStatus("failed")
+      sleep(5)
+      toggleWindows("start")
+      return
     end
 
   end
@@ -433,7 +436,7 @@ function touchEventAmountWindow(xPos, yPos)
   local bool = false
   --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
   --if bool then enummy = 1 bool = false end
-  print(xPos..","..yPos)
+
 
   --Buttons located at normal x,y
   --Buttons that are transposed
@@ -464,7 +467,8 @@ function touchEventPulverizerWindow(xPos, yPos)
   local bool = false
   --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
   --if bool then enummy = 1 bool = false end
-  print(xPos..","..yPos)
+
+
 
   --Buttons located at normal x,y
   --Buttons that are transposed
@@ -500,7 +504,7 @@ function touchEventFurnaceWindow(xPos, yPos)
   local bool = false
   --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
   --if bool then enummy = 1 bool = false end
-  print(xPos..","..yPos)
+
 
   --Buttons located at normal x,y
   --Buttons that are transposed
@@ -532,7 +536,7 @@ function touchEventStartWindow(xPos, yPos)
   local bool = false
   --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
   --if bool then enummy = 1 bool = false end
-  print(xPos..","..yPos)
+
 
   --Buttons located at normal x,y
   --Buttons that are transposed
