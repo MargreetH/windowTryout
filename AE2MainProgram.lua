@@ -190,6 +190,8 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
   end
 
   setProcessingStatus("done")
+  sleep(5)
+  toggleWindows("start")
 end
 
 
