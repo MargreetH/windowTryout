@@ -58,6 +58,15 @@ local ironButton1 = dividedWindows1[2]
 local sandButton1 = dividedWindows2[1]
 local cobbleButton1 = dividedWindows2[2]
 
+--Pulverizer window components, same as above
+local dividedWindows31 = functions.returnWindows(furnaceWindow, 1, 1, 61, 7, 4, true)
+local dividedWindows32 = functions.returnWindows(furnaceWindow, 1, 8, 61, 7, 4, true)
+local dividedWindows33 = functions.returnWindows(furnaceWindow, 1, 15, 61, 7, 4, true)
+local dividedWindows34 = functions.returnWindows(furnaceWindow, 1, 22, 61, 7, 4, true)
+local dividedWindows35 = functions.returnWindows(furnaceWindow, 1, 29, 61, 8, 4, true)
+local fingerprintsPulverizerWindow = {fingerprints.cobblestone, fingerprints.sand}
+labelsPulverizerWindow = {"cobble", "sand"}
+
 --Amountwindow components: 5x5 rows
 local dividedWindows6 = functions.returnWindows(amountWindow, 1, 1, 61, 7, 4, true)
 local dividedWindows7 = functions.returnWindows(amountWindow, 1, 8, 61, 7, 4, true)
@@ -227,6 +236,39 @@ function createAmountWindowComponents()
   end
 end
 
+function createPulverizerButtons()
+
+  local currentWindow
+  for i = 1, 5, 1 do
+
+
+    if i == 1 then
+      currentWindow = dividedWindows31
+    elseif i == 2 then
+      currentWindow = dividedWindows32
+    elseif i == 3 then
+      currentWindow = dividedWindows33
+    elseif i == 4 then
+      currentWindow = dividedWindows34
+    elseif i == 5 then
+      currentWindow = dividedWindows35
+    end
+
+    local index
+
+    for j = 1, 5, do
+      index = i * j
+      if labels[index] == nil then return end
+      currentWindow[j].clear()
+      currentWindow[j].setCursorPos(1,1)
+      currentWindow[j].setBackgroundColor(128)
+      currentWindow[j].setTextColor(1)
+      functions.fillButton(currentWindow[j], labelsPulverizerWindow[index])
+    end
+    end
+  end
+end
+
 function createFurnaceButtons()
   goldButton1.setBackgroundColor(128)
   goldButton1.setTextColor(1)
@@ -298,6 +340,7 @@ createReturnButton()
 createFurnaceButtons()
 createAmountWindowComponents()
 createProcessingWindowComponents()
+createPulverizerButtons()
 --BUTTON HANDLE FUNCTIONS
 --TODO
 
