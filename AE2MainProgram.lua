@@ -119,6 +119,12 @@ function setProcessingStatus(status)
     successFieldProcessingWindow.setBackgroundColor(128)
     successFieldProcessingWindow.setTextColor(1)
     successFieldProcessingWindow.write("Job in progress.")
+    functions.newLine(successFieldProcessingWindow)
+    if amountOf == "pul" then
+      successFieldProcessingWindow.write("Sending to pulverizer chest...")
+    elseif amountOf == "fur" then
+      successFieldProcessingWindow.write("Sending to furnace chest...")
+    end
   elseif status == "done" then
     successFieldProcessingWindow.setBackgroundColor(32)
     successFieldProcessingWindow.setTextColor(32768	)
@@ -469,11 +475,13 @@ function touchEventPulverizerWindow(xPos, yPos)
   yPos = yPos - 4
   bool = functions.checkInRangeWindow(dividedWindows31[1], xPos, yPos)
   if bool then enummy = 1 bool = false end
-  bool = functions.checkInRangeWindow(dividedWindows[2], xPos, yPos)
+  bool = functions.checkInRangeWindow(dividedWindows31[2], xPos, yPos)
   if bool then enummy = 2 bool = false end
-  bool = functions.checkInRangeWindow(dividedWindows[3], xPos, yPos)
+  bool = functions.checkInRangeWindow(dividedWindows31[3], xPos, yPos)
   if bool then enummy = 3 bool = false end
   bool = functions.checkInRangeWindow(dividedWindows31[4], xPos, yPos)
+  if bool then enummy = 4 bool = false end
+  bool = functions.checkInRangeWindow(dividedWindows31[5], xPos, yPos)
   if bool then enummy = 4 bool = false end
 
   if enummy == 1 then
@@ -483,6 +491,8 @@ function touchEventPulverizerWindow(xPos, yPos)
   elseif enummy == 3 then
 
   elseif enummy == 4 then
+
+  elseif enummy == 5 then
 
   end
 end
