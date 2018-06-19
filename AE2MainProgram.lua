@@ -66,7 +66,7 @@ local dividedWindows10 = functions.returnWindows(amountWindow, 1, 29, 61, 8, 4, 
 -- I'm not gonna name them all
 
 --Processingwindow componenents
-local dividedWindows11 = = functions.returnWindows(startWindow, 1, 1, 61, 36, 3, false)
+local dividedWindows11 = functions.returnWindows(processingWindow, 1, 1, 61, 36, 3, false)
 local infoFieldProcessingWindow = dividedWindows11[1]
 local changingFieldProcessingWindow = dividedWindows11[2]
 local successFieldProcessingWindow = dividedWindows11[3]
