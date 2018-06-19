@@ -256,15 +256,15 @@ function createPulverizerButtons()
 
     local index
 
-    for j = 1, 5, do
+    for j = 1, 5, 1 do
       index = i * j
-      if labels[index] == nil then return end
-      currentWindow[j].clear()
-      currentWindow[j].setCursorPos(1,1)
-      currentWindow[j].setBackgroundColor(128)
-      currentWindow[j].setTextColor(1)
-      functions.fillButton(currentWindow[j], labelsPulverizerWindow[index])
-    end
+      if labelsPulverizerWindow[index] == nil then return end
+        currentWindow[j].clear()
+        currentWindow[j].setCursorPos(1,1)
+        currentWindow[j].setBackgroundColor(128)
+        currentWindow[j].setTextColor(1)
+        functions.fillButton(currentWindow[j], labelsPulverizerWindow[index])
+      end
     end
   end
 end
@@ -410,6 +410,18 @@ function clickedCobbleButton1()
   toggleWindows("amount")
 end
 
+function clickedCobbleButton2()
+  currentFingerprint = fingerprints.cobble
+  amountOf = "pul"
+  toggleWindows("amount")
+end
+
+function clickedSandButton2()
+  currentFingerprint = fingerprints.sand
+  amountOf = "pul"
+  toggleWindows("amount")
+end
+
 
 
 
@@ -445,6 +457,35 @@ elseif amountOf == "fur" then
 end
 end
 
+function touchEventPulverizerWindow(xPos, yPos)
+  local enummy = 0
+  local bool = false
+  --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
+  --if bool then enummy = 1 bool = false end
+  print(xPos..","..yPos)
+
+  --Buttons located at normal x,y
+  --Buttons that are transposed
+  yPos = yPos - 4
+  bool = functions.checkInRangeWindow(dividedWindows31[1], xPos, yPos)
+  if bool then enummy = 1 bool = false end
+  bool = functions.checkInRangeWindow(dividedWindows[2], xPos, yPos)
+  if bool then enummy = 2 bool = false end
+  bool = functions.checkInRangeWindow(dividedWindows[3], xPos, yPos)
+  if bool then enummy = 3 bool = false end
+  bool = functions.checkInRangeWindow(dividedWindows31[4], xPos, yPos)
+  if bool then enummy = 4 bool = false end
+
+  if enummy == 1 then
+    clickedCobbleButton2()
+  elseif enummy == 2 then
+    clickedSandButton2()
+  elseif enummy == 3 then
+
+  elseif enummy == 4 then
+
+  end
+end
 
 
 
