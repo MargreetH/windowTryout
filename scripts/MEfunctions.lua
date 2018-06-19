@@ -20,3 +20,11 @@ function returnNBThashes(itemid, itemlist)
   print("Amount of matches found:"..counter)
   return NBThashes
 end
+
+function returnAmountOfItemsInSystem(fp, itemlist)
+  local amountStored
+  for i = 1, #itemlist, 1 do
+    if (itemlist[i].fingerprint == fp) and
+    end
+  end
+end

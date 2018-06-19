@@ -154,10 +154,14 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
   local canExportToSide
   canExportToSide = interface.canExport(side)
 
+  -- Check if there is actually a chest!
   if canExportToSide == false then
     print("Couldn't export to side "..side.." item "..fingerprint.id)
+    setProcessingStatus("failed")
     return
   end
+
+  --Check if there is actually enough items in the system
 
   local counter1
   local counter2 = 1
@@ -342,7 +346,7 @@ function clickedSandButton1()
 end
 
 function clickedCobbleButton1()
-  currentFingerprint = fingerprints.cobblestone
+  currentFingerprint = fingerprints.cobble
   amountOf = "fur"
   toggleWindows("amount")
 end
