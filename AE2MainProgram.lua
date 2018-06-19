@@ -173,7 +173,7 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
     sleep(5)
     toggleWindows("start")
     return
-  elseif amountStored < amount
+  elseif amountStored < amount then
   infoFieldProcessingWindow.clear()
   infoFieldProcessingWindow.setCursorPos(1,1)
   infoFieldProcessingWindow.write("Only "..amountStored.." of "..amount.." requested items are present. Transporting those.")
