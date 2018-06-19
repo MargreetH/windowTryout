@@ -22,9 +22,11 @@ function returnNBThashes(itemid, itemlist)
 end
 
 function returnAmountOfItemsInSystem(fp, itemlist)
-  local amountStored
+  local amountStored = nil
   for i = 1, #itemlist, 1 do
-    if (itemlist[i].fingerprint == fp) and
+    if (itemlist[i].fingerprint == fp) then
+      amountStored = itemlist[i].size
     end
   end
+  return amountStored
 end

@@ -23,6 +23,7 @@ local currentActiveWindow = "start"
 local amountOf
 local currentFingerprint
 local amountOfItemsToSend
+local itemList
 
 --Creating the main Windows
 topPart = window.create(m, 1,1, 50, 4)
@@ -147,6 +148,7 @@ end
 --###########Specific functions that have to be here cause of sleep############
 --Fills the whole chest with items
 function fillChest(interface, side, sizeChest, fingerprint, amount)
+  regetItems(furnaceInterface)
   toggleWindows("processing")
   setProcessingStatus("processing")
   local itemsToBeTransported
@@ -162,6 +164,20 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
   end
 
   --Check if there is actually enough items in the system
+  local amountStored = returnAmountOfItemsInSystem(fingerprint, allItemsNetwork)
+  if amountStored == 0 or amountStored == nil then
+    setProcessingStatus("failed")
+    infoFieldProcessingWindow.clear()
+    infoFieldProcessingWindow.setCursorPos(1,1)
+    infoFieldProcessingWindow.write("No items of this type are stored in the system!")
+    sleep(5)
+    toggleWindows("start")
+    return
+  elseif amountStored < amount
+  infoFieldProcessingWindow.clear()
+  infoFieldProcessingWindow.setCursorPos(1,1)
+  infoFieldProcessingWindow.write("Only "..amountStored.." of "..amount.." requested items are present. Transporting those.")
+  end
 
   local counter1
   local counter2 = 1
