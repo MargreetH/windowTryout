@@ -53,9 +53,9 @@ infoField.setBackgroundColor(1024)
 infoField.clear()
 textField.setTextColor(32768)
 textField.setCursorPos(1, 1)
-functions.fillButton(switchButton, "SWITCH")
-functions.fillButton(viewHistoryButton, "VIEW HISTORY")
-functions.fillButton(exitButton, "EXIT")
+functions.textInMiddleButton(switchButton, "SWITCH")
+functions.textInMiddleButton(viewHistoryButton, "VIEW HISTORY")
+functions.textInMiddleButton(exitButton, "EXIT")
 
 -- DRawing functions for all windows
 function createTopPart(w)
