@@ -243,11 +243,8 @@ function createAmountWindowComponents()
 end
 
 function createPulverizerButtons()
-
   local currentWindow
   for i = 1, 5, 1 do
-
-
     if i == 1 then
       currentWindow = dividedWindows31
     elseif i == 2 then
