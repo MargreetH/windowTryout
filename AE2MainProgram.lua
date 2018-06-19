@@ -212,7 +212,7 @@ end
 
 function clickedWindowSwitchFurnaceButton()
   toggleWindows("fur")
-  sleep(0.2)
+  wait(0.5)
 end
 
 function clickedGoldButton1()
@@ -251,11 +251,11 @@ function touchEventFurnaceWindow(xPos, yPos)
   if bool then enummy = 3 bool = false end
 
   if enummy == 1 then
-    clickedWindowSwitchFurnaceButton()
+    clickedGoldButton1()
   elseif enummy == 2 then
-    clickedWindowSwitchPulverizerButton()
+    clickedIronButton1()
   elseif enummy == 3 then
-
+    clickedSandButton1()
   elseif enummy == 4 then
     clickedReturnButton()
   end
