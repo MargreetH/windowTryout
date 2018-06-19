@@ -103,6 +103,7 @@ goldButton1.setBackgroundColor(128)
 goldButton1.setTextColor(1)
 
 function setProcessingStatus(status)
+  successFieldProcessingWindow.clear()
   successFieldProcessingWindow.setCursorPos(1,1)
   if status == "processing" then
     successFieldProcessingWindow.setBackgroundColor(128)
@@ -117,6 +118,12 @@ function setProcessingStatus(status)
     successFieldProcessingWindow.setTextColor(32768	)
     successFieldProcessingWindow.write("Job completed without transporting all items")
   end
+end
+
+function rewriteChangingField(currentlytransported, totalamount)
+  changingFieldProcessingWindow.clear()
+changingFieldProcessingWindow.setCursorPos(1,1)
+changingFieldProcessingWindow.write("Transported "..currentlytransported.." of "..totalamount)
 end
 
 -- Drawing functions for all windows
@@ -134,6 +141,55 @@ function createProcessingWindowComponents()
  successFieldProcessingWindow.setBackgroundColor(2048)
  successFieldProcessingWindow.setTextColor(1)
   successFieldProcessingWindow.write("Job in progress.")
+end
+
+--Function to send items to somewhere
+--###########Specific functions that have to be here cause of sleep############
+--Fills the whole chest with items
+function fillChest(interface, side, sizeChest, fingerprint, amount)
+  toggleWindows("processing")
+  setProcessingStatus("processing")
+  local itemsToBeTransported
+  itemsToBeTransported = amount
+  local canExportToSide
+  canExportToSide = interface.canExport(side)
+
+  if canExportToSide == false then
+    print("Couldn't export to side "..side.." item "..fingerprint.id)
+    return
+  end
+
+  local counter1
+  local counter2 = 1
+  counter1 = 1
+  local returnedTable
+  local notDoneTransporting
+  notDoneTransporting = true
+  local transportedSoFar = 0
+
+  while notDoneTransporting do
+    counter2 = counter2 + 1
+    local returnedTable
+    returnedTable = interface.exportItem(fingerprint, side, itemsToBeTransported, counter1)
+
+    if (returnedTable ~= nil) and (returnedTable["size"] ~= nil) then
+      itemsToBeTransported = itemsToBeTransported - tonumber(returnedTable["size"])
+      transportedSoFar = transportedSoFar + tonumber(returnedTable["size"]
+    end
+
+    counter1 = counter1 + 1
+
+    rewriteChangingField(transportedSoFar, amount)
+
+    if counter1 > sizeChest then counter1 = 1 end
+    if itemsToBeTransported == 0 then notDoneTransporting = false end
+    if counter2 > 500 then --Chest is fulll and not being emptied, abort the exporting.
+      setProcessingStatus("failed")
+    end
+
+  end
+
+  setProcessingStatus("done")
 end
 
 
@@ -289,41 +345,7 @@ function clickedCobbleButton1()
   toggleWindows("amount")
 end
 
---Function to send items to somewhere
---###########Specific functions that have to be here cause of sleep############
---Fills the whole chest with items
-function fillChest(interface, side, sizeChest, fingerprint, amount)
-  toggleWindows("processing")
-  local itemsToBeTransported
-  itemsToBeTransported = amount
-  local canExportToSide
-  canExportToSide = interface.canExport(side)
 
-  if canExportToSide == false then
-    print("Couldn't export to side "..side.." item "..fingerprint.id)
-    return
-  end
-  local counter1
-  counter1 = 1
-  local returnedTable
-  local notDoneTransporting
-  notDoneTransporting = true
-
-  while notDoneTransporting do
-    local returnedTable
-    returnedTable = interface.exportItem(fingerprint, side, itemsToBeTransported, counter1)
-
-    if (returnedTable ~= nil) and (returnedTable["size"] ~= nil) then
-      itemsToBeTransported = itemsToBeTransported - tonumber(returnedTable["size"])
-    end
-
-    counter1 = counter1 + 1
-
-    if counter1 > sizeChest then counter1 = 1 end
-    if itemsToBeTransported == 0 then notDoneTransporting = false end
-    ---wait(3)
-  end
-end
 
 
 --Handles all touch events
