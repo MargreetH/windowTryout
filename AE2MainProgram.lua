@@ -190,7 +190,9 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
   end
 
   --Check if there is actually enough items in the system
-  local amountStored = returnAmountOfItemsInSystem(fingerprint, allItemsNetwork)
+  local amountStored
+  amountStored = returnAmountOfItemsInSystem(fingerprint, allItemsNetwork)
+  
   if amountStored == 0 or amountStored == nil then
     setProcessingStatus("failed")
     infoFieldProcessingWindow.clear()
