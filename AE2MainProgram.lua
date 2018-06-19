@@ -18,6 +18,17 @@ local m
 m = peripheral.wrap("left")
 m.clear()
 
+--Get the interfaces that are used from the network
+local pulverizerInterface
+local furnaceInterface
+pulverizerInterface = peripheral.wrap("tileinterface_7")
+furnaceInterface = peripheral.wrap("tileinterface_6")
+
+--Some variables used
+local allItemsNetwork --A list of all items in the ME network,
+local numberOfItemTypesNetwork -- The number of different items in the network
+allItemsNetwork = pulverizerInterface.getAvailableItems(1)
+
 --variables
 local currentActiveWindow = "start"
 local amountOf
@@ -348,16 +359,7 @@ createPulverizerButtons()
 
 
 
---Get the interfaces that are used from the network
-local pulverizerInterface
-local furnaceInterface
-pulverizerInterface = peripheral.wrap("tileinterface_7")
-furnaceInterface = peripheral.wrap("tileinterface_6")
 
---Some variables used
-local allItemsNetwork --A list of all items in the ME network,
-local numberOfItemTypesNetwork -- The number of different items in the network
-allItemsNetwork = pulverizerInterface.getAvailableItems(1)
 
 --Gets a list of all items in system
 function regetItems(interf)
