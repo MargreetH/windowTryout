@@ -102,22 +102,41 @@ functions.fillWindow(windowSwitchPulverizer, 1)
 goldButton1.setBackgroundColor(128)
 goldButton1.setTextColor(1)
 
+function setProcessingStatus(status)
+  successFieldProcessingWindow.setCursorPos(1,1)
+  if status == "processing" then
+    successFieldProcessingWindow.setBackgroundColor(128)
+    successFieldProcessingWindow.setTextColor(1)
+    successFieldProcessingWindow.write("Job in progress.")
+  elseif status == "done" then
+    successFieldProcessingWindow.setBackgroundColor(32)
+    successFieldProcessingWindow.setTextColor(32768	)
+    successFieldProcessingWindow.write("Job completed succesfully")
+  elseif status == "failed" then
+    successFieldProcessingWindow.setBackgroundColor(16384)
+    successFieldProcessingWindow.setTextColor(32768	)
+    successFieldProcessingWindow.write("Job completed without transporting all items")
+  end
+end
 
 -- Drawing functions for all windows
 function createProcessingWindowComponents()
  infoFieldProcessingWindow.setCursorPos(1,1)
  infoFieldProcessingWindow.setBackgroundColor(4096)
- infoFieldProcessingWindow.setTextColor(4096)
+ infoFieldProcessingWindow.setTextColor(1)
  infoFieldProcessingWindow.write("Currently processing resources.")
 
- infoFieldProcessingWindow.setCursorPos(1,1)
- infoFieldProcessingWindow.setBackgroundColor(128)
- infoFieldProcessingWindow.setTextColor(4096)
+ changingFieldProcessingWindow.setCursorPos(1,1)
+ changingFieldProcessingWindow.setBackgroundColor(128)
+ changingFieldProcessingWindow.setTextColor(1)
 
- infoFieldProcessingWindow.setCursorPos(1,1)
- infoFieldProcessingWindow.setBackgroundColor(2048)
- infoFieldProcessingWindow.setTextColor(4096)
+ successFieldProcessingWindow.setCursorPos(1,1)
+ successFieldProcessingWindow.setBackgroundColor(2048)
+ successFieldProcessingWindow.setTextColor(1)
+  successFieldProcessingWindow.write("Job in progress.")
 end
+
+
 
 
 function createAmountWindowComponents()
