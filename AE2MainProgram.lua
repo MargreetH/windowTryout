@@ -54,6 +54,7 @@ local dividedWindows5 = functions.returnWindows(furnaceWindow, 1, 29, 61, 8, 4, 
 local goldButton1 = dividedWindows1[1]
 local ironButton1 = dividedWindows1[2]
 local sandButton1 = dividedWindows2[1]
+local cobbleButton1 = dividedWindows2[2]
 
 --Amountwindow components: 5x5 rows
 local dividedWindows6 = functions.returnWindows(amountWindow, 1, 1, 61, 7, 4, true)
@@ -122,6 +123,13 @@ function createFurnaceButtons()
   ironButton1.setBackgroundColor(128)
   ironButton1.setTextColor(1)
   functions.fillButton(sandButton1, "sand")
+
+  cobbleButton1.setBackgroundColor(128)
+  cobbleButton1.setTextColor(1)
+  functions.fillButton(cobbleButton1 , "cob.stone")
+
+
+
 end
 
 function createReturnButton()
@@ -208,6 +216,8 @@ function clickedReturnButton()
    os.exit(0)
   elseif (currentActiveWindow == "pul") or (currentActiveWindow == "fur") then
     toggleWindows("start")
+  elseif currentActiveWindow == "amount" then
+    toggleWindows(amountOf)
   end
 end
 
@@ -236,7 +246,52 @@ function clickedSandButton1()
   amountOf = "fur"
   toggleWindows("amount")
 end
+
+function clickedCobbleButton1()
+  currentFingerprint = fingerprints.cobblestone
+  amountOf = "fur"
+  toggleWindows("amount")
+end
+
 --Handles all touch events
+function touchEventAmountWindow(xPos, yPos)
+  local enummy = 0
+  local bool = false
+  --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
+  --if bool then enummy = 1 bool = false end
+  print(xPos..","..yPos)
+
+  --Buttons located at normal x,y
+  --Buttons that are transposed
+  yPos = yPos - 4
+
+  for i = 1, 5, 1 do
+
+  end
+
+  bool = functions.checkInRangeWindow(goldButton1, xPos, yPos)
+  if bool then enummy = 1 bool = false end
+  bool = functions.checkInRangeWindow(ironButton1, xPos, yPos)
+  if bool then enummy = 2 bool = false end
+  bool = functions.checkInRangeWindow(sandButton1, xPos, yPos)
+  if bool then enummy = 3 bool = false end
+  bool = functions.checkInRangeWindow(cobbleButton1, xPos, yPos)
+  if bool then enummy = 4 bool = false end
+
+  if enummy == 1 then
+    clickedGoldButton1()
+  elseif enummy == 2 then
+    clickedIronButton1()
+  elseif enummy == 3 then
+    clickedSandButton1()
+  elseif enummy == 4 then
+    clickedCobbleButton1()
+  end
+end
+
+
+
+
 function touchEventFurnaceWindow(xPos, yPos)
   local enummy = 0
   local bool = false
@@ -253,6 +308,8 @@ function touchEventFurnaceWindow(xPos, yPos)
   if bool then enummy = 2 bool = false end
   bool = functions.checkInRangeWindow(sandButton1, xPos, yPos)
   if bool then enummy = 3 bool = false end
+  bool = functions.checkInRangeWindow(cobbleButton1, xPos, yPos)
+  if bool then enummy = 4 bool = false end
 
   if enummy == 1 then
     clickedGoldButton1()
@@ -261,7 +318,7 @@ function touchEventFurnaceWindow(xPos, yPos)
   elseif enummy == 3 then
     clickedSandButton1()
   elseif enummy == 4 then
-    clickedReturnButton()
+    clickedCobbleButton1()
   end
 end
 
@@ -306,6 +363,8 @@ function processEvents(event)
       touchEventStartWindow(event[3], event[4])
     elseif currentActiveWindow == "fur" then
       touchEventFurnaceWindow(event[3], event[4])
+    elseif currentActiveWindow == "amount" then
+      touchEventAmountWindow(event[3], event[4])
     end
 
   end

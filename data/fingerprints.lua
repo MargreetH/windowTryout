@@ -10,3 +10,4 @@ printedlogiccircuit = {id= "appliedenergistics2:item.Multimaterial", dmg = 18}
 printedengineeringcircuit = {id= "appliedenergistics2:item.Multimaterial", dmg = 17}
 silicon = {id= "EnderIO:itemMaterial", dmg = 0}
 sand = {id="minecraft:sand", dmg=0}
+cobble = {id="minecraft:cobblestone", dmg=0}
