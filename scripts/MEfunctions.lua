@@ -24,7 +24,7 @@ end
 function returnAmountOfItemsInSystem(fp, itemlist)
   local amountStored = nil
   for i = 1, #itemlist, 1 do
-    if (itemlist[i].fingerprint == fp) then
+    if (itemlist[i].fingerprint.id == fp.id) and (itemlist[i].fingerprint.dmg == fp.dmg) then
       amountStored = itemlist[i].size
     end
   end
