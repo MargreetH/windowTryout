@@ -171,6 +171,9 @@ local function wait (time)
   end
 end
 
+local mainBoolean = true
+local doesThePowerUpSpawn
+
 
 function nextStep()
 
@@ -189,6 +192,19 @@ function nextStep()
 
   x, y = doNotEscapeScreen(x,y)
 
+  --Check if we meet ourselves
+  local areWeInside
+  areWeInside = checkIfInsideSnake(x,y)
+  if areWeInside then
+    mainBoolean = false
+    local t = term.native()
+    t.setCursorPos(3,5)
+    t.setTextColor(16384)
+    t.write("GAME OVER!")
+    return
+  end
+
+
 
   snakeBlockWindows[1].reposition(x,y)
   term.native().clear()
@@ -198,8 +214,7 @@ end
 --rewriteScore()
 
 
-local mainBoolean = true
-local doesThePowerUpSpawn
+
 
 while mainBoolean do
 
@@ -211,3 +226,5 @@ while mainBoolean do
     --spawnRandomPowerup()
   end
 end
+
+wait(3)
