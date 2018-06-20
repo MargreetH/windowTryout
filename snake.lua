@@ -68,6 +68,7 @@ end
 
 
 function createSnakeBlock(x,y)
+  print("new block created")
   local index = #snakeBlockWindows + 1
   snakeBlockWindows[index] = window.create(term.native(), x, y, 1, 1)
   snakeBlockWindows[index].setBackgroundColor(1)
@@ -116,6 +117,7 @@ drawSnakeHead()
 
 function addBlockAtTail()
   local lengthOfSnake = #snakeBlockWindows
+  print("lengthOfSnake")
   local lastBlock = snakeBlockWindows[lengthOfSnake]
   local secondLastBlock = snakeBlockWindows[lengthOfSnake - 1]
   local xlast, ylast = lastBlock.getPosition()
