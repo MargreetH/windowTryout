@@ -9,6 +9,17 @@ local snakeBlockWindows = {}
 local maxX, maxY = term.getSize()
 
 
+function doNotEscapeScreen(x,y)
+  local newx
+  local newy
+  if x > maxX then newx = 1 end
+  if y > maxX then newy = 1 end
+  if x < 0 then newx = maxX end
+  if y < 0 then newx = maxY end
+  return newx, newy
+end
+
+
 function createSnakeBlock(snakeblockcoordinates)
   index = #snakeBlockCoordinates + 1
   snakeBlockWindows[index] = window.create(term, snakeBlockCoordinates[1], snakeBlockCoordinates[2], 1, 1)
@@ -20,6 +31,22 @@ end
 createSnakeBlock(snakeBlockCoordinates[1])
 createSnakeBlock(snakeBlockCoordinates[2])
 createSnakeBlock(snakeBlockCoordinates[3])
+
+function addBlockAtTail()
+  local lengthOfSnake = #snakeBlockWindows
+  local lastBlock = snakeBlockWindows(lengthOfSnake)
+  local secondLastBlock = snakeBlockWindows(lengthOfSnake - 1)
+  local xlast, ylast = lastBlock.getPosition()
+  local xsecondlast, ysecondlast = secondLastBlock.getPosition()
+
+  local xdifference = xlast - xsecondlast
+  local ydifference = ylast - ysecondlast
+  local newx = xlast + xdifference
+  local newy = ylast + xdifference
+  newx, newy = doNotEscapeScreen(newx,newy)
+  local coords = {newx, newy}
+  createSnakeBlock(coords)
+end
 
 function touchEvent(event)
 
