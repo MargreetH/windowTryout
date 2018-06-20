@@ -6,6 +6,8 @@ snakeBlockCoordinates[2] = {19, 7}
 snakeBlockCoordinates[3] = {18, 7}
 local snakeBlockWindows = {}
 
+local maxX, maxY = term.getSize()
+
 
 function createSnakeBlock(snakeblockcoordinates)
   index = #snakeBlockCoordinates + 1
@@ -60,9 +62,12 @@ function nextStep()
   x = x + currentMovingDirection[1]
   y = y + currentMovingDirection[2]
 
+  if x > maxX then x = 1 end
+  if y > maxY then y = 1 end
+
   snakeBlockWindows[1].reposition(x,y)
   term.clear()
-  
+
 
 
 end
