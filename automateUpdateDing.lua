@@ -73,9 +73,11 @@ else
 	 "https://raw.githubusercontent.com/MargreetH/windowTryout/master/AE2monotoring.lua",
 	 "https://raw.githubusercontent.com/MargreetH/windowTryout/master/AE2MainProgram.lua",
   "https://raw.githubusercontent.com/MargreetH/windowTryout/master/scripts/MEfunctions.lua",
+"https://raw.githubusercontent.com/MargreetH/windowTryout/master/data/fingerprints.lua",
 "https://raw.githubusercontent.com/MargreetH/windowTryout/master/data/fingerprints.lua"}
-	local otherpaths = {"/git", "/git/scripts", "/git", "/git", "/git","/git", "/git/scripts", "/git/data"}
-	local fileName = {"windowTest", "functions", "reactor", "reactorSettings", "AE2", "AE2MainProgram", "MEfunctions", "fingerprints"}
+
+	local otherpaths = {"/git", "/git/scripts", "/git", "/git", "/git","/git", "/git/scripts", "/git/data", "/git"}
+	local fileName = {"windowTest", "functions", "reactor", "reactorSettings", "AE2", "AE2MainProgram", "MEfunctions", "fingerprints", "snake"}
 
 	for i=1, #fileName, 1 do
 
