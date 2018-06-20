@@ -33,6 +33,8 @@ end
 function doNotEscapeScreen(x,y)
   local newx
   local newy
+  newx = x
+  newy = y
   if x > maxX then newx = 1 end
   if y > maxY then newy = 1 end
   if x == 0 then newx = maxX end
