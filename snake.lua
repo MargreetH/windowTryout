@@ -222,6 +222,15 @@ function nextStep()
     return
   end
 
+  local willPickupPowerup
+  willPickupPowerup = checkIfPowerUp(x,y)
+
+  if willPickupPowerup == false then
+    --nothing
+  else
+    pickedUpPowerUp(willPickupPowerup)
+  end
+
 
 
   snakeBlockWindows[1].reposition(x,y)
@@ -241,7 +250,7 @@ while mainBoolean do
   nextStep()
 
   doesThePowerUpSpawn = math.random(100)
-  if doesThePowerUpSpawn > 70 then
+  if doesThePowerUpSpawn > 97 then
     spawnRandomPowerup()
   end
 end
