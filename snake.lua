@@ -177,11 +177,14 @@ function nextStep()
   end
 
   local x, y = snakeBlockWindows[1].getPosition()
+  print("x = "..x.." y= "..y)
 
   x = x + currentMovingDirection[1]
   y = y + currentMovingDirection[2]
+  print("x = "..x.." y= "..y)
 
   x, y = doNotEscapeScreen(x,y)
+  print("x = "..x.." y= "..y)
 
   snakeBlockWindows[1].reposition(x,y)
 end
