@@ -182,7 +182,6 @@ function nextStep()
   x, y = doNotEscapeScreen(x,y)
 
   snakeBlockWindows[1].reposition(x,y)
-  term.clear()
 end
 
 --rewriteScore()
@@ -192,7 +191,7 @@ local mainBoolean = true
 local doesThePowerUpSpawn
 
 while mainBoolean do
-  --nextStep()
+  nextStep()
   wait(1)
 
   doesThePowerUpSpawn = math.random(100)
