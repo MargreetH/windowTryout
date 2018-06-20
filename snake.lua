@@ -21,7 +21,8 @@ end
 
 function rewriteScore()
   term.clear()
-  term.setCursorPos(1, maxY+1)
+  local cursorpos = maxY+1
+  term.setCursorPos(1, cursorpos)
   term.setTextColor(1)
   term.write("Score: "..score)
   reDrawAllStuff()
