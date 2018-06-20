@@ -173,23 +173,22 @@ end
 
 
 function nextStep()
-  print("flap")
+
   for i = 2, #snakeBlockWindows, 1 do
     local index2 = i - 1
     local xx, yy = snakeBlockWindows[index2].getPosition()
-    print("xx = "..xx.." yy= "..yy)
     snakeBlockWindows[index2].reposition(xx, yy)
   end
 
   local x, y = snakeBlockWindows[1].getPosition()
-  print("x = "..x.." y= "..y)
+
 
   x = x + currentMovingDirection[1]
   y = y + currentMovingDirection[2]
-  print("x = "..x.." y= "..y)
+
 
   x, y = doNotEscapeScreen(x,y)
-  print("x = "..x.." y= "..y)
+
 
   snakeBlockWindows[1].reposition(x,y)
 end
