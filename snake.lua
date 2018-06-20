@@ -123,8 +123,8 @@ function addBlockAtTail()
 
   local xdifference = xlast - xsecondlast
   local ydifference = ylast - ysecondlast
-  local newx = xlast + xdifference
-  local newy = ylast + ydifference
+  local newx = xlast - xdifference
+  local newy = ylast - ydifference
   newx, newy = doNotEscapeScreen(newx,newy)
   createSnakeBlock(newx, newy)
 end
