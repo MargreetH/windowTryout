@@ -5,6 +5,7 @@ snakeBlockCoordinates[1] = currentPosition
 snakeBlockCoordinates[2] = {19, 7}
 snakeBlockCoordinates[3] = {18, 7}
 local snakeBlockWindows = {}
+local powerUpWindows = {}
 
 local maxX, maxY = term.getSize()
 
@@ -19,9 +20,16 @@ function doNotEscapeScreen(x,y)
   return newx, newy
 end
 
+function createPowerUp(x,y)
+  index = #powerUpWindows + 1
+  snakeBlockWindows[index] = window.create(term.current(), x, y, 1, 1)
+  snakeBlockWindows[index].setBackgroundColor(4)
+  snakeBlockWindows[index].clear()
+end
+
 
 function createSnakeBlock(snakeblockcoordinates)
-  index = #snakeBlockCoordinates + 1
+  index = #snakeBlockWindows + 1
   snakeBlockWindows[index] = window.create(term.current(), snakeBlockCoordinates[1], snakeBlockCoordinates[2], 1, 1)
   snakeBlockWindows[index].setBackgroundColor(1)
   snakeBlockWindows[index].clear()
@@ -46,6 +54,9 @@ function addBlockAtTail()
   newx, newy = doNotEscapeScreen(newx,newy)
   local coords = {newx, newy}
   createSnakeBlock(coords)
+end
+
+function spawnRandomPowerup()
 end
 
 function touchEvent(event)
