@@ -143,7 +143,7 @@ function keyEvent(keycode)
     currentMovingDirection = {0,-1}
   elseif keycode == 203 then --left
     currentMovingDirection = {-1,0}
-  elseif keycode == 199 then --right
+  elseif keycode == 205 then --right
     currentMovingDirection = {1,0}
   end
 
