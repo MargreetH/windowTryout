@@ -172,7 +172,8 @@ function nextStep()
   for i = 2, #snakeBlockWindows, 1 do
     local index2 = i - 1
     local xx, yy = snakeBlockWindows[index2].getPosition()
-    snakeBlockWindows[i].reposition(xx, yy)
+    print("xx = "..xx.." yy= "..yy)
+    snakeBlockWindows[index2].reposition(xx, yy)
   end
 
   local x, y = snakeBlockWindows[1].getPosition()
