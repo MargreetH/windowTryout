@@ -74,7 +74,7 @@ else
 	 "https://raw.githubusercontent.com/MargreetH/windowTryout/master/AE2MainProgram.lua",
   "https://raw.githubusercontent.com/MargreetH/windowTryout/master/scripts/MEfunctions.lua",
 "https://raw.githubusercontent.com/MargreetH/windowTryout/master/data/fingerprints.lua",
-"https://raw.githubusercontent.com/MargreetH/windowTryout/master/data/snake.lua"}
+"https://raw.githubusercontent.com/MargreetH/windowTryout/master/snake.lua"}
 
 	local otherpaths = {"/git", "/git/scripts", "/git", "/git", "/git","/git", "/git/scripts", "/git/data", "/git"}
 	local fileName = {"windowTest", "functions", "reactor", "reactorSettings", "AE2", "AE2MainProgram", "MEfunctions", "fingerprints", "snake"}
