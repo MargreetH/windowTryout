@@ -10,7 +10,6 @@ function processEvents(event)
   else if event[1] == "key" then
     functions.printTableToTerminal(event)
   end
-
 end
 
 local function wait (time)
@@ -25,6 +24,7 @@ local function wait (time)
   end
 end
 
+print("plap")
 
 
 local mainBoolean = true
