@@ -169,6 +169,7 @@ end
 
 
 function nextStep()
+  print("flap")
   for i = 2, #snakeBlockWindows, 1 do
     local index2 = i - 1
     local xx, yy = snakeBlockWindows[index2].getPosition()
