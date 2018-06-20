@@ -160,8 +160,8 @@ end
 
 function nextStep()
   for i = 2, #snakeBlockWindows, 1 do
-    local xx, yy = snakeBlockWindows[i-1].getPosition
-    snakeBlockWindows.reposition(xx, yy)
+    local xx, yy = snakeBlockWindows[i-1].getPosition()
+    snakeBlockWindows[i].reposition(xx, yy)
   end
 
   local x, y = snakeBlockWindows[1].getPosition()
@@ -182,7 +182,7 @@ local mainBoolean = true
 local doesThePowerUpSpawn
 
 while mainBoolean do
-  nextStep()
+  --nextStep()
   wait(0.2)
 
   doesThePowerUpSpawn = math.random(100)
