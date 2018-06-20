@@ -1,11 +1,6 @@
 os.loadAPI("/git/scripts/functions")
 
 local currentMovingDirection = {1, 0}
-local currentPosition = {20, 7}
-local snakeBlockCoordinates = {}
-snakeBlockCoordinates[1] = currentPosition
-snakeBlockCoordinates[2] = {19, 7}
-snakeBlockCoordinates[3] = {18, 7}
 local snakeBlockWindows = {}
 local powerUpWindows = {}
 local score = 0
@@ -51,9 +46,9 @@ function createPowerUp(x,y)
 end
 
 
-function createSnakeBlock(snakeblockcoordinates)
+function createSnakeBlock(x,y)
   index = #snakeBlockWindows + 1
-  snakeBlockWindows[index] = window.create(term.current(), snakeBlockCoordinates[1], snakeBlockCoordinates[2], 1, 1)
+  snakeBlockWindows[index] = window.create(term.current(), x, y, 1, 1)
   snakeBlockWindows[index].setBackgroundColor(1)
   snakeBlockWindows[index].clear()
 end
@@ -88,9 +83,9 @@ end
 
 
 --Create first few blocks
-createSnakeBlock(snakeBlockCoordinates[1])
-createSnakeBlock(snakeBlockCoordinates[2])
-createSnakeBlock(snakeBlockCoordinates[3])
+createSnakeBlock(20,7)
+createSnakeBlock(19,7)
+createSnakeBlock(18,7)
 
 drawSnakeHead()
 
