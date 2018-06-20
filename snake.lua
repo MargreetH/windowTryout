@@ -146,8 +146,9 @@ function spawnRandomPowerup()
     randomx = math.random(maxX)
     randomY = math.random(maxY)
     bool2 = checkIfInsideSnake(randomx, randomy)
+    bool3 = checkIfPowerUp(randomx, randomy)
 
-    if bool2 == false then
+    if (bool2 == false) and (bool3 == false) then
       createPowerUp(randomx, randomy)
       bool = false
     end
