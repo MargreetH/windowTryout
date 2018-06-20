@@ -22,7 +22,7 @@ end
 
 function createSnakeBlock(snakeblockcoordinates)
   index = #snakeBlockCoordinates + 1
-  snakeBlockWindows[index] = window.create(term, snakeBlockCoordinates[1], snakeBlockCoordinates[2], 1, 1)
+  snakeBlockWindows[index] = window.create(term.current(), snakeBlockCoordinates[1], snakeBlockCoordinates[2], 1, 1)
   snakeBlockWindows[index].setBackgroundColor(1)
   snakeBlockWindows[index].clear()
 end
