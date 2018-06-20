@@ -174,6 +174,7 @@ function removeFromtable(table, index)
   for i = secondStart, #table, 1 do
     newTable[i] = table[i]
   end
+  return newTable
 end
 
 function textInMiddleButton(w, text)

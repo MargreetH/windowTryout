@@ -6,7 +6,7 @@ currentMovingDirection[2] = 0
 local snakeBlockWindows = {}
 local powerUpWindows = {}
 local score = 0
-local waitingTime = 0.5
+local waitingTime = 0.1
 
 local maxX, maxY = term.native().getSize()
 maxY = maxY - 1
