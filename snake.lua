@@ -77,7 +77,7 @@ end
 
 function drawSnakeHead()
   snakeBlockWindows[1].setTextColor(32768)
-  functions.textInMiddleButton(". .")
+  functions.textInMiddleButton(snakeBlockWindows[1],". .")
 end
 
 
