@@ -169,7 +169,7 @@ function removeFromtable(table, index)
     newTable[i] = table[i]
   end
 
-  local secondstart = index + 1
+  local secondStart = index + 1
 
   for i = secondStart, #table, 1 do
     newTable[i] = table[i]
