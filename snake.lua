@@ -5,7 +5,7 @@ local snakeBlockWindows = {}
 local powerUpWindows = {}
 local score = 0
 
-local maxX, maxY = term.getSize()
+local maxX, maxY = term.native().getSize()
 maxY = maxY - 1
 
 function reDrawAllStuff()
@@ -19,11 +19,11 @@ function reDrawAllStuff()
 end
 
 function rewriteScore()
-  term.clear()
+  term.native().clear()
   local cursorpos = maxY+1
-  term.setCursorPos(1, cursorpos)
-  term.setTextColor(1)
-  term.write("Score: "..score)
+  term.native().setCursorPos(1, cursorpos)
+  term.native().setTextColor(1)
+  term.native().write("Score: "..score)
   reDrawAllStuff()
 end
 
@@ -48,7 +48,7 @@ end
 
 function createSnakeBlock(x,y)
   local index = #snakeBlockWindows + 1
-  snakeBlockWindows[index] = window.create(term.native(), x, y, 1, 1)
+  snakeBlockWindows[index] = window.create(term.current(), x, y, 1, 1)
   snakeBlockWindows[index].setBackgroundColor(1)
   snakeBlockWindows[index].clear()
 end
@@ -87,7 +87,7 @@ createSnakeBlock(20,7)
 createSnakeBlock(19,7)
 createSnakeBlock(18,7)
 
-drawSnakeHead()
+--drawSnakeHead()
 
 
 function addBlockAtTail()
