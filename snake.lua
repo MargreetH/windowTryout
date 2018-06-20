@@ -192,7 +192,7 @@ local mainBoolean = true
 local doesThePowerUpSpawn
 
 while mainBoolean do
-  --nextStep()
+  nextStep()
   wait(0.2)
 
   doesThePowerUpSpawn = math.random(100)
