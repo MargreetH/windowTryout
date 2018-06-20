@@ -97,7 +97,7 @@ end
 
 function drawSnakeHead()
   snakeBlockWindows[1].setTextColor(32768)
-  functions.textInMiddleButton(snakeBlockWindows[1],". .")
+  functions.textInMiddleButton(snakeBlockWindows[1],"..")
 end
 
 
@@ -109,7 +109,7 @@ createSnakeBlock(18,7)
 
 createPowerUp(2,2)
 
---drawSnakeHead()
+drawSnakeHead()
 
 
 function addBlockAtTail()
