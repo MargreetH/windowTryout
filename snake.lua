@@ -168,8 +168,14 @@ rewriteScore(0)
 
 
 local mainBoolean = true
+local doesThePowerUpSpawn
 
 while mainBoolean do
-
+  nextStep()
   wait(0.2)
+
+  doesThePowerUpSpawn = math.random(100)
+  if doesThePowerUpSpawn > 80 then
+    spawnRandomPowerup()
+  end
 end
