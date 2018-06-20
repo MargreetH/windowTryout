@@ -36,7 +36,7 @@ function createSnakeBlock(snakeblockcoordinates)
 end
 
 function checkIfInsideSnake(x,y)
-  for i = 1, $snakeBlockWindows, 1 do
+  for i = 1, #snakeBlockWindows, 1 do
     snakex, snakey = snakeBlockWindows[i].getPosition()
     if (snakex == x) and (snakey == y) then
       return true
