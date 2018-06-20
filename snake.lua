@@ -150,6 +150,7 @@ function processEvents(event)
   if event[1] == "monitor_touch" then
     touchEvent(event[3], event[4])
   elseif event[1] == "key" then
+    print(event[2])
     keyEvent(event[2])
   end
 end
