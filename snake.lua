@@ -191,6 +191,8 @@ function nextStep()
 
 
   snakeBlockWindows[1].reposition(x,y)
+  term.native().clear()
+  reDrawAllStuff()
 end
 
 --rewriteScore()
@@ -201,7 +203,7 @@ local doesThePowerUpSpawn
 
 while mainBoolean do
 
-  wait(1)
+  wait(0.3)
   nextStep()
 
   doesThePowerUpSpawn = math.random(100)
