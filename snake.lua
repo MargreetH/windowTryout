@@ -62,7 +62,7 @@ end
 function createPowerUp(x,y)
   local index = #powerUpWindows + 1
   powerUpWindows[index] = window.create(term.native(), x, y, 1, 1)
-  powerUpWindows[index].setBackgroundColor(4)
+  powerUpWindows[index].setBackgroundColor(2)
   powerUpWindows[index].clear()
 end
 
