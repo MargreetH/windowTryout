@@ -34,13 +34,13 @@ function doNotEscapeScreen(x,y)
   local newy
   if x > maxX then newx = 1 end
   if y > maxX then newy = 1 end
-  if x < 0 then newx = maxX end
-  if y < 0 then newx = maxY end
+  if x == 0 then newx = maxX end
+  if y == 0 then newx = maxY end
   return newx, newy
 end
 
 function createPowerUp(x,y)
-  index = #powerUpWindows + 1
+  local index = #powerUpWindows + 1
   powerUpWindows[index] = window.create(term.current(), x, y, 1, 1)
   powerUpWindows[index].setBackgroundColor(4)
   powerUpWindows[index].clear()
@@ -48,7 +48,7 @@ end
 
 
 function createSnakeBlock(x,y)
-  index = #snakeBlockWindows + 1
+  local index = #snakeBlockWindows + 1
   snakeBlockWindows[index] = window.create(term.current(), x, y, 1, 1)
   snakeBlockWindows[index].setBackgroundColor(1)
   snakeBlockWindows[index].clear()
@@ -56,7 +56,7 @@ end
 
 function checkIfInsideSnake(x,y)
   for i = 1, #snakeBlockWindows, 1 do
-    snakex, snakey = snakeBlockWindows[i].getPosition()
+    local snakex, snakey = snakeBlockWindows[i].getPosition()
     if (snakex == x) and (snakey == y) then
       return true
     end
@@ -67,7 +67,7 @@ end
 
 function checkIfPowerUp(x,y)
   for i = 1, #powerUpWindows, 1 do
-    xx, yy = powerUpWindows[i].getPosition()
+    local xx, yy = powerUpWindows[i].getPosition()
     if (xx == x) and (yy == y) then
       return i
     end
