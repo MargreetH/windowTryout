@@ -71,7 +71,6 @@ function spawnRandomPowerup()
 
   local randomx
   local randomy
-
   local bool = true
 
   while bool do
@@ -83,10 +82,7 @@ function spawnRandomPowerup()
       createPowerUp(randomx, randomy)
       bool = false
     end
-
-
   end
-
 end
 
 function touchEvent(event)
