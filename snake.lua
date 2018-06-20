@@ -11,8 +11,8 @@ local maxX, maxY = term.getSize()
 maxY = maxY - 1
 
 function rewriteScore(score)
-  term.clear
-  term.setCursorPos(1,maxY+1)
+  term.clear()
+  term.setCursorPos(1, maxY+1)
   term.setTextColor(1)
   term.write("Score: "..score)
 
