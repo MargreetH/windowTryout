@@ -1,6 +1,8 @@
 os.loadAPI("/git/scripts/functions")
 
-local currentMovingDirection = {1, 0}
+local currentMovingDirection = {}
+currentMovingDirection[1] = 1
+currentMovingDirection[2] = 0
 local snakeBlockWindows = {}
 local powerUpWindows = {}
 local score = 0
