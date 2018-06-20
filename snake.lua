@@ -35,6 +35,17 @@ function createSnakeBlock(snakeblockcoordinates)
   snakeBlockWindows[index].clear()
 end
 
+function checkIfInsideSnake(x,y)
+  for i = 1, $snakeBlockWindows, 1 do
+    snakex, snakey = snakeBlockWindows[i].getPosition()
+    if (snakex == x) and (snakey == y) then
+      return true
+    end
+  end
+
+  return false
+end
+
 --Create first few blocks
 createSnakeBlock(snakeBlockCoordinates[1])
 createSnakeBlock(snakeBlockCoordinates[2])
@@ -57,6 +68,25 @@ function addBlockAtTail()
 end
 
 function spawnRandomPowerup()
+
+  local randomx
+  local randomy
+
+  local bool = true
+
+  while bool do
+    randomx = math.random(maxX)
+    randomY = math.random(maxY)
+    bool2 = checkIfInsideSnake(randomx, randomy)
+
+    if ~bool2 then
+      createPowerUp(randomx, randomy)
+      bool = false
+    end
+
+
+  end
+
 end
 
 function touchEvent(event)
