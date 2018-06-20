@@ -192,8 +192,9 @@ local mainBoolean = true
 local doesThePowerUpSpawn
 
 while mainBoolean do
-  nextStep()
+
   wait(1)
+  nextStep()
 
   doesThePowerUpSpawn = math.random(100)
   if doesThePowerUpSpawn > 95 then
