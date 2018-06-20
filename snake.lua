@@ -192,10 +192,10 @@ local doesThePowerUpSpawn
 
 while mainBoolean do
   nextStep()
-  wait(0.2)
+  wait(1)
 
   doesThePowerUpSpawn = math.random(100)
   if doesThePowerUpSpawn > 95 then
-    spawnRandomPowerup()
+    --spawnRandomPowerup()
   end
 end
