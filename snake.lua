@@ -8,6 +8,22 @@ local snakeBlockWindows = {}
 local powerUpWindows = {}
 
 local maxX, maxY = term.getSize()
+maxY = maxY - 1
+
+function rewriteScore(score)
+  term.clear
+  term.setCursorPos(1,maxY+1)
+  term.setTextColor(1)
+  term.write("Score: "..score)
+
+  for i = 1, #snakeBlockWindows, 1 do
+    snakeBlockWindows[i].redraw()
+  end
+
+  for i = 1, #powerUpWindows, 1 do
+    powerUpWindows[i].redraw()
+  end
+end
 
 
 function doNotEscapeScreen(x,y)
