@@ -6,6 +6,7 @@ currentMovingDirection[2] = 0
 local snakeBlockWindows = {}
 local powerUpWindows = {}
 local score = 0
+local waitingTime
 
 local maxX, maxY = term.native().getSize()
 maxY = maxY - 1
@@ -27,6 +28,21 @@ function rewriteScore()
   term.native().setTextColor(1)
   term.native().write("Score: "..score)
   reDrawAllStuff()
+
+  if score > 3 then
+    waitingTime = 0.2
+  elseif score > 5 then
+    waitingTime = 0.15
+  elseif score > 10 then
+    waitingTime = 0.12
+  elseif score > 20 then
+    waitingTime = 0.11
+  elseif score > 50 then
+    waitingTime = 0.05
+  elseif score > 100 then
+    waitingtime = 0.01
+  end
+
 end
 
 
@@ -217,7 +233,8 @@ end
 
 while mainBoolean do
 
-  wait(0.3)
+
+  wait(waitingTime)
   nextStep()
 
   doesThePowerUpSpawn = math.random(100)
