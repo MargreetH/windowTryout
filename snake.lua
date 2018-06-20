@@ -86,9 +86,9 @@ end
 --Create first few blocks
 createSnakeBlock(20,7)
 createSnakeBlock(19,7)
-createSnakeBlock(18,7)
+--createSnakeBlock(18,7)
 
-drawSnakeHead()
+--drawSnakeHead()
 
 
 function addBlockAtTail()
@@ -186,7 +186,7 @@ function nextStep()
   term.clear()
 end
 
-rewriteScore(0)
+--rewriteScore()
 
 
 local mainBoolean = true
