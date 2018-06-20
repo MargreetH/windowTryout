@@ -80,14 +80,14 @@ function drawSnakeHead()
   functions.textInMiddleButton(snakeBlockWindows[1],". .")
 end
 
-print("hoi")
+
 
 --Create first few blocks
 createSnakeBlock(20,7)
 createSnakeBlock(19,7)
---createSnakeBlock(18,7)
-print("hoi2")
---drawSnakeHead()
+createSnakeBlock(18,7)
+
+drawSnakeHead()
 
 
 function addBlockAtTail()
