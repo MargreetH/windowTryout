@@ -9,7 +9,6 @@ local maxX, maxY = term.getSize()
 maxY = maxY - 1
 
 function reDrawAllStuff()
-
   for i = 1, #snakeBlockWindows, 1 do
     snakeBlockWindows[i].redraw()
   end
@@ -49,7 +48,7 @@ end
 
 function createSnakeBlock(x,y)
   local index = #snakeBlockWindows + 1
-  snakeBlockWindows[index] = window.create(term.current(), x, y, 1, 1)
+  snakeBlockWindows[index] = window.create(term.native(), x, y, 1, 1)
   snakeBlockWindows[index].setBackgroundColor(1)
   snakeBlockWindows[index].clear()
 end
@@ -81,13 +80,13 @@ function drawSnakeHead()
   functions.textInMiddleButton(snakeBlockWindows[1],". .")
 end
 
-
+print("hoi")
 
 --Create first few blocks
 createSnakeBlock(20,7)
 createSnakeBlock(19,7)
 --createSnakeBlock(18,7)
-
+print("hoi2")
 --drawSnakeHead()
 
 
@@ -193,7 +192,7 @@ local mainBoolean = true
 local doesThePowerUpSpawn
 
 while mainBoolean do
-  nextStep()
+  --nextStep()
   wait(1)
 
   doesThePowerUpSpawn = math.random(100)
