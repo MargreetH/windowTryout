@@ -118,6 +118,7 @@ function spawnRandomPowerup()
   local randomx
   local randomy
   local bool = true
+  local bool2
 
   while bool do
     randomx = math.random(maxX)
