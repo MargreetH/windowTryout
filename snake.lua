@@ -131,7 +131,16 @@ function spawnRandomPowerup()
   end
 end
 
-function touchEvent(event)
+function keyEvent(keycode)
+  if keycode == 208 then --down
+    currentMovingDirection = {0,1}
+  elseif keycode == 200 then --up
+    currentMovingDirection = {0,-1}
+  elseif keycode == 203 then --left
+    currentMovingDirection = {-1,0}
+  elseif keycode == 208 then --right
+    currentMovingDirection = {1,0}
+  end
 
 end
 
