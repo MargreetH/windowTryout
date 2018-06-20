@@ -157,7 +157,6 @@ local function wait (time)
   end
 end
 
-print("plap")
 
 function nextStep()
   for i = 2, #snakeBlockWindows, 1 do
