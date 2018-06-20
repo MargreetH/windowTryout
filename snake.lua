@@ -13,11 +13,7 @@ local score = 0
 local maxX, maxY = term.getSize()
 maxY = maxY - 1
 
-function rewriteScore()
-  term.clear()
-  term.setCursorPos(1, maxY+1)
-  term.setTextColor(1)
-  term.write("Score: "..score)
+function reDrawAllStuff()
 
   for i = 1, #snakeBlockWindows, 1 do
     snakeBlockWindows[i].redraw()
@@ -26,6 +22,14 @@ function rewriteScore()
   for i = 1, #powerUpWindows, 1 do
     powerUpWindows[i].redraw()
   end
+end
+
+function rewriteScore()
+  term.clear()
+  term.setCursorPos(1, maxY+1)
+  term.setTextColor(1)
+  term.write("Score: "..score)
+  reDrawAllStuff()
 end
 
 
@@ -76,10 +80,20 @@ function checkIfPowerUp(x,y)
   return false
 end
 
+function drawSnakeHead()
+  snakeBlockWindows[1].setTextColor(32768)
+  functions.textInMiddleButton(". .")
+end
+
+
+
 --Create first few blocks
 createSnakeBlock(snakeBlockCoordinates[1])
 createSnakeBlock(snakeBlockCoordinates[2])
 createSnakeBlock(snakeBlockCoordinates[3])
+
+drawSnakeHead()
+
 
 function addBlockAtTail()
   local lengthOfSnake = #snakeBlockWindows
