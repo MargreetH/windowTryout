@@ -143,8 +143,8 @@ function spawnRandomPowerup()
   local bool2
 
   while bool do
-    randomx = math.random(maxX)
-    randomY = math.random(maxY)
+    local randomx = math.random(maxX)
+    local randomy = math.random(maxY)
     bool2 = checkIfInsideSnake(randomx, randomy)
     bool3 = checkIfPowerUp(randomx, randomy)
 
