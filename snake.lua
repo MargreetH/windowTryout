@@ -1,3 +1,5 @@
+os.loadAPI("/git/scripts/functions")
+
 local currentMovingDirection = {1, 0}
 local currentPosition = {20, 7}
 local snakeBlockCoordinates = {}
@@ -62,6 +64,17 @@ function checkIfInsideSnake(x,y)
   return false
 end
 
+function checkIfPowerUp(x,y)
+  for i = 1, #powerUpWindows, 1 do
+    xx, yy = powerUpWindows[i].getPosition()
+    if (xx == x) and (yy == y) then
+      return i
+    end
+  end
+
+  return false
+end
+
 --Create first few blocks
 createSnakeBlock(snakeBlockCoordinates[1])
 createSnakeBlock(snakeBlockCoordinates[2])
@@ -81,6 +94,12 @@ function addBlockAtTail()
   newx, newy = doNotEscapeScreen(newx,newy)
   local coords = {newx, newy}
   createSnakeBlock(coords)
+end
+
+function pickedUpPowerUp(index)
+  powerUpWindows[index].setVisible(false)
+  powerUpWindows = functions.removeFromtable(powerUpWindows, index)
+  addBlockAtTail()
 end
 
 function spawnRandomPowerup()
@@ -129,7 +148,6 @@ end
 print("plap")
 
 function nextStep()
-
   for i = 2, #snakeBlockWindows, 1 do
     local xx, yy = snakeBlockWindows[i-1].getPosition
     snakeBlockWindows.reposition(xx, yy)
@@ -144,8 +162,9 @@ function nextStep()
 
   snakeBlockWindows[1].reposition(x,y)
   term.clear()
-
 end
+
+rewriteScore(0)
 
 
 local mainBoolean = true

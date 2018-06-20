@@ -160,6 +160,22 @@ function fillWindow(w, bgcolor)
   end
 end
 
+function removeFromtable(table, index)
+
+  local newTable = {}
+  local firstlimit = index - 1
+  if firstlimit < 0 then firstlimit = 0 end
+  for i = 1, firstlimit, 1 do
+    newTable[i] = table[i]
+  end
+
+  local secondstart = index + 1
+
+  for i = secondStart, #table, 1 do
+    newTable[i] = table[i]
+  end
+end
+
 function textInMiddleButton(w, text)
   local width, height = w.getSize()
   w.clear()
