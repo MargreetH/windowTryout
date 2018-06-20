@@ -40,9 +40,9 @@ end
 
 function createPowerUp(x,y)
   index = #powerUpWindows + 1
-  snakeBlockWindows[index] = window.create(term.current(), x, y, 1, 1)
-  snakeBlockWindows[index].setBackgroundColor(4)
-  snakeBlockWindows[index].clear()
+  powerUpWindows[index] = window.create(term.current(), x, y, 1, 1)
+  powerUpWindows[index].setBackgroundColor(4)
+  powerUpWindows[index].clear()
 end
 
 
@@ -102,8 +102,7 @@ function addBlockAtTail()
   local newx = xlast + xdifference
   local newy = ylast + xdifference
   newx, newy = doNotEscapeScreen(newx,newy)
-  local coords = {newx, newy}
-  createSnakeBlock(coords)
+  createSnakeBlock(newx, newy)
 end
 
 function pickedUpPowerUp(index)
@@ -161,7 +160,7 @@ end
 
 function nextStep()
   for i = 2, #snakeBlockWindows, 1 do
-    local index2 = i -1
+    local index2 = i - 1
     local xx, yy = snakeBlockWindows[index2].getPosition()
     snakeBlockWindows[i].reposition(xx, yy)
   end
