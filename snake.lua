@@ -107,6 +107,8 @@ createSnakeBlock(20,7)
 createSnakeBlock(19,7)
 createSnakeBlock(18,7)
 
+createPowerUp(2,2)
+
 --drawSnakeHead()
 
 
@@ -238,7 +240,7 @@ while mainBoolean do
   nextStep()
 
   doesThePowerUpSpawn = math.random(100)
-  if doesThePowerUpSpawn > 95 then
+  if doesThePowerUpSpawn > 70 then
     spawnRandomPowerup()
   end
 end
