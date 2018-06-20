@@ -255,6 +255,7 @@ while mainBoolean do
   if doesThePowerUpSpawn > 97 then
     spawnRandomPowerup()
   end
+  addBlockAtTail()
 end
 
 wait(3)
