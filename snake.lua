@@ -187,7 +187,7 @@ while mainBoolean do
   wait(0.2)
 
   doesThePowerUpSpawn = math.random(100)
-  if doesThePowerUpSpawn > 80 then
+  if doesThePowerUpSpawn > 95 then
     spawnRandomPowerup()
   end
 end
