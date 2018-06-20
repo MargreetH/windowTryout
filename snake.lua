@@ -22,12 +22,13 @@ function reDrawAllStuff()
 end
 
 function rewriteScore()
+  reDrawAllStuff()
   term.native().clear()
   local cursorpos = maxY+1
   term.native().setCursorPos(1, cursorpos)
   term.native().setTextColor(1)
   term.native().write("Score: "..score)
-  reDrawAllStuff()
+
 
   if score > 3 then
     waitingTime = 0.2
@@ -71,6 +72,7 @@ function createSnakeBlock(x,y)
   snakeBlockWindows[index] = window.create(term.native(), x, y, 1, 1)
   snakeBlockWindows[index].setBackgroundColor(1)
   snakeBlockWindows[index].clear()
+  reDrawAllStuff()
 end
 
 function checkIfInsideSnake(x,y)
