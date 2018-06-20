@@ -8,11 +8,12 @@ snakeBlockCoordinates[2] = {19, 7}
 snakeBlockCoordinates[3] = {18, 7}
 local snakeBlockWindows = {}
 local powerUpWindows = {}
+local score = 0
 
 local maxX, maxY = term.getSize()
 maxY = maxY - 1
 
-function rewriteScore(score)
+function rewriteScore()
   term.clear()
   term.setCursorPos(1, maxY+1)
   term.setTextColor(1)
@@ -100,6 +101,8 @@ function pickedUpPowerUp(index)
   powerUpWindows[index].setVisible(false)
   powerUpWindows = functions.removeFromtable(powerUpWindows, index)
   addBlockAtTail()
+  score = (score + 1)*2
+  rewriteScore()
 end
 
 function spawnRandomPowerup()
