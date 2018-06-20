@@ -138,7 +138,7 @@ function keyEvent(keycode)
     currentMovingDirection = {0,-1}
   elseif keycode == 203 then --left
     currentMovingDirection = {-1,0}
-  elseif keycode == 208 then --right
+  elseif keycode == 199 then --right
     currentMovingDirection = {1,0}
   end
 
@@ -149,8 +149,7 @@ function processEvents(event)
   if event[1] == "monitor_touch" then
     touchEvent(event[3], event[4])
   elseif event[1] == "key" then
-    term.setCursorPos(1,1)
-    functions.printTableToTerminal(event)
+    keyEvent(event[2])
   end
 end
 
