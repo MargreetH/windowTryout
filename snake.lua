@@ -21,7 +21,7 @@ createSnakeBlock(snakeBlockCoordinates[1])
 createSnakeBlock(snakeBlockCoordinates[2])
 createSnakeBlock(snakeBlockCoordinates[3])
 
-function touchEvent(xPos, yPos)
+function touchEvent(event)
 
 end
 
@@ -51,7 +51,6 @@ print("plap")
 
 function nextStep()
 
-
   for i = 2, #snakeBlockWindows, 1 do
     local xx, yy = snakeBlockWindows[i-1].getPosition
     snakeBlockWindows.reposition(xx, yy)
@@ -67,8 +66,6 @@ function nextStep()
 
   snakeBlockWindows[1].reposition(x,y)
   term.clear()
-
-
 
 end
 
