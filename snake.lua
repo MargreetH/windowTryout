@@ -87,8 +87,7 @@ function nextStep()
   x = x + currentMovingDirection[1]
   y = y + currentMovingDirection[2]
 
-  if x > maxX then x = 1 end
-  if y > maxY then y = 1 end
+  x, y = doNotEscapeScreen(x,y)
 
   snakeBlockWindows[1].reposition(x,y)
   term.clear()
