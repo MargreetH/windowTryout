@@ -114,8 +114,8 @@ drawSnakeHead()
 
 function addBlockAtTail()
   local lengthOfSnake = #snakeBlockWindows
-  local lastBlock = snakeBlockWindows(lengthOfSnake)
-  local secondLastBlock = snakeBlockWindows(lengthOfSnake - 1)
+  local lastBlock = snakeBlockWindows[lengthOfSnake]
+  local secondLastBlock = snakeBlockWindows[lengthOfSnake - 1]
   local xlast, ylast = lastBlock.getPosition()
   local xsecondlast, ysecondlast = secondLastBlock.getPosition()
 
