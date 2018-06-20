@@ -161,7 +161,8 @@ end
 
 function nextStep()
   for i = 2, #snakeBlockWindows, 1 do
-    local xx, yy = snakeBlockWindows[i-1].getPosition()
+    local index2 = i -1
+    local xx, yy = snakeBlockWindows[index2].getPosition()
     snakeBlockWindows[i].reposition(xx, yy)
   end
 
