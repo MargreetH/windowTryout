@@ -40,7 +40,7 @@ end
 
 function createPowerUp(x,y)
   local index = #powerUpWindows + 1
-  powerUpWindows[index] = window.create(term.current(), x, y, 1, 1)
+  powerUpWindows[index] = window.create(term.native(), x, y, 1, 1)
   powerUpWindows[index].setBackgroundColor(4)
   powerUpWindows[index].clear()
 end
@@ -48,7 +48,7 @@ end
 
 function createSnakeBlock(x,y)
   local index = #snakeBlockWindows + 1
-  snakeBlockWindows[index] = window.create(term.current(), x, y, 1, 1)
+  snakeBlockWindows[index] = window.create(term.native(), x, y, 1, 1)
   snakeBlockWindows[index].setBackgroundColor(1)
   snakeBlockWindows[index].clear()
 end
