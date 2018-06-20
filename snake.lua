@@ -27,10 +27,9 @@ end
 
 
 function processEvents(event)
-
   if event[1] == "monitor_touch" then
     touchEvent(event[3], event[4])
-  else if event[1] == "key" then
+  elseif event[1] == "key" then
     functions.printTableToTerminal(event)
   end
 end
