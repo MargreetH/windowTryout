@@ -1,4 +1,4 @@
-
+--comment
 print("adasasddsa")
 
 
@@ -69,6 +69,7 @@ local ironButton1 = dividedWindows1[2]
 local sandButton1 = dividedWindows2[1]
 local cobbleButton1 = dividedWindows2[2]
 local rubberwoodButton1 = dividedWindows2[3]
+local sprucewoodButton1 = dividedWindows2[4]
 
 --Pulverizer window components, same as above
 local dividedWindows31 = functions.returnWindows(pulverizerWindow, 1, 1, 61, 7, 4, true)
@@ -333,6 +334,10 @@ function createFurnaceButtons()
   cobbleButton1.setBackgroundColor(32768)
   cobbleButton1.setTextColor(1)
   functions.textInMiddleButton(rubberwoodButton1 , "rubberwood")
+
+  cobbleButton1.setBackgroundColor(4096)
+  cobbleButton1.setTextColor(1)
+  functions.textInMiddleButton(sprucewoodButton1 , "sprucewood")
 end
 
 function createReturnButton()
@@ -451,6 +456,12 @@ function clickedRubberWoodButton1()
   toggleWindows("amount")
 end
 
+function clickedSpruceWoodButton1()
+  currentFingerprint = fingerprints.sprucewood
+  amountOf = "fur"
+  toggleWindows("amount")
+end
+
 function clickedCobbleButton2()
   currentFingerprint = fingerprints.cobble
   amountOf = "pul"
@@ -530,45 +541,45 @@ function touchEventPulverizerWindow(xPos, yPos)
   elseif enummy == 5 then
 
   elseif enummy == 6 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 7 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 8 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 9 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 10 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 11 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 12 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 13 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 14 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 15 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 16 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 17 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 18 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 19 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 20 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 21 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 22 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 23 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 24 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 25 then
-    --clickedRubberWoodButton1()
+    --comment
   end
 
 end
@@ -595,6 +606,8 @@ function touchEventFurnaceWindow(xPos, yPos)
   if bool then enummy = 4 bool = false end
   bool = functions.checkInRangeWindow(rubberwoodButton1, xPos, yPos)
   if bool then enummy = 5 bool = false end
+  bool = functions.checkInRangeWindow(sprucewoodButton1, xPos, yPos)
+  if bool then enummy = 6 bool = false end
 
 
 
@@ -609,45 +622,45 @@ function touchEventFurnaceWindow(xPos, yPos)
   elseif enummy == 5 then
     clickedRubberWoodButton1()
   elseif enummy == 6 then
-    --clickedRubberWoodButton1()
+    clickedSpruceWoodButton1()
   elseif enummy == 7 then
-    --clickedRubberWoodButton1()
+
   elseif enummy == 8 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 9 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 10 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 11 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 12 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 13 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 14 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 15 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 16 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 17 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 18 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 19 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 20 then
-    --clickedRubberWoodButton1()
+
   elseif enummy == 21 then
-    --clickedRubberWoodButton1()
+
   elseif enummy == 22 then
-    --clickedRubberWoodButton1()
+
   elseif enummy == 23 then
-    --clickedRubberWoodButton1()
+    --comment
   elseif enummy == 24 then
-    --clickedRubberWoodButton1()
+
   elseif enummy == 25 then
-    --clickedRubberWoodButton1()
+
   end
 end
 
