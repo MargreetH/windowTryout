@@ -69,7 +69,7 @@ function setExtraWindowKeys(object,fp, amo, label)
 end
 
 --Furnacewindow components: 5x4 rows
-local furnaceGrid = functions.returnWindowGrid({m=furnaceWindow, x=1, y=1, width=61,height=7, offsetY=4, partshorizontal=4, partsvertical=5})
+local furnaceGrid = functions.returnWindowGrid({m=furnaceWindow, x=1, y=1, width=61,height=36, offsetY=4, partshorizontal=4, partsvertical=5})
 
 furnaceGrid[1][1] = setExtraWindowKeys(furnaceGrid[1][1], fingerprints.pulverizedgold, "fur", "pul.gold")
 furnaceGrid[1][2] = setExtraWindowKeys(furnaceGrid[1][2], fingerprints.pulverizediron, "fur", "pul.iron")
