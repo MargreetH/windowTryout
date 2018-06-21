@@ -69,6 +69,11 @@ function getIndexWither()
   return 0
 end
 
+function halfCompleteTurn()
+  turtle.turnLeft()
+  turtle.turnLeft()
+end
+
 
 local loopBoolean = true
 local currentSoulSandSlot
@@ -82,23 +87,37 @@ while loopBoolean do
     print("Out of resources")
     os.exit()
   end
-  
+
   turtle.select(currentSoulSandSlot)
+
+  --Place the 2 single blocks
+  turtle.placeUp()
+  turtle.forward()
+  placeBlockBehind()
+
+  --place the 3x2 blocks
   placeBlocksOnLeftAndRightSides()
   turtle.up()
   turtle.placeDown()
   placeBlocksOnLeftAndRightSides()
-  	turtle.forward()
-    placeBlockBehind()
-    turtle.placeDown()
+  turtle.forward()
+  turtle.left()
+  turtle.left()
+  turtle.place()
+
+
+  --Place wither skulls
+    turtle.select(currentWitherSlot)
+    turtle.up()
     turtle.forward()
-    placeBlockBehind()
+    placeBlocksOnLeftAndRightSides()
+    turtle.back()
+    --turtle.place()
 
-    --Place wither skulls
-
-
+    turtle.back()
+    turtle.left()
+    turtle.left()
     turtle.down()
-    turtle.forward()
-    turtle.forward()
+    turtle.down()
 
 end
