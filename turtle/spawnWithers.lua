@@ -26,6 +26,7 @@ end
 --Check where the soulsand and wither skulls are
 for i = 1, #allSlotDetails, 1 do
   if (allSlotDetails[i].id == fingerprints.soulsand.id)  then
+    print("foundone")
     soulsandSlots[countersoulsand] = i
     countersoulsand = countersoulsand + 1
   end
