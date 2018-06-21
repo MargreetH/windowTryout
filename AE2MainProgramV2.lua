@@ -124,8 +124,6 @@ end
 toggleWindows("start")
 
 functions.fillWindow(windowSwitchPulverizer, 1)
-goldButton1.setBackgroundColor(128)
-goldButton1.setTextColor(1)
 
 function setProcessingStatus(status)
   successFieldProcessingWindow.clear()
