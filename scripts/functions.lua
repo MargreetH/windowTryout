@@ -132,6 +132,7 @@ end
 function returnWindowGrid(params)
 
   local x = params.x
+  local m = params.m
   local y = params.y
   local width = params.width
   local height = params.height
