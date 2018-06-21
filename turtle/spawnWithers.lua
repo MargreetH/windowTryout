@@ -6,45 +6,31 @@ print("plap")
 
 local soulsandSlots = {}
 local witherSlots = {}
-local allSlotDetails = {}
 local detail
+local countersoulsand = 1
+local counterwitherslots = 1
 
 for i = 1, 16, 1 do
   detail = turtle.getItemDetail(i)
 
-  if detail == nil then goto continue end
-  if (detail.id == fingerprints.soulsand.id)  then
-    print("foundone")
-    soulsandSlots[countersoulsand] = detail
-    countersoulsand = countersoulsand + 1
-    soulsandSlots[countersoulsand].index = i
+  if detail == nil then
+  else
+    if (detail.id == fingerprints.soulsand.id)  then
+      print("foundone")
+      soulsandSlots[countersoulsand] = detail
+      countersoulsand = countersoulsand + 1
+      soulsandSlots[countersoulsand].index = i
+    end
+    if (detail.id == fingerprints.witherskull.id)  then
+      witherSlots[counterwitherslots] = detail
+      counterwitherslots = counterwitherslots + 1
+      witherSlots[counterwitherslots].index = i
+    end
   end
-  if (detail.id == fingerprints.witherskull.id)  then
-    witherSlots[counterwitherslots] = detail
-    counterwitherslots = counterwitherslots + 1
-    witherSlots[counterwitherslots].index = i
-  end
-
-  ::continue::
-end
-
-local countersoulsand = 1
-local counterwitherslots = 1
-
-
-function getTotalAmountOfWitherSkulls()
-
 
 end
 
 
---Check where the soulsand and wither skulls are
-for i = 1, #allSlotDetails, 1 do
-
-
-end
-
-functions.printTableToTerminal(soulsandSlots[1])
 
 
 function placeBlockBehind()
