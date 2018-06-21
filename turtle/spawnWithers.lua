@@ -16,7 +16,6 @@ for i = 1, 16, 1 do
   if detail == nil then
   else
     if (detail.name == fingerprints.soulsand.id)  then
-      print("foundone")
       soulsandSlots[countersoulsand] = detail
       soulsandSlots[countersoulsand].index = i
       countersoulsand = countersoulsand + 1
