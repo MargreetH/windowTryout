@@ -35,6 +35,8 @@ for i = 1, #allSlotDetails, 1 do
   end
 end
 
+functions.printTableToTerminal(soulsandSlots)
+
 
 function placeBlockBehind()
   turtle.turnLeft()
@@ -54,7 +56,9 @@ function placeBlocksOnLeftAndRightSides()
 end
 
 
-while true do
+local loopBoolean = false
+
+while loopBoolean do
 
   turtle.select(soulsandSlots[1])
   placeBlocksOnLeftAndRightSides()
