@@ -15,13 +15,13 @@ for i = 1, 16, 1 do
 
   if detail == nil then
   else
-    if (detail.id == fingerprints.soulsand.id)  then
+    if (detail.name == fingerprints.soulsand.id)  then
       print("foundone")
       soulsandSlots[countersoulsand] = detail
       countersoulsand = countersoulsand + 1
       soulsandSlots[countersoulsand].index = i
     end
-    if (detail.id == fingerprints.witherskull.id)  then
+    if (detail.name == fingerprints.witherskull.id)  then
       witherSlots[counterwitherslots] = detail
       counterwitherslots = counterwitherslots + 1
       witherSlots[counterwitherslots].index = i
