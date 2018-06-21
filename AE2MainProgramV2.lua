@@ -439,8 +439,8 @@ function touchEventPulverizerWindow(xPos, yPos)
   --Buttons that are transposed
   yPos = yPos - 4
 
-  for i = 1, #pulverizerGrid[1], 1 do
-    for j = 1, #pulverizerGrid, 1 do
+  for j = 1, #pulverizerGrid[1], 1 do
+    for i = 1, #pulverizerGrid, 1 do
 
       bool = functions.checkInRangeWindow(pulverizerGrid[i][j], xPos, yPos)
 
@@ -465,8 +465,8 @@ function touchEventFurnaceWindow(xPos, yPos)
   --Buttons that are transposed
   yPos = yPos - 4
 
-  for i = 1, #furnaceGrid[1], 1 do
-    for j = 1, #furnaceGrid, 1 do
+  for j = 1, #furnaceGrid[1], 1 do
+    for i = 1, #furnaceGrid, 1 do
 
       bool = functions.checkInRangeWindow(furnaceGrid[i][j], xPos, yPos)
 
