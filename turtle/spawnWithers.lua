@@ -51,11 +51,11 @@ function placeBlocksOnLeftAndRightSides()
 end
 
 
-local loopBoolean = false
+local loopBoolean = true
 
 while loopBoolean do
 
-  turtle.select(soulsandSlots[1])
+  turtle.select(soulsandSlots[1].index)
   placeBlocksOnLeftAndRightSides()
   turtle.up()
   turtle.placeDown()
