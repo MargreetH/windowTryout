@@ -283,8 +283,8 @@ end
 
 function createPulverizerButtons()
   local currentColor = 4096
-    for i = 1, #pulverizerGrid[1], 1 do
-      for j = 1, #pulverizerGrid, 1 do
+    for j = 1, #pulverizerGrid[1], 1 do
+      for i = 1, #pulverizerGrid, 1 do
 
         pulverizerGrid[i][j].setTextColor(1)
         pulverizerGrid[i][j].setBackgroundColor(currentColor)
@@ -300,8 +300,8 @@ end
 function createFurnaceButtons()
 
 local currentColor = 4096
-  for i = 1, #furnaceGrid[1], 1 do
-    for j = 1, #furnaceGrid, 1 do
+  for j = 1, #furnaceGrid[1], 1 do
+    for i = 1, #furnaceGrid, 1 do
 
       furnaceGrid[i][j].setTextColor(1)
       furnaceGrid[i][j].setBackgroundColor(currentColor)
