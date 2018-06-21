@@ -129,7 +129,15 @@ function returnWindows(m, x, y, width, height, parts, divideVertically)
 end
 
 --returns a matrix that is a grid with windows. The i in [i][j] refers to the columns (horizontal), j to the rows (vertical)
-function returnWindowGrid(m, x, y, width, height, partshorizontal, partsvertical)
+function returnWindowGrid(params)
+
+  local x = params.x
+  local y = params.y
+  local width = params.width
+  local height = params.height
+  local partshorizontal = params.partshorizontal
+  local partsvertical = params.partsvertical
+
 
   local returnedMatrix = matrix(partshorizontal, partsvertical)
   local coordinateTable = subDivideRegion(x, y, width, height, partshorizontal, true)
@@ -140,6 +148,18 @@ function returnWindowGrid(m, x, y, width, height, partshorizontal, partsvertical
 
     for j = 1, #partsvertical, 1 do
       returnedMatrix[i][j] = window.create(m, coordinateTable2[j]["x"], coordinateTable2[j]["y"], coordinateTable2[j]["width"], coordinateTable2[j]["height"])
+
+      if params.offsetX ~= nil then
+        returnedMatrix[i][j].screenCoordinateX = coordinateTable2[j]["x"] + offsetX
+      else
+        returnedMatrix[i][j].screenCoordinateX = coordinateTable2[j]["x"]
+      end
+      if params.offsetY ~= nil then
+        returnedMatrix[i][j].screenCoordinateY = coordinateTable2[j]["y"] + offsetY
+      else
+        returnedMatrix[i][j].screenCoordinateY = coordinateTable2[j]["y"]
+      end
+
     end
   end
 

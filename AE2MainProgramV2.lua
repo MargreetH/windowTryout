@@ -58,18 +58,23 @@ local windowSwitchFurnace = dividedWindows[3]
 local windowSwitchCrafting = dividedWindows[4]
 local xxx, yyy = infoFieldStartWindow.getPosition()
 
+--Needed for keyhandling
+function setExtraWindowKeys(object,fp, amo, label)
+  local returnedObject = object
+  returnedObject.fingerprint = fp
+  returnedObject.amountOf = amo
+  returnedObject.label = label
+  return returnedObject
+end
+
 --Furnacewindow components: 5x4 rows
-local dividedWindows1 = functions.returnWindows(furnaceWindow, 1, 1, 61, 7, 4, true)
-local dividedWindows2 = functions.returnWindows(furnaceWindow, 1, 8, 61, 7, 4, true)
-local dividedWindows3 = functions.returnWindows(furnaceWindow, 1, 15, 61, 7, 4, true)
-local dividedWindows4 = functions.returnWindows(furnaceWindow, 1, 22, 61, 7, 4, true)
-local dividedWindows5 = functions.returnWindows(furnaceWindow, 1, 29, 61, 8, 4, true)
-local goldButton1 = dividedWindows1[1]
-local ironButton1 = dividedWindows1[2]
-local sandButton1 = dividedWindows2[1]
-local cobbleButton1 = dividedWindows2[2]
-local rubberwoodButton1 = dividedWindows2[3]
-local sprucewoodButton1 = dividedWindows2[4]
+local furnaceGrid = functions.returnWindowGrid({m=furnaceWindow, x=1, y=1, width=61,height=7, offsetY=4, partshorizontal=4, partsvertical=5})
+
+furnaceGrid[1][1] = setExtraWindowKeys(furnaceGrid[1][1], fingerprints.pulverizedgold, "fur", "pul.gold")
+furnaceGrid[1][2] = setExtraWindowKeys(furnaceGrid[1][2], fingerprints.pulverizediron, "fur", "pul.iron")
+furnaceGrid[2][1] = setExtraWindowKeys(furnaceGrid[2][1], fingerprints.sand, "fur", "sand")
+furnaceGrid[2][2] = setExtraWindowKeys(furnaceGrid[2][2], fingerprints.cobble, "fur", "cobble")
+furnaceGrid[2][3] = setExtraWindowKeys(furnaceGrid[2][3], fingerprints.sprucewood, "fur", "sprucewood")
 
 --Pulverizer window components, same as above
 local dividedWindows31 = functions.returnWindows(pulverizerWindow, 1, 1, 61, 7, 4, true)
@@ -315,29 +320,21 @@ function createPulverizerButtons()
 end
 
 function createFurnaceButtons()
-  goldButton1.setBackgroundColor(128)
-  goldButton1.setTextColor(1)
-  functions.textInMiddleButton(goldButton1, "pulv. gold")
 
-  ironButton1.setBackgroundColor(32768)
-  ironButton1.setTextColor(1)
-  functions.textInMiddleButton(ironButton1, "pulv. iron")
+local currentColor = 4096
+  for i = 1, #furnaceGrid[1], do
+    for j = 1, #furnaceGrid, do
 
-  ironButton1.setBackgroundColor(4096)
-  ironButton1.setTextColor(1)
-  functions.textInMiddleButton(sandButton1, "sand")
+      furnaceGrid[i][j].setTextColor(1)
+      furnaceGrid[i][j].setBackgroundColor(currentColor)
+      currentColor = toggleColor(currentColor)
 
-  cobbleButton1.setBackgroundColor(128)
-  cobbleButton1.setTextColor(1)
-  functions.textInMiddleButton(cobbleButton1 , "cob.stone")
+      if furnaceGrid[i][j].label ~= nil then
+        functions.textInMiddleButton(furnaceGrid[i][j], furnaceGrid[i][j].label)
+      end
+    end
 
-  cobbleButton1.setBackgroundColor(32768)
-  cobbleButton1.setTextColor(1)
-  functions.textInMiddleButton(rubberwoodButton1 , "rubberwood")
-
-  cobbleButton1.setBackgroundColor(4096)
-  cobbleButton1.setTextColor(1)
-  functions.textInMiddleButton(sprucewoodButton1 , "sprucewood")
+  end
 end
 
 function createReturnButton()
@@ -426,42 +423,6 @@ function clickedWindowSwitchFurnaceButton()
   toggleWindows("fur")
 end
 
-function clickedGoldButton1()
-  currentFingerprint = fingerprints.pulverizedgold
-  amountOf = "fur"
-  toggleWindows("amount")
-end
-
-function clickedIronButton1()
-  currentFingerprint = fingerprints.pulverizediron
-  amountOf = "fur"
-  toggleWindows("amount")
-end
-
-function clickedSandButton1()
-  currentFingerprint = fingerprints.sand
-  amountOf = "fur"
-  toggleWindows("amount")
-end
-
-function clickedCobbleButton1()
-  currentFingerprint = fingerprints.cobble
-  amountOf = "fur"
-  toggleWindows("amount")
-end
-
-function clickedRubberWoodButton1()
-  currentFingerprint = fingerprints.rubberwood
-  amountOf = "fur"
-  toggleWindows("amount")
-end
-
-function clickedSpruceWoodButton1()
-  currentFingerprint = fingerprints.sprucewood
-  amountOf = "fur"
-  toggleWindows("amount")
-end
-
 function clickedCobbleButton2()
   currentFingerprint = fingerprints.cobble
   amountOf = "pul"
@@ -534,52 +495,6 @@ function touchEventPulverizerWindow(xPos, yPos)
     clickedCobbleButton2()
   elseif enummy == 2 then
     clickedSandButton2()
-  elseif enummy == 3 then
-
-  elseif enummy == 4 then
-
-  elseif enummy == 5 then
-
-  elseif enummy == 6 then
-    --comment
-  elseif enummy == 7 then
-    --comment
-  elseif enummy == 8 then
-    --comment
-  elseif enummy == 9 then
-    --comment
-  elseif enummy == 10 then
-    --comment
-  elseif enummy == 11 then
-    --comment
-  elseif enummy == 12 then
-    --comment
-  elseif enummy == 13 then
-    --comment
-  elseif enummy == 14 then
-    --comment
-  elseif enummy == 15 then
-    --comment
-  elseif enummy == 16 then
-    --comment
-  elseif enummy == 17 then
-    --comment
-  elseif enummy == 18 then
-    --comment
-  elseif enummy == 19 then
-    --comment
-  elseif enummy == 20 then
-    --comment
-  elseif enummy == 21 then
-    --comment
-  elseif enummy == 22 then
-    --comment
-  elseif enummy == 23 then
-    --comment
-  elseif enummy == 24 then
-    --comment
-  elseif enummy == 25 then
-    --comment
   end
 
 end
@@ -591,76 +506,22 @@ function touchEventFurnaceWindow(xPos, yPos)
   local bool = false
   --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
   --if bool then enummy = 1 bool = false end
-
-
   --Buttons located at normal x,y
   --Buttons that are transposed
   yPos = yPos - 4
-  bool = functions.checkInRangeWindow(goldButton1, xPos, yPos)
-  if bool then enummy = 1 bool = false end
-  bool = functions.checkInRangeWindow(ironButton1, xPos, yPos)
-  if bool then enummy = 2 bool = false end
-  bool = functions.checkInRangeWindow(sandButton1, xPos, yPos)
-  if bool then enummy = 3 bool = false end
-  bool = functions.checkInRangeWindow(cobbleButton1, xPos, yPos)
-  if bool then enummy = 4 bool = false end
-  bool = functions.checkInRangeWindow(rubberwoodButton1, xPos, yPos)
-  if bool then enummy = 5 bool = false end
-  bool = functions.checkInRangeWindow(sprucewoodButton1, xPos, yPos)
-  if bool then enummy = 6 bool = false end
 
+  for i = 1, #furnaceGrid[1], 1 do
+    for j = 1, #furnaceGrid, 1 do
 
+      bool = functions.checkInRangeWindow(furnaceGrid[i][j], xPos, yPos)
 
-  if enummy == 1 then
-    clickedGoldButton1()
-  elseif enummy == 2 then
-    clickedIronButton1()
-  elseif enummy == 3 then
-    clickedSandButton1()
-  elseif enummy == 4 then
-    clickedCobbleButton1()
-  elseif enummy == 5 then
-    clickedRubberWoodButton1()
-  elseif enummy == 6 then
-    clickedSpruceWoodButton1()
-  elseif enummy == 7 then
-
-  elseif enummy == 8 then
-    --comment
-  elseif enummy == 9 then
-    --comment
-  elseif enummy == 10 then
-    --comment
-  elseif enummy == 11 then
-    --comment
-  elseif enummy == 12 then
-    --comment
-  elseif enummy == 13 then
-    --comment
-  elseif enummy == 14 then
-    --comment
-  elseif enummy == 15 then
-    --comment
-  elseif enummy == 16 then
-    --comment
-  elseif enummy == 17 then
-    --comment
-  elseif enummy == 18 then
-    --comment
-  elseif enummy == 19 then
-    --comment
-  elseif enummy == 20 then
-
-  elseif enummy == 21 then
-
-  elseif enummy == 22 then
-
-  elseif enummy == 23 then
-    --comment
-  elseif enummy == 24 then
-
-  elseif enummy == 25 then
-
+      if (furnaceGrid[i][j].fingerprint ~= nil) and bool then
+        amountOf = furnaceGrid[i][j].amountOf
+        currentFingerprint = furnaceGrid[i][j].fingerprint
+        toggleWindows("amount")
+        return
+      end
+    end
   end
 end
 
@@ -725,8 +586,6 @@ local function wait (time)
     end
   end
 end
-
-
 
 
 while true do
