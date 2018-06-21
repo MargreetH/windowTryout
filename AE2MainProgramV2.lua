@@ -12,6 +12,7 @@ chestSizes["woodSingle"] = 27
 os.loadAPI("/git/scripts/functions")
 os.loadAPI('/git/scripts/MEfunctions')
 os.loadAPI('/git/data/fingerprints')
+os.loadAPI('/git/V2Layout')
 
 --Monitors stuff
 local m

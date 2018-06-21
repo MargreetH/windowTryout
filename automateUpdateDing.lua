@@ -75,10 +75,11 @@ else
   "https://raw.githubusercontent.com/MargreetH/windowTryout/master/scripts/MEfunctions.lua",
 "https://raw.githubusercontent.com/MargreetH/windowTryout/master/data/fingerprints.lua",
 "https://raw.githubusercontent.com/MargreetH/windowTryout/master/snake.lua",
-"https://raw.githubusercontent.com/MargreetH/windowTryout/master/AE2MainProgramV2.lua"}
+"https://raw.githubusercontent.com/MargreetH/windowTryout/master/AE2MainProgramV2.lua",
+"https://raw.githubusercontent.com/MargreetH/windowTryout/master/V2Layout.lua"}
 
-	local otherpaths = {"/git", "/git/scripts", "/git", "/git", "/git","/git", "/git/scripts", "/git/data", "/git", "/git"}
-	local fileName = {"windowTest", "functions", "reactor", "reactorSettings", "AE2", "AE2MainProgram", "MEfunctions", "fingerprints", "snake", 'V2'}
+	local otherpaths = {"/git", "/git/scripts", "/git", "/git", "/git","/git", "/git/scripts", "/git/data", "/git", "/git", "/git"}
+	local fileName = {"windowTest", "functions", "reactor", "reactorSettings", "AE2", "AE2MainProgram", "MEfunctions", "fingerprints", "snake", "V2", "V2Layout"}
 
 	for i=1, #fileName, 1 do
 
