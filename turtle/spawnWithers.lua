@@ -101,8 +101,8 @@ while loopBoolean do
   turtle.placeDown()
   placeBlocksOnLeftAndRightSides()
   turtle.forward()
-  turtle.left()
-  turtle.left()
+  turtle.turnLeft()
+  turtle.turnLeft()
   turtle.place()
 
 
@@ -112,11 +112,12 @@ while loopBoolean do
     turtle.forward()
     placeBlocksOnLeftAndRightSides()
     turtle.back()
-    --turtle.place()
+    turtle.place()
 
     turtle.back()
-    turtle.left()
-    turtle.left()
+    turtle.back()
+    turtle.turnLeft()
+    turtle.turnLeft()
     turtle.down()
     turtle.down()
 
