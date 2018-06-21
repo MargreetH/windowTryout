@@ -11,6 +11,8 @@ local detail
 
 for i = 1, 16, 1 do
   detail = turtle.getItemDetail(i)
+
+  if detail == nil then goto continue end
   if (detail.id == fingerprints.soulsand.id)  then
     print("foundone")
     soulsandSlots[countersoulsand] = detail
@@ -22,6 +24,8 @@ for i = 1, 16, 1 do
     counterwitherslots = counterwitherslots + 1
     witherSlots[counterwitherslots].index = i
   end
+
+  ::continue::
 end
 
 local countersoulsand = 1
