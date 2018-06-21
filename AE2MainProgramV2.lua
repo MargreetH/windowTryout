@@ -55,8 +55,16 @@ local processingWindow = window.create(bottomPart, 1, 1, 61, 36)
 local dividedWindows = functions.returnWindows(startWindow, 1, 1, 61, 36, 4, false)
 local infoFieldStartWindow = dividedWindows[1]
 local windowSwitchPulverizer = dividedWindows[2]
+windowSwitchPulverizer.onClickGoTo = "pul"
 local windowSwitchFurnace = dividedWindows[3]
+windowSwitchFurnace.onClickGoTo = "fur"
 local windowSwitchCrafting = dividedWindows[4]
+windowSwitchCrafting.hoera = "joepie"
+function windowSwitchCrafting.onClick()
+  print("clicked crafting"..hoera)
+end
+
+
 local xxx, yyy = infoFieldStartWindow.getPosition()
 
 --Needed for keyhandling
@@ -504,7 +512,7 @@ function touchEventStartWindow(xPos, yPos)
   elseif enummy == 2 then
     clickedWindowSwitchPulverizerButton()
   elseif enummy == 3 then
-
+    windowSwitchCrafting.onClick()
   elseif enummy == 4 then
     clickedReturnButton()
   end
