@@ -78,13 +78,9 @@ furnaceGrid[2][2] = setExtraWindowKeys(furnaceGrid[2][2], fingerprints.cobble, "
 furnaceGrid[2][3] = setExtraWindowKeys(furnaceGrid[2][3], fingerprints.sprucewood, "fur", "sprucewood")
 
 --Pulverizer window components, same as above
-local dividedWindows31 = functions.returnWindows(pulverizerWindow, 1, 1, 61, 7, 4, true)
-local dividedWindows32 = functions.returnWindows(pulverizerWindow, 1, 8, 61, 7, 4, true)
-local dividedWindows33 = functions.returnWindows(pulverizerWindow, 1, 15, 61, 7, 4, true)
-local dividedWindows34 = functions.returnWindows(pulverizerWindow, 1, 22, 61, 7, 4, true)
-local dividedWindows35 = functions.returnWindows(pulverizerWindow, 1, 29, 61, 8, 4, true)
-local fingerprintsPulverizerWindow = {fingerprints.cobble, fingerprints.sand}
-labelsPulverizerWindow = {"cobble", "sand"}
+local pulverizerGrid = functions.returnWindowGrid({m=pulverizerWindow, x=1, y=1, width=61,height=7, offsetY=4, partshorizontal=4, partsvertical=5})
+pulverizerGrid[1][1] = setExtraWindowKeys(pulverizerGrid[1][1], fingerprints.cobble, "pul", "cobble")
+pulverizerGrid[1][2] = setExtraWindowKeys(pulverizerGrid[1][2], fingerprints.sand, "pul", "sand")
 
 --Amountwindow components: 5x5 rows
 local dividedWindows6 = functions.returnWindows(amountWindow, 1, 1, 61, 7, 4, true)
@@ -288,36 +284,19 @@ function createAmountWindowComponents()
 end
 
 function createPulverizerButtons()
-  local currentWindow
-  for i = 1, 5, 1 do
-    if i == 1 then
-      currentWindow = dividedWindows31
-    elseif i == 2 then
-      currentWindow = dividedWindows32
-    elseif i == 3 then
-      currentWindow = dividedWindows33
-    elseif i == 4 then
-      currentWindow = dividedWindows34
-    elseif i == 5 then
-      currentWindow = dividedWindows35
+  local currentColor = 4096
+    for i = 1, #pulverizerGrid[1], 1 do
+      for j = 1, #pulverizerGrid, 1 do
+
+        pulverizerGrid[i][j].setTextColor(1)
+        pulverizerGrid[i][j].setBackgroundColor(currentColor)
+        currentColor = toggleColor(currentColor)
+
+        if pulverizerGrid[i][j].label ~= nil then
+          functions.textInMiddleButton(pulverizerGrid[i][j], pulverizerGrid[i][j].label)
+        end
+      end
     end
-
-    local index
-
-    local currentColor = 32768
-
-    for j = 1, 5, 1 do
-      index = i * j
-      if labelsPulverizerWindow[index] == nil then return end
-      currentWindow[j].setBackgroundColor(128)
-      currentWindow[j].setBackgroundColor(currentColor)
-      currentColor = toggleColor(currentColor)
-      currentWindow[j].setTextColor(1)
-      currentWindow[j].clear()
-      currentWindow[j].setCursorPos(1,1)
-      functions.textInMiddleButton(currentWindow[j], labelsPulverizerWindow[index])
-    end
-  end
 end
 
 function createFurnaceButtons()
@@ -334,7 +313,6 @@ local currentColor = 4096
         functions.textInMiddleButton(furnaceGrid[i][j], furnaceGrid[i][j].label)
       end
     end
-
   end
 end
 
@@ -424,21 +402,6 @@ function clickedWindowSwitchFurnaceButton()
   toggleWindows("fur")
 end
 
-function clickedCobbleButton2()
-  currentFingerprint = fingerprints.cobble
-  amountOf = "pul"
-  toggleWindows("amount")
-end
-
-function clickedSandButton2()
-  currentFingerprint = fingerprints.sand
-  amountOf = "pul"
-  toggleWindows("amount")
-end
-
-
-
-
 --Handles all touch events
 function touchEventAmountWindow(xPos, yPos)
   local enummy = 0
@@ -471,39 +434,32 @@ end
 end
 
 function touchEventPulverizerWindow(xPos, yPos)
-  local enummy = 0
   local bool = false
   --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
   --if bool then enummy = 1 bool = false end
-
-
-
   --Buttons located at normal x,y
   --Buttons that are transposed
   yPos = yPos - 4
-  bool = functions.checkInRangeWindow(dividedWindows31[1], xPos, yPos)
-  if bool then enummy = 1 bool = false end
-  bool = functions.checkInRangeWindow(dividedWindows31[2], xPos, yPos)
-  if bool then enummy = 2 bool = false end
-  bool = functions.checkInRangeWindow(dividedWindows31[3], xPos, yPos)
-  if bool then enummy = 3 bool = false end
-  bool = functions.checkInRangeWindow(dividedWindows31[4], xPos, yPos)
-  if bool then enummy = 4 bool = false end
-  bool = functions.checkInRangeWindow(dividedWindows32[1], xPos, yPos)
-  if bool then enummy = 5 bool = false end
 
-  if enummy == 1 then
-    clickedCobbleButton2()
-  elseif enummy == 2 then
-    clickedSandButton2()
+  for i = 1, #pulverizerGrid[1], 1 do
+    for j = 1, #pulverizerGrid, 1 do
+
+      bool = functions.checkInRangeWindow(pulverizerGrid[i][j], xPos, yPos)
+
+      if (pulverizerGrid[i][j].fingerprint ~= nil) and bool then
+        amountOf = pulverizerGrid[i][j].amountOf
+        currentFingerprint = pulverizerGrid[i][j].fingerprint
+        toggleWindows("amount")
+        return
+      end
+    end
   end
-
 end
 
 
 
 function touchEventFurnaceWindow(xPos, yPos)
-  local enummy = 0
+
   local bool = false
   --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
   --if bool then enummy = 1 bool = false end

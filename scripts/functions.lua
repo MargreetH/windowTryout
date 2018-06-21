@@ -149,18 +149,6 @@ function returnWindowGrid(params)
 
     for j = 1, partsvertical, 1 do
       returnedMatrix[i][j] = window.create(m, coordinateTable2[j]["x"], coordinateTable2[j]["y"], coordinateTable2[j]["width"], coordinateTable2[j]["height"])
-
-      if params.offsetX ~= nil then
-        returnedMatrix[i][j].screenCoordinateX = coordinateTable2[j]["x"] + offsetX
-      else
-        returnedMatrix[i][j].screenCoordinateX = coordinateTable2[j]["x"]
-      end
-      if params.offsetY ~= nil then
-        returnedMatrix[i][j].screenCoordinateY = coordinateTable2[j]["y"] + offsetY
-      else
-        returnedMatrix[i][j].screenCoordinateY = coordinateTable2[j]["y"]
-      end
-
     end
   end
 
