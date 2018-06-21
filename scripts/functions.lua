@@ -143,10 +143,10 @@ function returnWindowGrid(params)
   local coordinateTable = subDivideRegion(x, y, width, height, partshorizontal, true)
   local coordinateTable2
 
-  for i = 1, #partshorizontal, 1 do
+  for i = 1, partshorizontal, 1 do
     coordinateTable2 = subDivideRegion(coordinateTable[i]["x"], coordinateTable[i]["y"], coordinateTable[i]["width"], coordinateTable[i]["height"], partsvertical, false)
 
-    for j = 1, #partsvertical, 1 do
+    for j = 1, partsvertical, 1 do
       returnedMatrix[i][j] = window.create(m, coordinateTable2[j]["x"], coordinateTable2[j]["y"], coordinateTable2[j]["width"], coordinateTable2[j]["height"])
 
       if params.offsetX ~= nil then
