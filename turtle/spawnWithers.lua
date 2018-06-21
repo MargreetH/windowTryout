@@ -60,6 +60,16 @@ function getIndexSoulSand()
   end
 end
 
+function getIndexWither()
+  local numberinslot
+  for i = 1, #witherSlots, 1 do
+    numberinslot = turtle.getItemCount(witherSlots[i].index)
+    if numberinslot > 2 then
+      return witherSlots[i].index
+    end
+  end
+end
+
 
 local loopBoolean = true
 local currentSoulSandSlot
@@ -67,6 +77,7 @@ local currentSoulSandSlot
 while loopBoolean do
 
   currentSoulSandSlot = getIndexSoulSand()
+  currentWitherSlot = getIndexWither()
   turtle.select(currentSoulSandSlot)
   placeBlocksOnLeftAndRightSides()
   turtle.up()
