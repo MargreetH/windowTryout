@@ -322,8 +322,8 @@ end
 function createFurnaceButtons()
 
 local currentColor = 4096
-  for i = 1, #furnaceGrid[1], do
-    for j = 1, #furnaceGrid, do
+  for i = 1, #furnaceGrid[1], 1 do
+    for j = 1, #furnaceGrid, 1 do
 
       furnaceGrid[i][j].setTextColor(1)
       furnaceGrid[i][j].setBackgroundColor(currentColor)
