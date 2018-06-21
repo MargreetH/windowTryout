@@ -50,12 +50,24 @@ function placeBlocksOnLeftAndRightSides()
   turtle.turnLeft()
 end
 
+function getIndexSoulSand()
+  local numberinslot
+  for i = 1, #soulsandSlots, 1 do
+    numberinslot = turtle.getItemCount(soulsandSlots[i].index)
+    if numberinslot > 7 then
+      return soulsandSlots[i].index
+    end
+  end
+end
+
 
 local loopBoolean = true
+local currentSoulSandSlot
 
 while loopBoolean do
 
-  turtle.select(soulsandSlots[1].index)
+  currentSoulSandSlot = getIndexSoulSand()
+  turtle.select(currentSoulSandSlot)
   placeBlocksOnLeftAndRightSides()
   turtle.up()
   turtle.placeDown()
