@@ -18,19 +18,16 @@ for i = 1, 16, 1 do
     if (detail.name == fingerprints.soulsand.id)  then
       print("foundone")
       soulsandSlots[countersoulsand] = detail
-      countersoulsand = countersoulsand + 1
       soulsandSlots[countersoulsand].index = i
+      countersoulsand = countersoulsand + 1
     end
     if (detail.name == fingerprints.witherskull.id)  then
       witherSlots[counterwitherslots] = detail
-      counterwitherslots = counterwitherslots + 1
       witherSlots[counterwitherslots].index = i
+      counterwitherslots = counterwitherslots + 1
     end
   end
-
 end
-
-
 
 
 function placeBlockBehind()
@@ -58,6 +55,7 @@ function getIndexSoulSand()
       return soulsandSlots[i].index
     end
   end
+  return 0
 end
 
 function getIndexWither()
@@ -68,6 +66,7 @@ function getIndexWither()
       return witherSlots[i].index
     end
   end
+  return 0
 end
 
 
@@ -78,6 +77,12 @@ while loopBoolean do
 
   currentSoulSandSlot = getIndexSoulSand()
   currentWitherSlot = getIndexWither()
+
+  if currentSoulSandSlot == 0 or currentWitherSlot == 0 then
+    print("Out of resources")
+    os.exit()
+  end
+  
   turtle.select(currentSoulSandSlot)
   placeBlocksOnLeftAndRightSides()
   turtle.up()
@@ -88,6 +93,10 @@ while loopBoolean do
     turtle.placeDown()
     turtle.forward()
     placeBlockBehind()
+
+    --Place wither skulls
+
+
     turtle.down()
     turtle.forward()
     turtle.forward()
