@@ -115,7 +115,6 @@ while loopBoolean do
     turtle.place()
 
     turtle.back()
-    turtle.back()
     turtle.turnLeft()
     turtle.turnLeft()
     turtle.down()
