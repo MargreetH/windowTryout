@@ -6,15 +6,68 @@ print("plap")
 
 local soulsandSlots = {}
 local witherSlots = {}
-
 local allSlotDetails = {}
-local allSlotAmounts = {}
+
 
 for i = 1, 16, 1 do
   allSlotDetails[i] = turtle.getItemDetail(i)
-  allSlotAmounts[i] = turtle.getItemCount(i)
 end
 
-functions.printTableToTerminal(allSlotDetails[1])
-functions.printTableToTerminal(allSlotDetails[2])
-functions.printTableToTerminal(allSlotDetails[3])
+local countersoulsand = 1
+local counterwitherslots = 1
+
+
+function getTotalAmountOfWitherSkulls()
+
+
+end
+
+
+--Check where the soulsand and wither skulls are
+for i = 1, #allSlotDetails, 1 do
+  if (allSlotDetails[i].id == fingerprints.soulsand.id)  then
+    soulsandSlots[countersoulsand] = i
+    countersoulsand = countersoulsand + 1
+  end
+  if (allSlotDetails[i].id == fingerprints.witherskull.id)  then
+    witherSlots[counterwitherslots] = i
+    counterwitherslots = counterwitherslots + 1
+  end
+end
+
+
+function placeBlockBehind()
+  turtle.turnLeft()
+  turtle.turnLeft()
+  turtle.place()
+  turtle.turnLeft()
+  turtle.turnLeft()
+end
+
+function placeBlocksOnLeftAndRightSides()
+  turtle.turnLeft()
+  turtle.place()
+  turtle.turnRight()
+  turtle.turnRight()
+  turtle.place()
+  turtle.turnLeft()
+end
+
+
+while true do
+
+  turtle.select(soulsandSlots[1])
+  placeBlocksOnLeftAndRightSides()
+  turtle.up()
+  turtle.placeDown()
+  placeBlocksOnLeftAndRightSides()
+  	turtle.forward()
+    placeBlockBehind()
+    turtle.placeDown()
+    turtle.forward()
+    placeBlockBehind()
+    turtle.down()
+    turtle.forward()
+    turtle.forward()
+
+end
