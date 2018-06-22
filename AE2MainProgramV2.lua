@@ -92,11 +92,6 @@ pulverizerGrid[1][2] = setExtraWindowKeys(pulverizerGrid[1][2], fingerprints.san
 
 --Amountwindow components: 5x5 rows
 local amountGrid = functions.returnWindowGrid({m=pulverizerWindow, x=1, y=1, width=61,height=36, offsetY=4, partshorizontal=4, partsvertical=5})
-local dividedWindows6 = functions.returnWindows(amountWindow, 1, 1, 61, 7, 4, true)
-local dividedWindows7 = functions.returnWindows(amountWindow, 1, 8, 61, 7, 4, true)
-local dividedWindows8 = functions.returnWindows(amountWindow, 1, 15, 61, 7, 4, true)
-local dividedWindows9 = functions.returnWindows(amountWindow, 1, 22, 61, 7, 4, true)
-local dividedWindows10 = functions.returnWindows(amountWindow, 1, 29, 61, 8, 4, true)
 -- I'm not gonna name them all
 
 --Processingwindow componenents
@@ -273,8 +268,9 @@ function createAmountWindowComponents()
 
   for j = 1, #amountGrid[1], 1 do
     for i = 1, #amountGrid, 1 do
-    dividedWindows6[i].setBackgroundColor(currentColor)
-    functions.textInMiddleButton(amountGrid[i][j], tostring(i)*tostring(j).."x 64")
+    amountGrid[i][j].setBackgroundColor(currentColor)
+    functions.textInMiddleButton(amountGrid[i][j], tostring(i*j).."x 64")
+    amountGrid[i][j].value = i*j
   end
   end
 end
@@ -398,35 +394,32 @@ function clickedWindowSwitchFurnaceButton()
   toggleWindows("fur")
 end
 
---Handles all touch events
+
 function touchEventAmountWindow(xPos, yPos)
-  local enummy = 0
-  local bool = false
-  --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
-  --if bool then enummy = 1 bool = false end
+local bool = false
+--bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
+--if bool then enummy = 1 bool = false end
+--Buttons located at normal x,y
+--Buttons that are transposed
+yPos = yPos - 4
 
+for j = 1, #amountGrid[1], 1 do
+  for i = 1, #amountGrid, 1 do
 
-  --Buttons located at normal x,y
-  --Buttons that are transposed
-  yPos = yPos - 4
+    bool = functions.checkInRangeWindow(amountGrid[i][j], xPos, yPos)
 
-  for i = 1, 5, 1 do
-    bool = functions.checkInRangeWindow(dividedWindows6[i], xPos, yPos)
-    if bool then amountOfItemsToSend = i * 64 break end
-    bool = functions.checkInRangeWindow(dividedWindows7[i], xPos, yPos)
-    if bool then amountOfItemsToSend = i*2 * 64 break end
-    bool = functions.checkInRangeWindow(dividedWindows8[i], xPos, yPos)
-    if bool then amountOfItemsToSend = i*4 * 64 break end
-    bool = functions.checkInRangeWindow(dividedWindows9[i], xPos, yPos)
-    if bool then amountOfItemsToSend = i*16 * 64 break end
-    bool = functions.checkInRangeWindow(dividedWindows10[i], xPos, yPos)
-    if bool then amountOfItemsToSend = i*27 * 64 break end
+    if bool then
+    amountOfItemsToSend = amountGrid[i][j].value
+    end
   end
+end
+
 if amountOf == "pul" then
   fillChest(pulverizerInterface, "west", chestSizes.obsidian, currentFingerprint, amountOfItemsToSend)
 elseif amountOf == "fur" then
   fillChest(furnaceInterface, "north", chestSizes.obsidian, currentFingerprint, amountOfItemsToSend)
 end
+
 end
 
 function touchEventPulverizerWindow(xPos, yPos)
