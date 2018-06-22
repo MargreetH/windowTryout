@@ -60,8 +60,8 @@ local windowSwitchFurnace = dividedWindows[3]
 windowSwitchFurnace.onClickGoTo = "fur"
 local windowSwitchCrafting = dividedWindows[4]
 windowSwitchCrafting.hoera = "joepie"
-function windowSwitchCrafting.onClick()
-  print("clicked crafting"..hoera)
+function windowSwitchCrafting.onClick(self)
+  print("clicked crafting"..self.hoera)
 end
 
 
@@ -91,6 +91,7 @@ pulverizerGrid[1][1] = setExtraWindowKeys(pulverizerGrid[1][1], fingerprints.cob
 pulverizerGrid[1][2] = setExtraWindowKeys(pulverizerGrid[1][2], fingerprints.sand, "pul", "sand")
 
 --Amountwindow components: 5x5 rows
+local amountGrid = functions.returnWindowGrid({m=pulverizerWindow, x=1, y=1, width=61,height=36, offsetY=4, partshorizontal=4, partsvertical=5})
 local dividedWindows6 = functions.returnWindows(amountWindow, 1, 1, 61, 7, 4, true)
 local dividedWindows7 = functions.returnWindows(amountWindow, 1, 8, 61, 7, 4, true)
 local dividedWindows8 = functions.returnWindows(amountWindow, 1, 15, 61, 7, 4, true)
@@ -270,22 +271,11 @@ function createAmountWindowComponents()
   local currentColor
   currentColor = 4096
 
-  for i = 1, 4, 1 do
+  for j = 1, #amountGrid[1], 1 do
+    for i = 1, #amountGrid, 1 do
     dividedWindows6[i].setBackgroundColor(currentColor)
-    functions.textInMiddleButton(dividedWindows6[i], tostring(i).."x 64")
-    currentColor = toggleColor(currentColor)
-    dividedWindows7[i].setBackgroundColor(currentColor)
-    functions.textInMiddleButton(dividedWindows7[i], tostring(i*2).."x 64")
-    currentColor = toggleColor(currentColor)
-    dividedWindows8[i].setBackgroundColor(currentColor)
-    functions.textInMiddleButton(dividedWindows8[i], tostring(i*4).."x 64")
-    currentColor = toggleColor(currentColor)
-    dividedWindows9[i].setBackgroundColor(currentColor)
-    functions.textInMiddleButton(dividedWindows9[i], tostring(i*16).."x 64")
-    currentColor = toggleColor(currentColor)
-    dividedWindows10[i].setBackgroundColor(currentColor)
-    functions.textInMiddleButton(dividedWindows10[i], tostring(i*27).."x 64")
-    currentColor = toggleColor(currentColor)
+    functions.textInMiddleButton(amountGrid[i][j], tostring(i)*tostring(j).."x 64")
+  end
   end
 end
 
