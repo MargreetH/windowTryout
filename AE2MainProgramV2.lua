@@ -495,7 +495,7 @@ function touchEventStartWindow(xPos, yPos)
   elseif enummy == 2 then
     clickedWindowSwitchPulverizerButton()
   elseif enummy == 3 then
-    windowSwitchCrafting.onClick()
+    windowSwitchCrafting.onClick(windowSwitchCrafting)
   elseif enummy == 4 then
     clickedReturnButton()
   end
