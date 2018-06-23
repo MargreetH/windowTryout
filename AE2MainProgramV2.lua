@@ -31,7 +31,6 @@ local numberOfItemTypesNetwork -- The number of different items in the network
 allItemsNetwork = pulverizerInterface.getAvailableItems(1)
 
 --variables
-local deviceToSendTo
 local sideToSendTo
 local currentFingerprint
 local currentLabel
@@ -68,11 +67,11 @@ local windowSwitchFurnace = dividedWindows[3]
 local windowSwitchCrafting = dividedWindows[4]
 
 function windowSwitchPulverizer.onClick()
-  deviceToSendTo = pulverizerInterface
+  interfaceToSendTo = pulverizerInterface
   toggleWindows(pulverizerWindow)
 end
 function windowSwitchFurnace.onClick()
-  deviceToSendTo = furnaceInterface
+  interfaceToSendTo = furnaceInterface
   toggleWindows(furnaceWindow)
 end
 function windowSwitchCrafting.onClick()
@@ -125,9 +124,7 @@ end
 
 --Amountwindow components: 5x5 rows
 local amountGrid = functions.returnWindowGrid({m=amountWindow, x=1, y=1, width=61,height=36, offsetY=4, partshorizontal=4, partsvertical=5})
-
 local tempX, tempY = functions.sizeMatrix(amountGrid)
-
 for i = 1, tempX, 1 do
   for j = 1, tempY, 1 do
     amountGrid[i][j].value = i * j * 64
@@ -174,9 +171,9 @@ function setProcessingStatus(status)
     successFieldProcessingWindow.setTextColor(1)
     functions.textInMiddleButton(successFieldProcessingWindow,"Job in progress.")
     functions.newLine(successFieldProcessingWindow)
-    if deviceToSendTo == "pulverizer" then
+    if interfaceToSendTo == pulverizerInterface then
       functions.textInMiddleButton(successFieldProcessingWindow,"Sending to pulverizer chest...")
-    elseif deviceToSendTo == "furnace" then
+    elseif interfaceToSendTo == furnaceInterface then
       functions.textInMiddleButton(successFieldProcessingWindow,"Sending to furnace chest...")
     end
   elseif status == "done" then
