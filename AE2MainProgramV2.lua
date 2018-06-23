@@ -1,5 +1,5 @@
 
-print("palapla")
+print("123123")
 
 
 --Main program for AE2 stuff
