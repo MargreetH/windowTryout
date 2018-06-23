@@ -146,18 +146,6 @@ local changingFieldProcessingWindow = dividedWindows11[2]
 local successFieldProcessingWindow = dividedWindows11[3]
 
 
-
-function toggleWindows(win)
-  for i = 1, #mainWindowList, 1 do
-    mainWindowList[i].isActive = false
-    mainWindowList[i].setVisible(false)
-  end
-  win.isActive = true
-  win.setVisible(true)
-end
-
-toggleWindows(startWindow)
-
 function setProcessingStatus(status)
   successFieldProcessingWindow.clear()
   successFieldProcessingWindow.setCursorPos(1,1)
@@ -411,8 +399,18 @@ startWindow.subwindows = {infoFieldStartWindow, windowSwitchPulverizer, windowSw
 startWindow.typeSubwindows = "custom"
 
 local mainWindowList = {startWindow, pulverizerWindow, furnaceWindow, amountWindow, processingWindow}
---BUTTON HANDLE FUNCTIONS
---TODO
+
+function toggleWindows(win)
+  for i = 1, #mainWindowList, 1 do
+    mainWindowList[i].isActive = false
+    mainWindowList[i].setVisible(false)
+  end
+  win.isActive = true
+  win.setVisible(true)
+end
+
+toggleWindows(startWindow)
+
 
 --Gets a list of all items in system
 function regetItems(interf)
