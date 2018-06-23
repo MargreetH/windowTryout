@@ -127,9 +127,9 @@ local tempX, tempY = functions.sizeMatrix(amountGrid)
 
 local tempNumber = 0
 for i = 1, tempX, 1 do
-      tempNumber = tempNumber + 1
+      tempNumber = (tempNumber + 1) * i
   for j = 1, tempY, 1 do
-    amountGrid[i][j].value = j *tempNumber *64
+    amountGrid[i][j].value = j *tempNumber * 64
     amountGrid[i][j].label = tostring(j * tempNumber).." x 64"
   end
 end
