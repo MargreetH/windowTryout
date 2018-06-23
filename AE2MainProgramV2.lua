@@ -125,15 +125,15 @@ end
 local amountGrid = functions.returnWindowGrid({m=amountWindow, x=1, y=1, width=61,height=36, offsetY=4, partshorizontal=4, partsvertical=5})
 local tempX, tempY = functions.sizeMatrix(amountGrid)
 
-local tempNumber = 1
+local tempNumber = 0
 for i = 1, tempX, 1 do
       tempNumber = tempNumber + 1
   for j = 1, tempY, 1 do
-    tempNumber = tempNumber*j*20
-    amountGrid[i][j].value = tempNumber * 64
-    amountGrid[i][j].label = tostring(tempNumber).." x 64"
+    amountGrid[i][j].value = j *tempNumber *64
+    amountGrid[i][j].label = tostring(j * tempNumber).." x 64"
   end
 end
+amountGrid[tempX][tempY] = 108 * 64
 
 print(amountGrid[2][2].label)
 
