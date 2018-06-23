@@ -1,3 +1,9 @@
+function toggleColor(col)
+  if col == 4096 then return 128 end
+  if col == 128 then return 32768 end
+  if col == 32768 then return 4096 end
+end
+
 
 function createTopPart(w)
   w.setBackgroundColor(16384) --Red
