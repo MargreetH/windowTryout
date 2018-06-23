@@ -134,7 +134,7 @@ for i = 1, tempX, 1 do
   end
 end
 amountGrid[tempX][tempY].value = 108 * 64
-amountGrid[tempX][tempY].label = tostring(108 * 64).." x 64"
+amountGrid[tempX][tempY].label = tostring(108).." x 64"
 
 print(amountGrid[2][2].label)
 
