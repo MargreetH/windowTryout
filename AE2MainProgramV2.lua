@@ -451,7 +451,7 @@ function processEvents(event)
     end
 
     local xPos = event[3]
-    local Ypos = event[4] - 4
+    local yPos = event[4] - 4
 
     if activeWindow.typeSubwindows == "custom" then
       for i = 1, #activeWindow.subwindows, 1 do
