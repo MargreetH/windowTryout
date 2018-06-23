@@ -24,6 +24,8 @@ local pulverizerInterface
 local furnaceInterface
 pulverizerInterface = peripheral.wrap("tileinterface_7")
 furnaceInterface = peripheral.wrap("tileinterface_6")
+furnaceInterface.label = "furnace"
+pulverizerInterface.label = "pulverizer"
 
 --Some variables used
 local allItemsNetwork --A list of all items in the ME network,
@@ -231,7 +233,7 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
   infoFieldProcessingWindow.setCursorPos(1,1)
   infoFieldProcessingWindow.setBackgroundColor(4096)
   infoFieldProcessingWindow.setTextColor(1)
-  functions.textInMiddleButton(infoFieldProcessingWindow, "Currently processing resources.")
+  functions.textInMiddleButton(infoFieldProcessingWindow, "Currently processing "..currentLabel.." to "..interfaceToSendTo.label)
   end
 
   local counter1
