@@ -165,6 +165,8 @@ function returnWindowGrid(params)
 end
 
 function checkInRangeWindow(w, xPos, yPos)
+
+  if w == nil then print("window is nil") end
   local wxPos, wyPos = w.getPosition()
   local width, height = w.getSize()
   xlimit = wxPos + width
