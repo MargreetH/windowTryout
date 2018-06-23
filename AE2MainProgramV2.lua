@@ -24,8 +24,10 @@ local pulverizerInterface
 local furnaceInterface
 pulverizerInterface = peripheral.wrap("tileinterface_7")
 furnaceInterface = peripheral.wrap("tileinterface_6")
+furnaceInterface.sideToSendTo = "north"
 furnaceInterface.label = "furnace"
 pulverizerInterface.label = "pulverizer"
+pulverizerInterface.sideToSendTo = "west"
 
 --Some variables used
 local allItemsNetwork --A list of all items in the ME network,
@@ -46,8 +48,6 @@ returnButton = window.create(m, 51, 1, 11, 4)
 topPart.setCursorPos(1, 1)
 bottomPart = window.create(m, 1, 5, 61, 36)
 bottomPart.setCursorPos(1, 1)
-
-
 
 --Creating subwindows
 local startWindow = window.create(bottomPart, 1, 1, 61, 36)
@@ -100,7 +100,6 @@ furnaceGrid[2][3] = setExtraWindowKeys(furnaceGrid[2][3], fingerprints.sprucewoo
 
 
 function furnaceWindow.onClick(gridItem)
-  sideToSendTo = "north"
   interfaceToSendTo = furnaceInterface
   currentFingerprint = gridItem.fingerprint
   currentLabel = gridItem.label
@@ -114,7 +113,6 @@ pulverizerGrid[1][2] = setExtraWindowKeys(pulverizerGrid[1][2], fingerprints.san
 
 
 function pulverizerWindow.onClick(gridItem)
-  sideToSendTo = "west"
   interfaceToSendTo = pulverizerInterface
   currentFingerprint = gridItem.fingerprint
   currentLabel = gridItem.label
@@ -142,7 +140,7 @@ print(amountGrid[2][2].label)
 
 function amountWindow.onClick(gridItem)
   amountOfItemsToSend = gridItem.value
-  fillChest(interfaceToSendTo, sideToSendTo, chestSizes.obsidian, currentFingerprint, amountOfItemsToSend)
+  fillChest(interfaceToSendTo, chestSizes.obsidian, currentFingerprint, amountOfItemsToSend)
 end
 -- I'm not gonna name them all
 
@@ -202,10 +200,11 @@ end
 --Function to send items to somewhere
 --###########Specific functions that have to be here cause of sleep############
 --Fills the whole chest with items
-function fillChest(interface, side, sizeChest, fingerprint, amount)
+function fillChest(interface, sizeChest, fingerprint, amount)
   regetItems(interface)
   toggleWindows(processingWindow)
   setProcessingStatus("processing")
+  side = interface.sideToSendTo
   local itemsToBeTransported
   itemsToBeTransported = amount
   local canExportToSide
