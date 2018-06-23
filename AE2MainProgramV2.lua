@@ -375,6 +375,8 @@ function createTopPart(w)
   w.write("Written by Merlione404")
 end
 
+
+--REPLACE THIS ALL BY IMPLEMENTING .styleWindow per component
 createTopPart(topPart)
 createInfoFieldStartWindow()
 createWindowSwitchFurnace()
