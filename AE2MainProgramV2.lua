@@ -285,8 +285,8 @@ function createAmountWindowComponents()
 
   local M, N = functions.sizeMatrix(amountGrid)
   print("in createAmountWindow")
-  for j = 1, M, 1 do
-    for i = 1, N, 1 do
+  for i = 1, M, 1 do
+    for j = 1, N, 1 do
     amountGrid[i][j].setBackgroundColor(currentColor)
     functions.textInMiddleButton(amountGrid[i][j].label)
     amountGrid[i][j].clear()
@@ -492,6 +492,3 @@ end
 while true do
   wait(0.5)
 end
-
---fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizediron, 300)
---fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizedsilver, 300)
