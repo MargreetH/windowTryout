@@ -466,7 +466,6 @@ function processEvents(event)
       end
     end
   end
-
 end
 
 local function wait (time)
