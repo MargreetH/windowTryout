@@ -60,9 +60,6 @@ amountWindow.isActive = false
 local processingWindow = window.create(bottomPart, 1, 1, 61, 36)
 processingWindow.isActive = false
 
---List of all the main windows to switch between
-local mainWindowList = {startWindow, pulverizerWindow, furnaceWindow, amountWindow, processingWindow}
-
 --STartwindow components
 local dividedWindows = functions.returnWindows(startWindow, 1, 1, 61, 36, 4, false)
 local infoFieldStartWindow = dividedWindows[1]
@@ -152,6 +149,9 @@ local dividedWindows11 = functions.returnWindows(processingWindow, 1, 1, 61, 36,
 local infoFieldProcessingWindow = dividedWindows11[1]
 local changingFieldProcessingWindow = dividedWindows11[2]
 local successFieldProcessingWindow = dividedWindows11[3]
+
+--List of all the main windows to switch between
+local mainWindowList = {startWindow, pulverizerWindow, furnaceWindow, amountWindow, processingWindow}
 
 function toggleWindows(win)
   for i = 1, #mainWindowList, 1 do
