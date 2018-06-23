@@ -124,7 +124,7 @@ function pulverizerWindow.onClick(gridItem)
 end
 
 --Amountwindow components: 5x5 rows
-local amountGrid = functions.returnWindowGrid({m=pulverizerWindow, x=1, y=1, width=61,height=36, offsetY=4, partshorizontal=4, partsvertical=5})
+local amountGrid = functions.returnWindowGrid({m=amountWindow, x=1, y=1, width=61,height=36, offsetY=4, partshorizontal=4, partsvertical=5})
 
 local tempX, tempY = functions.sizeMatrix(amountGrid)
 
