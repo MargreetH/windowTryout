@@ -304,7 +304,7 @@ V2Layout.createWindowSwitchPulverizer(windowSwitchPulverizer)
 V2Layout.createReturnButton(returnButton)
 V2Layout.createLabeledButtons(furnaceGrid)
 V2Layout.createLabeledButtons(pulverizerGrid)
-createAmountWindowComponents()
+V2Layout.createLabeledButtons(amountWindow)
 createProcessingWindowComponents()
 createPulverizerButtons()
 
