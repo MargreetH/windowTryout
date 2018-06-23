@@ -117,6 +117,7 @@ pulverizerGrid[1][1] = setExtraWindowKeys(pulverizerGrid[1][1], fingerprints.cob
 pulverizerGrid[1][2] = setExtraWindowKeys(pulverizerGrid[1][2], fingerprints.sand, "pulverizer", "sand")
 pulverizerWindow.subwindows = pulverizerGrid
 pulverizerWindow.typeSubwindows = "grid"
+
 function pulverizerWindow.onClick(gridItem)
   sideToSendTo = "west"
   interfaceToSendTo = pulverizerInterface
