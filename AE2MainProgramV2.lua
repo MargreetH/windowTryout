@@ -102,6 +102,7 @@ furnaceGrid[2][2] = setExtraWindowKeys(furnaceGrid[2][2], fingerprints.cobble, "
 furnaceGrid[2][3] = setExtraWindowKeys(furnaceGrid[2][3], fingerprints.sprucewood, "sprucewood")
 furnaceWindow.subwindows = furnaceGrid
 furnaceWindow.typeSubwindows = "grid"
+
 function furnaceWindow.onClick(gridItem)
   sideToSendTo = "north"
   interfaceToSendTo = furnaceInterface
@@ -159,6 +160,8 @@ function toggleWindows(win)
   win.isActive = true
   win.setVisible(true)
 end
+
+toggleWindows(startWindow)
 
 function setProcessingStatus(status)
   successFieldProcessingWindow.clear()
