@@ -288,7 +288,7 @@ function createAmountWindowComponents()
   for i = 1, M, 1 do
     for j = 1, N, 1 do
     amountGrid[i][j].setBackgroundColor(currentColor)
-    functions.textInMiddleButton(amountGrid, amountGrid[i][j].label)
+    functions.textInMiddleButton(amountGrid[i][j], amountGrid[i][j].label)
     amountGrid[i][j].clear()
   end
   end
