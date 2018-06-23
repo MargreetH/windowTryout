@@ -289,8 +289,8 @@ function createAmountWindowComponents()
     for j = 1, N, 1 do
     amountGrid[i][j].setTextColor(1)
     amountGrid[i][j].setBackgroundColor(currentColor)
-    functions.textInMiddleButton(amountGrid[i][j], amountGrid[i][j].label)
     amountGrid[i][j].clear()
+    functions.textInMiddleButton(amountGrid[i][j], amountGrid[i][j].label)
     currentColor = toggleColor(currentColor)
   end
   end
