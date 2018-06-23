@@ -287,9 +287,11 @@ function createAmountWindowComponents()
   print("in createAmountWindow")
   for i = 1, M, 1 do
     for j = 1, N, 1 do
+    amountGrid[i][j].setTextColor(1)
     amountGrid[i][j].setBackgroundColor(currentColor)
     functions.textInMiddleButton(amountGrid[i][j], amountGrid[i][j].label)
     amountGrid[i][j].clear()
+    currentColor = toggleColor(currentColor)
   end
   end
 end
