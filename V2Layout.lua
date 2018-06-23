@@ -62,3 +62,20 @@ local currentColor = 4096
     end
   end
 end
+
+
+function createProcessingWindowComponents(info, changing, success)
+ info.setCursorPos(1,1)
+ info.setBackgroundColor(4096)
+ info.setTextColor(1)
+ functions.textInMiddleButton(info, "Currently processing resources.")
+
+ changing.setCursorPos(1,1)
+ changing.setBackgroundColor(128)
+ changing.setTextColor(1)
+
+ success.setCursorPos(1,1)
+ success.setBackgroundColor(2048)
+ success.setTextColor(1)
+ functions.textInMiddleButton(success, "Job in progress.")
+end

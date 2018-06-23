@@ -175,22 +175,7 @@ functions.textInMiddleButton(changingFieldProcessingWindow, "Transported "..curr
 
 end
 
--- Drawing functions for all windows
-function createProcessingWindowComponents()
- infoFieldProcessingWindow.setCursorPos(1,1)
- infoFieldProcessingWindow.setBackgroundColor(4096)
- infoFieldProcessingWindow.setTextColor(1)
- functions.textInMiddleButton(infoFieldProcessingWindow, "Currently processing resources.")
 
- changingFieldProcessingWindow.setCursorPos(1,1)
- changingFieldProcessingWindow.setBackgroundColor(128)
- changingFieldProcessingWindow.setTextColor(1)
-
- successFieldProcessingWindow.setCursorPos(1,1)
- successFieldProcessingWindow.setBackgroundColor(2048)
- successFieldProcessingWindow.setTextColor(1)
- functions.textInMiddleButton(successFieldProcessingWindow, "Job in progress.")
-end
 
 --Function to send items to somewhere
 --###########Specific functions that have to be here cause of sleep############
@@ -304,9 +289,8 @@ V2Layout.createWindowSwitchPulverizer(windowSwitchPulverizer)
 V2Layout.createReturnButton(returnButton)
 V2Layout.createLabeledButtons(furnaceGrid)
 V2Layout.createLabeledButtons(pulverizerGrid)
-V2Layout.createLabeledButtons(amountWindow)
-createProcessingWindowComponents()
-createPulverizerButtons()
+V2Layout.createLabeledButtons(amountGrid)
+V2layout.createProcessingWindowComponents(infoFieldProcessingWindow, changingFieldProcessingWindow, successFieldProcessingWindow)
 
 pulverizerWindow.subwindows = pulverizerGrid
 pulverizerWindow.typeSubwindows = "grid"
