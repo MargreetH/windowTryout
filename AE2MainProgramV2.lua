@@ -320,62 +320,14 @@ function createPulverizerButtons()
     end
 end
 
-function createFurnaceButtons()
-    print("in createfurnacebuttons")
-
-local currentColor = 4096
-  for j = 1, #furnaceGrid[1], 1 do
-    for i = 1, #furnaceGrid, 1 do
-
-      furnaceGrid[i][j].setTextColor(1)
-      furnaceGrid[i][j].setBackgroundColor(currentColor)
-      currentColor = toggleColor(currentColor)
-      furnaceGrid[i][j].clear()
-
-      if furnaceGrid[i][j].label ~= nil then
-        functions.textInMiddleButton(furnaceGrid[i][j], furnaceGrid[i][j].label)
-      end
-    end
-  end
-end
-
-function createReturnButton()
-  returnButton.setBackgroundColor(128)
-  returnButton.setTextColor(1)
-  functions.textInMiddleButton(returnButton, "Return")
-end
-
-function createInfoFieldStartWindow()
-  infoFieldStartWindow.clear()
-  infoFieldStartWindow.setCursorPos(1,1)
-  infoFieldStartWindow.write("Welcome! What do you want to do?")
-  functions.newLine(infoFieldStartWindow)
-  infoFieldStartWindow.write("Choose one of the options from below.")
-end
-
-function createWindowSwitchFurnace()
-  windowSwitchFurnace.clear()
-  windowSwitchFurnace.setCursorPos(1,1)
-  functions.textInMiddleButton(windowSwitchFurnace,"Send stuff to furnace")
-  functions.newLine(windowSwitchFurnace)
-end
-
-function createWindowSwitchPulverizer()
-  windowSwitchPulverizer.clear()
-  windowSwitchPulverizer.setCursorPos(1,1)
-  functions.textInMiddleButton(windowSwitchPulverizer,"Send stuff to pulverizer")
-  functions.newLine(windowSwitchPulverizer)
-end
 
 
-
---REPLACE THIS ALL BY IMPLEMENTING .styleWindow per component
 V2Layout.createTopPart(topPart)
-createInfoFieldStartWindow()
-createWindowSwitchFurnace()
-createWindowSwitchPulverizer()
-createReturnButton()
-createFurnaceButtons()
+V2Layout.createInfoFieldStartWindow(infoFieldStartWindow)
+V2Layout.createWindowSwitchFurnace(windowSwitchFurnace)
+V2Layout.createWindowSwitchPulverizer(windowSwitchPulverizer)
+V2Layout.createReturnButton(returnButton)
+V2Layout.createFurnaceButtons(furnaceGrid)
 createAmountWindowComponents()
 createProcessingWindowComponents()
 createPulverizerButtons()
