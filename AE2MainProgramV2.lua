@@ -1,4 +1,4 @@
---comment
+"furnace""furnace""furnace"deviceToSendTo--comment
 print("adasasddsa")
 
 
@@ -31,11 +31,13 @@ local numberOfItemTypesNetwork -- The number of different items in the network
 allItemsNetwork = pulverizerInterface.getAvailableItems(1)
 
 --variables
-local currentActiveWindow = "start"
-local amountOf
+local deviceToSendTo
+local sideToSendTo
 local currentFingerprint
+local currentLabel
 local amountOfItemsToSend
 local itemList
+local interfaceToSendTo
 
 --Creating the main Windows
 topPart = window.create(m, 1,1, 50, 4)
@@ -44,34 +46,48 @@ topPart.setCursorPos(1, 1)
 bottomPart = window.create(m, 1, 5, 61, 36)
 bottomPart.setCursorPos(1, 1)
 
+
+
 --Creating subwindows
 local startWindow = window.create(bottomPart, 1, 1, 61, 36)
+startWindow.isActive = true
 local pulverizerWindow = window.create(bottomPart, 1, 1, 61, 36)
+pulverizerWindow.isActive = false
 local furnaceWindow = window.create(bottomPart, 1, 1, 61, 36)
+furnaceWindow.isActive = false
 local amountWindow = window.create(bottomPart, 1, 1, 61, 36)
+amountWindow.isActive = false
 local processingWindow = window.create(bottomPart, 1, 1, 61, 36)
+processingWindow.isActive = false
+
+--List of all the main windows to switch between
+local mainWindowList = {startWindow, pulverizerWindow, furnaceWindow, amountWindow, processingWindow}
 
 --STartwindow components
 local dividedWindows = functions.returnWindows(startWindow, 1, 1, 61, 36, 4, false)
 local infoFieldStartWindow = dividedWindows[1]
 local windowSwitchPulverizer = dividedWindows[2]
-windowSwitchPulverizer.onClickGoTo = "pul"
 local windowSwitchFurnace = dividedWindows[3]
-windowSwitchFurnace.onClickGoTo = "fur"
 local windowSwitchCrafting = dividedWindows[4]
-windowSwitchCrafting.hoera = "joepie"
-function windowSwitchCrafting.onClick(self)
-  print("clicked crafting"..self.hoera)
+
+function windowSwitchPulverizer.onClick()
+  deviceToSendTo = pulverizerInterface
+  toggleWindows(pulverizerWindow)
+end
+function windowSwitchFurnace.onClick()
+  deviceToSendTo = furnaceInterface
+  toggleWindows(furnaceWindow)
+end
+function windowSwitchCrafting.onClick()
 end
 
-
-local xxx, yyy = infoFieldStartWindow.getPosition()
+startWindow.subwindows = {infoFieldStartWindow, windowSwitchPulverizer, windowSwitchFurnace, windowSwitchCrafting}
+startWindow.typeSubwindows = "custom"
 
 --Needed for keyhandling
-function setExtraWindowKeys(object,fp, amo, label)
+function setExtraWindowKeys(object,fp, label)
   local returnedObject = object
   returnedObject.fingerprint = fp
-  returnedObject.amountOf = amo
   returnedObject.label = label
   return returnedObject
 end
@@ -79,19 +95,54 @@ end
 --Furnacewindow components: 5x4 rows
 local furnaceGrid = functions.returnWindowGrid({m=furnaceWindow, x=1, y=1, width=61,height=36, offsetY=4, partshorizontal=4, partsvertical=5})
 
-furnaceGrid[1][1] = setExtraWindowKeys(furnaceGrid[1][1], fingerprints.pulverizedgold, "fur", "pul.gold")
-furnaceGrid[1][2] = setExtraWindowKeys(furnaceGrid[1][2], fingerprints.pulverizediron, "fur", "pul.iron")
-furnaceGrid[2][1] = setExtraWindowKeys(furnaceGrid[2][1], fingerprints.sand, "fur", "sand")
-furnaceGrid[2][2] = setExtraWindowKeys(furnaceGrid[2][2], fingerprints.cobble, "fur", "cobble")
-furnaceGrid[2][3] = setExtraWindowKeys(furnaceGrid[2][3], fingerprints.sprucewood, "fur", "sprucewood")
+furnaceGrid[1][1] = setExtraWindowKeys(furnaceGrid[1][1], fingerprints.pulverizedgold, "pul.gold")
+furnaceGrid[1][2] = setExtraWindowKeys(furnaceGrid[1][2], fingerprints.pulverizediron, "pul.iron")
+furnaceGrid[2][1] = setExtraWindowKeys(furnaceGrid[2][1], fingerprints.sand, "sand")
+furnaceGrid[2][2] = setExtraWindowKeys(furnaceGrid[2][2], fingerprints.cobble, "cobble")
+furnaceGrid[2][3] = setExtraWindowKeys(furnaceGrid[2][3], fingerprints.sprucewood, "sprucewood")
+furnaceWindow.subwindows = furnaceGrid
+furnaceWindow.typeSubwindows = "grid"
+function furnaceWindow.onClick(gridItem)
+  sideToSendTo = "north"
+  interfaceToSendTo = furnaceInterface
+  currentFingerprint = gridItem.fingerprint
+  currentLabel = gridItem.label
+  toggleWindows(amountWindow)
+end
 
 --Pulverizer window components, same as above
 local pulverizerGrid = functions.returnWindowGrid({m=pulverizerWindow, x=1, y=1, width=61,height=36, offsetY=4, partshorizontal=4, partsvertical=5})
-pulverizerGrid[1][1] = setExtraWindowKeys(pulverizerGrid[1][1], fingerprints.cobble, "pul", "cobble")
-pulverizerGrid[1][2] = setExtraWindowKeys(pulverizerGrid[1][2], fingerprints.sand, "pul", "sand")
+pulverizerGrid[1][1] = setExtraWindowKeys(pulverizerGrid[1][1], fingerprints.cobble, "pulverizer", "cobble")
+pulverizerGrid[1][2] = setExtraWindowKeys(pulverizerGrid[1][2], fingerprints.sand, "pulverizer", "sand")
+pulverizerWindow.subwindows = pulverizerGrid
+pulverizerWindow.typeSubwindows = "grid"
+function pulverizerWindow.onClick(gridItem)
+  sideToSendTo = "west"
+  interfaceToSendTo = pulverizerInterface
+  currentFingerprint = gridItem.fingerprint
+  currentLabel = gridItem.label
+  toggleWindows(amountWindow)
+end
 
 --Amountwindow components: 5x5 rows
 local amountGrid = functions.returnWindowGrid({m=pulverizerWindow, x=1, y=1, width=61,height=36, offsetY=4, partshorizontal=4, partsvertical=5})
+
+local tempX, tempY = functions.sizeMatrix(amountGrid)
+
+for i = 1, tempX, 1 do
+  for j = 1, tempY, 1 do
+    amountGrid[i][j].value = i * j * 64
+    amountGrid[i][j].label = tostring(i * j).." x 64"
+  end
+end
+
+amountWindow.subwindows = amountGrid
+amountWindow.typeSubwindows = "grid"
+
+function amountWindow.onClick(gridItem)
+  amountOfItemsToSend = gridItem.value
+  fillChest(interfaceToSendTo, sideToSendTo, chestSizes.obsidian, currentFingerprint, amountOfItemsToSend)
+end
 -- I'm not gonna name them all
 
 --Processingwindow componenents
@@ -101,33 +152,13 @@ local changingFieldProcessingWindow = dividedWindows11[2]
 local successFieldProcessingWindow = dividedWindows11[3]
 
 function toggleWindows(win)
-  pulverizerWindow.setVisible(false)
-  furnaceWindow.setVisible(false)
-  processingWindow.setVisible(false)
-  startWindow.setVisible(false)
-  amountWindow.setVisible(false)
-  if win == "pul" then
-    pulverizerWindow.setVisible(true)
-    amountOf = "pul"
-  elseif win == "fur" then
-    furnaceWindow.setVisible(true)
-    amountOf = "fur"
-  elseif win == "start" then
-    startWindow.setVisible(true)
-  elseif win == "amount" then
-    amountWindow.setVisible(true)
-  elseif win == "processing" then
-    processingWindow.setVisible(true)
+  for i = 1, #mainWindowList, 1 do
+    mainWindowList[i].isActive = false
+    mainWindowList[i].setVisible(false)
   end
-  currentActiveWindow = win
+  win.isActive = true
+  win.setVisible(true)
 end
-
-
-
---Set startwindow as active one
-toggleWindows("start")
-
-functions.fillWindow(windowSwitchPulverizer, 1)
 
 function setProcessingStatus(status)
   successFieldProcessingWindow.clear()
@@ -137,9 +168,9 @@ function setProcessingStatus(status)
     successFieldProcessingWindow.setTextColor(1)
     functions.textInMiddleButton(successFieldProcessingWindow,"Job in progress.")
     functions.newLine(successFieldProcessingWindow)
-    if amountOf == "pul" then
+    if deviceToSendTo == "pulverizer" then
       functions.textInMiddleButton(successFieldProcessingWindow,"Sending to pulverizer chest...")
-    elseif amountOf == "fur" then
+    elseif deviceToSendTo == "furnace" then
       functions.textInMiddleButton(successFieldProcessingWindow,"Sending to furnace chest...")
     end
   elseif status == "done" then
@@ -180,7 +211,7 @@ end
 --Fills the whole chest with items
 function fillChest(interface, side, sizeChest, fingerprint, amount)
   regetItems(interface)
-  toggleWindows("processing")
+  toggleWindows(processingWindow)
   setProcessingStatus("processing")
   local itemsToBeTransported
   itemsToBeTransported = amount
@@ -202,7 +233,7 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
     setProcessingStatus("failed")
     functions.textInMiddleButton(infoFieldProcessingWindow, "No items of this type are stored in the system!")
     sleep(5)
-    toggleWindows("start")
+    toggleWindows(startWindow)
     return
   elseif amountStored < amount then
   infoFieldProcessingWindow.clear()
@@ -244,7 +275,7 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
     if counter2 > 500 then --Chest is fulll and not being emptied, abort the exporting.
       setProcessingStatus("failed")
       sleep(5)
-      toggleWindows("start")
+      toggleWindows(startWindow)
       return
     end
 
@@ -252,7 +283,7 @@ function fillChest(interface, side, sizeChest, fingerprint, amount)
 
   setProcessingStatus("done")
   sleep(5)
-  toggleWindows("start")
+  toggleWindows(startWindow)
 end
 
 function toggleColor(col)
@@ -266,11 +297,13 @@ function createAmountWindowComponents()
   local currentColor
   currentColor = 4096
 
-  for j = 1, #amountGrid[1], 1 do
-    for i = 1, #amountGrid, 1 do
+  local M, N = functions.sizeMatrix(amountGrid)
+
+  for j = 1, M, 1 do
+    for i = 1, N, 1 do
     amountGrid[i][j].setBackgroundColor(currentColor)
-    functions.textInMiddleButton(amountGrid[i][j], tostring(i*j).."x 64")
-    amountGrid[i][j].value = i*j
+    functions.textInMiddleButton(amountGrid[i][j].label)
+    amountGrid[i][j].clear()
   end
   end
 end
@@ -283,6 +316,7 @@ function createPulverizerButtons()
         pulverizerGrid[i][j].setTextColor(1)
         pulverizerGrid[i][j].setBackgroundColor(currentColor)
         currentColor = toggleColor(currentColor)
+        pulverizerGrid[i][j].clear()
 
         if pulverizerGrid[i][j].label ~= nil then
           functions.textInMiddleButton(pulverizerGrid[i][j], pulverizerGrid[i][j].label)
@@ -300,6 +334,7 @@ local currentColor = 4096
       furnaceGrid[i][j].setTextColor(1)
       furnaceGrid[i][j].setBackgroundColor(currentColor)
       currentColor = toggleColor(currentColor)
+      furnaceGrid[i][j].clear()
 
       if furnaceGrid[i][j].label ~= nil then
         functions.textInMiddleButton(furnaceGrid[i][j], furnaceGrid[i][j].label)
@@ -375,132 +410,20 @@ regetItems(furnaceInterface)
 
 --Button click handlers
 function clickedReturnButton()
-  if currentActiveWindow == "start" then
+  if startWindow.isActive then
     m.clear()
     print("shutting down program")
    os.exit(0)
-  elseif (currentActiveWindow == "pul") or (currentActiveWindow == "fur") then
-    toggleWindows("start")
-  elseif currentActiveWindow == "amount" then
-    toggleWindows(amountOf)
-  end
-end
-
-function clickedWindowSwitchPulverizerButton()
-  toggleWindows("pul")
-end
-
-function clickedWindowSwitchFurnaceButton()
-  toggleWindows("fur")
-end
-
-
-function touchEventAmountWindow(xPos, yPos)
-local bool = false
---bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
---if bool then enummy = 1 bool = false end
---Buttons located at normal x,y
---Buttons that are transposed
-yPos = yPos - 4
-
-for j = 1, #amountGrid[1], 1 do
-  for i = 1, #amountGrid, 1 do
-
-    bool = functions.checkInRangeWindow(amountGrid[i][j], xPos, yPos)
-
-    if bool then
-    amountOfItemsToSend = amountGrid[i][j].value
+ elseif (pulverizerWindow.isActive) or (furnaceWindow.isActive) then
+    toggleWindows(startWindow)
+  elseif amountWindow.isActive then
+    if interfaceToSendTo == furnaceInterface then
+      toggleWindows(furnaceWindow)
+    elseif interfaceToSendTo == pulverizerInterface then
+      toggleWindows(pulverizerWindow)
     end
   end
 end
-
-if amountOf == "pul" then
-  fillChest(pulverizerInterface, "west", chestSizes.obsidian, currentFingerprint, amountOfItemsToSend)
-elseif amountOf == "fur" then
-  fillChest(furnaceInterface, "north", chestSizes.obsidian, currentFingerprint, amountOfItemsToSend)
-end
-
-end
-
-function touchEventPulverizerWindow(xPos, yPos)
-  local bool = false
-  --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
-  --if bool then enummy = 1 bool = false end
-  --Buttons located at normal x,y
-  --Buttons that are transposed
-  yPos = yPos - 4
-
-  for j = 1, #pulverizerGrid[1], 1 do
-    for i = 1, #pulverizerGrid, 1 do
-
-      bool = functions.checkInRangeWindow(pulverizerGrid[i][j], xPos, yPos)
-
-      if (pulverizerGrid[i][j].fingerprint ~= nil) and bool then
-        amountOf = pulverizerGrid[i][j].amountOf
-        currentFingerprint = pulverizerGrid[i][j].fingerprint
-        toggleWindows("amount")
-        return
-      end
-    end
-  end
-end
-
-
-
-function touchEventFurnaceWindow(xPos, yPos)
-
-  local bool = false
-  --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
-  --if bool then enummy = 1 bool = false end
-  --Buttons located at normal x,y
-  --Buttons that are transposed
-  yPos = yPos - 4
-
-  for j = 1, #furnaceGrid[1], 1 do
-    for i = 1, #furnaceGrid, 1 do
-
-      bool = functions.checkInRangeWindow(furnaceGrid[i][j], xPos, yPos)
-
-      if (furnaceGrid[i][j].fingerprint ~= nil) and bool then
-        amountOf = furnaceGrid[i][j].amountOf
-        currentFingerprint = furnaceGrid[i][j].fingerprint
-        toggleWindows("amount")
-        return
-      end
-    end
-  end
-end
-
-
---Handles all touch events
-function touchEventStartWindow(xPos, yPos)
-  local enummy = 0
-  local bool = false
-  --bool = functions.checkInRangeWindow(switchButton, xPos, yPos)
-  --if bool then enummy = 1 bool = false end
-
-
-  --Buttons located at normal x,y
-  --Buttons that are transposed
-  yPos = yPos - 4
-  bool = functions.checkInRangeWindow(windowSwitchFurnace, xPos, yPos)
-  if bool then  enummy = 1 bool = false end
-  bool = functions.checkInRangeWindow(windowSwitchPulverizer, xPos, yPos)
-  if bool then  enummy = 2 bool = false end
-  bool = functions.checkInRangeWindow(windowSwitchCrafting, xPos, yPos)
-  if bool then  enummy = 3 bool = false end
-
-  if enummy == 1 then
-    clickedWindowSwitchFurnaceButton()
-  elseif enummy == 2 then
-    clickedWindowSwitchPulverizerButton()
-  elseif enummy == 3 then
-    windowSwitchCrafting.onClick(windowSwitchCrafting)
-  elseif enummy == 4 then
-    clickedReturnButton()
-  end
-end
-
 
 --Timer functions
 function processEvents(event)
@@ -508,14 +431,33 @@ function processEvents(event)
     bool = functions.checkInRangeWindow(returnButton, event[3], event[4])
     if bool then clickedReturnButton() return end
 
-    if currentActiveWindow == "start" then
-      touchEventStartWindow(event[3], event[4])
-    elseif currentActiveWindow == "fur" then
-      touchEventFurnaceWindow(event[3], event[4])
-    elseif currentActiveWindow == "amount" then
-      touchEventAmountWindow(event[3], event[4])
-    elseif currentActiveWindow == "pul" then
-      touchEventPulverizerWindow(event[3], event[4])
+    local activeWindow
+    for i = 1, #mainWindowList, 1 do
+      if mainWindowList[i].isActive then activeWindow = mainWindowList[i] break end
+    end
+
+    local xPos = event[3]
+    local Ypos = event[4] - 4
+
+    if activeWindow.typeSubwindows == "custom" then
+      for i = 1, #activeWindow.subwindows, 1 do
+        bool = functions.checkInRangeWindow(activeWindow.subwindows[i], xPos, yPos)
+        if bool and (activeWindow.subwindows[i].onClick ~= nil) then
+          activeWindow.subwindows[i].onClick()
+          break
+        end
+      end
+    elseif activeWindow.typeSubwindows == "grid" then
+      local M, N = functions.sizeMatrix(activeWindow.subwindows)
+      for i = 1, M, 1 do
+        for j = 1, N, 1 do
+          bool = functions.checkInRangeWindow(activeWindow.subwindows[i][j], xPos, yPos)
+          if bool and (activeWindow.onClick ~= nil) then
+            activeWindow.onClick(activeWindow.subwindows[i][j])
+            break
+          end
+        end
+      end
     end
   end
 
@@ -535,7 +477,7 @@ end
 
 
 while true do
-  wait(0.05)
+  wait(0.5)
 end
 
 --fillChest(furnaceInterface, "north", chestSizes.obsidian, fingerprints.pulverizediron, 300)

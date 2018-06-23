@@ -13,6 +13,14 @@ end
 return mt
 end
 
+-- Returns the size of a matrix
+function sizeMatrix(m)
+  local M, N
+  M = #m
+  N = #m[1]
+  return M, N
+end
+
 
 function vector(N)
 local mt
