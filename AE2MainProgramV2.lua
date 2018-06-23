@@ -135,6 +135,8 @@ for i = 1, tempX, 1 do
   end
 end
 
+print(amountGrid[2][2].label)
+
 amountWindow.subwindows = amountGrid
 amountWindow.typeSubwindows = "grid"
 
