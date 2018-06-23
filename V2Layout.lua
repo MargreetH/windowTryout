@@ -44,7 +44,7 @@ function createWindowSwitchFurnace(m)
   functions.newLine(m)
 end
 
-function createFurnaceButtons(G)
+function createLabeledButtons(G)
     print("in createfurnacebuttons")
 
 local currentColor = 4096

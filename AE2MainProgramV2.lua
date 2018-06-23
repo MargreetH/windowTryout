@@ -1,7 +1,4 @@
 
-print("123123")
-
-
 --Main program for AE2 stuff
 --Some constants
 local chestSizes = {}
@@ -35,7 +32,6 @@ local numberOfItemTypesNetwork -- The number of different items in the network
 allItemsNetwork = pulverizerInterface.getAvailableItems(1)
 
 --variables
-local sideToSendTo
 local currentFingerprint
 local currentLabel
 local amountOfItemsToSend
@@ -97,7 +93,6 @@ furnaceGrid[1][2] = setExtraWindowKeys(furnaceGrid[1][2], fingerprints.pulverize
 furnaceGrid[2][1] = setExtraWindowKeys(furnaceGrid[2][1], fingerprints.sand, "sand")
 furnaceGrid[2][2] = setExtraWindowKeys(furnaceGrid[2][2], fingerprints.cobble, "cobble")
 furnaceGrid[2][3] = setExtraWindowKeys(furnaceGrid[2][3], fingerprints.sprucewood, "sprucewood")
-
 
 function furnaceWindow.onClick(gridItem)
   interfaceToSendTo = furnaceInterface
@@ -302,32 +297,13 @@ function createAmountWindowComponents()
   end
 end
 
-function createPulverizerButtons()
-  local currentColor = 4096
-    print("in createpulverizerbuttons")
-    for j = 1, #pulverizerGrid[1], 1 do
-      for i = 1, #pulverizerGrid, 1 do
-
-        pulverizerGrid[i][j].setTextColor(1)
-        pulverizerGrid[i][j].setBackgroundColor(currentColor)
-        currentColor = toggleColor(currentColor)
-        pulverizerGrid[i][j].clear()
-
-        if pulverizerGrid[i][j].label ~= nil then
-          functions.textInMiddleButton(pulverizerGrid[i][j], pulverizerGrid[i][j].label)
-        end
-      end
-    end
-end
-
-
-
 V2Layout.createTopPart(topPart)
 V2Layout.createInfoFieldStartWindow(infoFieldStartWindow)
 V2Layout.createWindowSwitchFurnace(windowSwitchFurnace)
 V2Layout.createWindowSwitchPulverizer(windowSwitchPulverizer)
 V2Layout.createReturnButton(returnButton)
-V2Layout.createFurnaceButtons(furnaceGrid)
+V2Layout.createLabeledButtons(furnaceGrid)
+V2Layout.createLabeledButtons(pulverizerGrid)
 createAmountWindowComponents()
 createProcessingWindowComponents()
 createPulverizerButtons()
