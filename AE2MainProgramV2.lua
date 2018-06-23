@@ -302,7 +302,7 @@ function createAmountWindowComponents()
   currentColor = 4096
 
   local M, N = functions.sizeMatrix(amountGrid)
-
+  print("in createAmountWindow")
   for j = 1, M, 1 do
     for i = 1, N, 1 do
     amountGrid[i][j].setBackgroundColor(currentColor)
@@ -314,6 +314,7 @@ end
 
 function createPulverizerButtons()
   local currentColor = 4096
+    print("in createpulverizerbuttons")
     for j = 1, #pulverizerGrid[1], 1 do
       for i = 1, #pulverizerGrid, 1 do
 
@@ -330,6 +331,7 @@ function createPulverizerButtons()
 end
 
 function createFurnaceButtons()
+    print("in createfurnacebuttons")
 
 local currentColor = 4096
   for j = 1, #furnaceGrid[1], 1 do
