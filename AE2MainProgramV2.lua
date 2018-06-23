@@ -77,8 +77,7 @@ end
 function windowSwitchCrafting.onClick()
 end
 
-startWindow.subwindows = {infoFieldStartWindow, windowSwitchPulverizer, windowSwitchFurnace, windowSwitchCrafting}
-startWindow.typeSubwindows = "custom"
+
 
 --Needed for keyhandling
 function setExtraWindowKeys(object,fp, label)
@@ -96,8 +95,7 @@ furnaceGrid[1][2] = setExtraWindowKeys(furnaceGrid[1][2], fingerprints.pulverize
 furnaceGrid[2][1] = setExtraWindowKeys(furnaceGrid[2][1], fingerprints.sand, "sand")
 furnaceGrid[2][2] = setExtraWindowKeys(furnaceGrid[2][2], fingerprints.cobble, "cobble")
 furnaceGrid[2][3] = setExtraWindowKeys(furnaceGrid[2][3], fingerprints.sprucewood, "sprucewood")
-furnaceWindow.subwindows = furnaceGrid
-furnaceWindow.typeSubwindows = "grid"
+
 
 function furnaceWindow.onClick(gridItem)
   sideToSendTo = "north"
@@ -111,8 +109,7 @@ end
 local pulverizerGrid = functions.returnWindowGrid({m=pulverizerWindow, x=1, y=1, width=61,height=36, offsetY=4, partshorizontal=4, partsvertical=5})
 pulverizerGrid[1][1] = setExtraWindowKeys(pulverizerGrid[1][1], fingerprints.cobble, "pulverizer", "cobble")
 pulverizerGrid[1][2] = setExtraWindowKeys(pulverizerGrid[1][2], fingerprints.sand, "pulverizer", "sand")
-pulverizerWindow.subwindows = pulverizerGrid
-pulverizerWindow.typeSubwindows = "grid"
+
 
 function pulverizerWindow.onClick(gridItem)
   sideToSendTo = "west"
@@ -134,8 +131,7 @@ end
 
 print(amountGrid[2][2].label)
 
-amountWindow.subwindows = amountGrid
-amountWindow.typeSubwindows = "grid"
+
 
 function amountWindow.onClick(gridItem)
   amountOfItemsToSend = gridItem.value
@@ -149,8 +145,7 @@ local infoFieldProcessingWindow = dividedWindows11[1]
 local changingFieldProcessingWindow = dividedWindows11[2]
 local successFieldProcessingWindow = dividedWindows11[3]
 
---List of all the main windows to switch between
-local mainWindowList = {startWindow, pulverizerWindow, furnaceWindow, amountWindow, processingWindow}
+
 
 function toggleWindows(win)
   for i = 1, #mainWindowList, 1 do
@@ -392,7 +387,6 @@ function createTopPart(w)
   w.write("Written by Merlione404")
 end
 
-
 createTopPart(topPart)
 createInfoFieldStartWindow()
 createWindowSwitchFurnace()
@@ -402,6 +396,21 @@ createFurnaceButtons()
 createAmountWindowComponents()
 createProcessingWindowComponents()
 createPulverizerButtons()
+
+pulverizerWindow.subwindows = pulverizerGrid
+pulverizerWindow.typeSubwindows = "grid"
+
+furnaceWindow.subwindows = furnaceGrid
+furnaceWindow.typeSubwindows = "grid"
+
+amountWindow.subwindows = amountGrid
+amountWindow.typeSubwindows = "grid"
+--List of all the main windows to switch between
+
+startWindow.subwindows = {infoFieldStartWindow, windowSwitchPulverizer, windowSwitchFurnace, windowSwitchCrafting}
+startWindow.typeSubwindows = "custom"
+
+local mainWindowList = {startWindow, pulverizerWindow, furnaceWindow, amountWindow, processingWindow}
 --BUTTON HANDLE FUNCTIONS
 --TODO
 
