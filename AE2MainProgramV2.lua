@@ -1,5 +1,5 @@
-"furnace""furnace""furnace"deviceToSendTo--comment
-print("adasasddsa")
+
+print("palapla")
 
 
 --Main program for AE2 stuff
