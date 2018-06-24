@@ -290,7 +290,7 @@ V2Layout.createReturnButton(returnButton)
 V2Layout.createLabeledButtons(furnaceGrid)
 V2Layout.createLabeledButtons(pulverizerGrid)
 V2Layout.createLabeledButtons(amountGrid)
-V2layout.createProcessingWindowComponents(infoFieldProcessingWindow, changingFieldProcessingWindow, successFieldProcessingWindow)
+V2Layout.createProcessingWindowComponents(infoFieldProcessingWindow, changingFieldProcessingWindow, successFieldProcessingWindow)
 
 pulverizerWindow.subwindows = pulverizerGrid
 pulverizerWindow.typeSubwindows = "grid"
