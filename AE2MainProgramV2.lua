@@ -19,12 +19,12 @@ m.clear()
 --Get the interfaces that are used from the network
 local pulverizerInterface
 local furnaceInterface
-pulverizerInterface = peripheral.wrap("tileinterface_7")
+pulverizerInterface = peripheral.wrap("tileinterface_9")
 furnaceInterface = peripheral.wrap("tileinterface_6")
 furnaceInterface.sideToSendTo = "north"
 furnaceInterface.label = "furnace"
 pulverizerInterface.label = "pulverizer"
-pulverizerInterface.sideToSendTo = "west"
+pulverizerInterface.sideToSendTo = "north"
 
 --Some variables used
 local allItemsNetwork --A list of all items in the ME network,
