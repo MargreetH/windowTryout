@@ -41,6 +41,14 @@ function createWindowSwitchPulverizer(m)
   functions.newLine(m)
 end
 
+function createWindowSwitchInscriber(m)
+  m.setBackgroundColor(colors.orange)
+  m.clear()
+  m.setCursorPos(1,1)
+  functions.textInMiddleButton(m,"Send stuff to inscriber")
+  functions.newLine(m)
+end
+
 
 function createWindowSwitchFurnace(m)
   m.setBackgroundColor(colors.brown)

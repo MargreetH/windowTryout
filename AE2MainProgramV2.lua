@@ -97,7 +97,7 @@ function setExtraWindowKeys(object,fp, label)
 end
 
 local inscriberGrid = functions.returnWindowGrid({m=inscriberWindow, x=1, y=1, width=61,height=36, offsetY=4, partshorizontal=4, partsvertical=5})
-inscriberGrid[1][1] = setExtraWindowKeys(inscriberGrid[1][1], fingerprints..goldingot, "gold")
+inscriberGrid[1][1] = setExtraWindowKeys(inscriberGrid[1][1], fingerprints.goldingot, "gold")
 inscriberGrid[1][2] = setExtraWindowKeys(inscriberGrid[1][2], fingerprints.diamond, "diamond")
 inscriberGrid[1][3] = setExtraWindowKeys(inscriberGrid[1][3], fingerprints.silicon, "silicon")
 inscriberGrid[1][4] = setExtraWindowKeys(inscriberGrid[1][4], fingerprints.purecertusquartz, "pure certus")

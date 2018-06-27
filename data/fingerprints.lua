@@ -18,3 +18,6 @@ lapisshard = {id= "SolarExpansion:lapisShard", dmg=0}
 glasspane = {id= "minecraft:glass_pane", dmg=0}
 soulsand = {id= "minecraft:soul_sand", dmg=0}
 witherskull = {id= "minecraft:skull", dmg=1}
+goldingot = {id= "minecraft:gold_ingot", dmg=0}
+diamond = {id= "minecraft:diamond", dmg=0}
+purecertusquartz = {id= "appliedenergistics2:item.Multimaterial", dmg = 10}
