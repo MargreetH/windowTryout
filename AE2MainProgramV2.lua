@@ -19,12 +19,16 @@ m.clear()
 --Get the interfaces that are used from the network
 local pulverizerInterface
 local furnaceInterface
+local inscriberInterface
 pulverizerInterface = peripheral.wrap("tileinterface_9")
 furnaceInterface = peripheral.wrap("tileinterface_6")
+inscriberInterface = peripheral.wrap("tileinterface_10")
 furnaceInterface.sideToSendTo = "north"
 furnaceInterface.label = "furnace"
 pulverizerInterface.label = "pulverizer"
 pulverizerInterface.sideToSendTo = "north"
+inscriberInterface.sideToSendTo = "north"
+inscriberInterface.label = "inscriber"
 
 --Some variables used
 local allItemsNetwork --A list of all items in the ME network,
@@ -56,13 +60,16 @@ local amountWindow = window.create(bottomPart, 1, 1, 61, 36)
 amountWindow.isActive = false
 local processingWindow = window.create(bottomPart, 1, 1, 61, 36)
 processingWindow.isActive = false
+local inscriberWindow = window.create(bottomPart, 1, 1, 61, 36)
+inscriberWindow.isActive = false
 
 --STartwindow components
-local dividedWindows = functions.returnWindows(startWindow, 1, 1, 61, 36, 4, false)
+local dividedWindows = functions.returnWindows(startWindow, 1, 1, 61, 36, 5, false)
 local infoFieldStartWindow = dividedWindows[1]
 local windowSwitchPulverizer = dividedWindows[2]
 local windowSwitchFurnace = dividedWindows[3]
 local windowSwitchCrafting = dividedWindows[4]
+local windowSwitchInscriber = dividedWindows[5]
 
 function windowSwitchPulverizer.onClick()
   interfaceToSendTo = pulverizerInterface
@@ -74,6 +81,10 @@ function windowSwitchFurnace.onClick()
 end
 function windowSwitchCrafting.onClick()
 end
+function windowSwitchInscriber.onClick()
+  interfaceToSendTo = inscriberInterface
+  toggleWindows(inscriberWindow)
+end
 
 
 
@@ -83,6 +94,19 @@ function setExtraWindowKeys(object,fp, label)
   returnedObject.fingerprint = fp
   returnedObject.label = label
   return returnedObject
+end
+
+local inscriberGrid = functions.returnWindowGrid({m=inscriberWindow, x=1, y=1, width=61,height=36, offsetY=4, partshorizontal=4, partsvertical=5})
+inscriberGrid[1][1] = setExtraWindowKeys(inscriberGrid[1][1], fingerprints..goldingot, "gold")
+inscriberGrid[1][2] = setExtraWindowKeys(inscriberGrid[1][2], fingerprints.diamond, "diamond")
+inscriberGrid[1][3] = setExtraWindowKeys(inscriberGrid[1][3], fingerprints.silicon, "silicon")
+inscriberGrid[1][4] = setExtraWindowKeys(inscriberGrid[1][4], fingerprints.purecertusquartz, "pure certus")
+
+function inscriberWindow.onClick(gridItem)
+  interfaceToSendTo = inscriberInterface
+  currentFingerprint = gridItem.fingerprint
+  currentLabel = gridItem.label
+  toggleWindows(amountWindow)
 end
 
 --Furnacewindow components: 5x4 rows
@@ -105,7 +129,6 @@ end
 local pulverizerGrid = functions.returnWindowGrid({m=pulverizerWindow, x=1, y=1, width=61,height=36, offsetY=4, partshorizontal=4, partsvertical=5})
 pulverizerGrid[1][1] = setExtraWindowKeys(pulverizerGrid[1][1], fingerprints.cobble, "cobble")
 pulverizerGrid[1][2] = setExtraWindowKeys(pulverizerGrid[1][2], fingerprints.sand, "sand")
-
 
 function pulverizerWindow.onClick(gridItem)
   interfaceToSendTo = pulverizerInterface
@@ -290,7 +313,9 @@ V2Layout.createReturnButton(returnButton)
 V2Layout.createLabeledButtons(furnaceGrid)
 V2Layout.createLabeledButtons(pulverizerGrid)
 V2Layout.createLabeledButtons(amountGrid)
+V2Layout.createWindowSwitchInscriber(inscriberGrid)
 V2Layout.createProcessingWindowComponents(infoFieldProcessingWindow, changingFieldProcessingWindow, successFieldProcessingWindow)
+
 
 pulverizerWindow.subwindows = pulverizerGrid
 pulverizerWindow.typeSubwindows = "grid"
@@ -298,14 +323,17 @@ pulverizerWindow.typeSubwindows = "grid"
 furnaceWindow.subwindows = furnaceGrid
 furnaceWindow.typeSubwindows = "grid"
 
+inscriberWindow.subwindows = inscriberGrid
+inscriberWindow.typeSubwindows = "grid"
+
 amountWindow.subwindows = amountGrid
 amountWindow.typeSubwindows = "grid"
 --List of all the main windows to switch between
 
-startWindow.subwindows = {infoFieldStartWindow, windowSwitchPulverizer, windowSwitchFurnace, windowSwitchCrafting}
+startWindow.subwindows = {infoFieldStartWindow, windowSwitchPulverizer, windowSwitchFurnace, windowSwitchCrafting, windowSwitchInscriber}
 startWindow.typeSubwindows = "custom"
 
-local mainWindowList = {startWindow, pulverizerWindow, furnaceWindow, amountWindow, processingWindow}
+local mainWindowList = {startWindow, pulverizerWindow, furnaceWindow, inscriberWindow, amountWindow, processingWindow}
 
 function toggleWindows(win)
   for i = 1, #mainWindowList, 1 do
@@ -340,6 +368,8 @@ function clickedReturnButton()
       toggleWindows(furnaceWindow)
     elseif interfaceToSendTo == pulverizerInterface then
       toggleWindows(pulverizerWindow)
+    elseif interfaceToSendTo == inscriberInterface then
+      toggleWindows(inscriberWindow)
     end
   end
 end
