@@ -309,11 +309,12 @@ V2Layout.createTopPart(topPart)
 V2Layout.createInfoFieldStartWindow(infoFieldStartWindow)
 V2Layout.createWindowSwitchFurnace(windowSwitchFurnace)
 V2Layout.createWindowSwitchPulverizer(windowSwitchPulverizer)
+V2Layout.createWindowSwitchInscriber(windowSwitchInscriber)
 V2Layout.createReturnButton(returnButton)
 V2Layout.createLabeledButtons(furnaceGrid)
 V2Layout.createLabeledButtons(pulverizerGrid)
 V2Layout.createLabeledButtons(amountGrid)
-V2Layout.createWindowSwitchInscriber(inscriberGrid)
+V2Layout.createLabeledButtons(inscriberGrid)
 V2Layout.createProcessingWindowComponents(infoFieldProcessingWindow, changingFieldProcessingWindow, successFieldProcessingWindow)
 
 
